@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Wedding Invitation | Bose &amp; Babi</title>
+  <meta name="description" content="You are cordially invited to celebrate the auspicious wedding ceremony of Bose &amp; Babi on Sunday, 14 February 2027 in Chennai.">
+  <meta name="theme-color" content="#4A0E17">
+
+  <!-- Open Graph / WhatsApp Preview Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bosewedsbabi.netlify.app/">
+  <meta property="og:title" content="Wedding Invitation | Bose &amp; Babi">
+  <meta property="og:description" content="You are cordially invited to celebrate the auspicious wedding ceremony of Bose &amp; Babi on Sunday, 14 February 2027 in Chennai.">
+  <meta property="og:image" content="https://bosewedsbabi.netlify.app/assets/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://bosewedsbabi.netlify.app/assets/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wedding Invitation | Bose &amp; Babi">
+  <meta name="twitter:description" content="You are cordially invited to celebrate the auspicious wedding ceremony of Bose &amp; Babi on Sunday, 14 February 2027 in Chennai.">
+  <meta name="twitter:image" content="https://bosewedsbabi.netlify.app/assets/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Google Fonts: Limited to two families with font-display: swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Header Controls: Language Switcher & Audio Toggle -->
+  <header class="top-controls" role="banner" aria-label="Page controls">
+    <div class="controls-container">
+      <!-- Language Switcher Toggle -->
+      <button id="langToggleBtn" class="control-btn" aria-label="Switch Language to Tamil" title="Switch language">
+        <span class="control-icon" aria-hidden="true">🌐</span>
+        <span id="langLabel" class="control-text">தமிழ்</span>
+      </button>
+
+      <!-- Music Toggle (Muted by default) -->
+      <button id="musicToggleBtn" class="control-btn" aria-label="Turn on background music" title="Toggle background music" aria-pressed="false">
+        <span id="musicIcon" class="control-icon" aria-hidden="true">
+          <!-- Muted Speaker Icon -->
+          <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+          </svg>
+        </span>
+        <span id="musicLabel" class="control-text">Music Off</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="page-container" id="main-content">
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section card entrance-fade" aria-labelledby="hero-title">
+      <div class="corner-flourish top-left" aria-hidden="true"></div>
+      <div class="corner-flourish top-right" aria-hidden="true"></div>
+
+      <!-- Auspicious Emblem -->
+      <div class="emblem-wrapper" aria-hidden="true">
+        <img src="assets/mandala.svg" alt="" class="hero-mandala" width="90" height="90" loading="eager">
+        <div class="auspicious-mantra" id="auspiciousMantra">|| ஸ்ரீ கணேசாய நம: ||</div>
+      </div>
+
+      <!-- Personalized Greeting -->
+      <p class="personalized-greeting" id="personalizedGreeting">Dear Family &amp; Friends,</p>
+
+      <!-- Invitation Header -->
+      <p class="hosts-intro" id="hostsIntro">Together with their families</p>
+      <p class="hosts-names" id="hostsNames">Mr. &amp; Mrs. S. Sundaram &amp; Mr. &amp; Mrs. R. Natarajan</p>
+      
+      <p class="invite-line" id="inviteLine">cordially invite you to celebrate the wedding ceremony of</p>
+
+      <!-- Couple Names -->
+      <h1 class="couple-names" id="coupleNames">Bose &amp; Babi</h1>
+
+      <!-- Floral Divider -->
+      <div class="divider-wrapper" aria-hidden="true">
+        <img src="assets/divider.svg" alt="" class="floral-divider" width="220" height="22">
+      </div>
+
+      <!-- Event Title & Date in Hero -->
+      <h2 class="hero-event-title" id="heroEventTitle">Wedding Ceremony &amp; Reception</h2>
+      <p class="hero-date" id="heroDate">Sunday, 14 February 2027</p>
+      <p class="hero-venue-city" id="heroVenueCity">Chennai, Tamil Nadu</p>
+    </section>
+
+    <!-- 2. COUNTDOWN TIMER SECTION -->
+    <section class="countdown-section card" aria-labelledby="countdown-heading">
+      <h2 class="section-title" id="countdown-heading">Counting Down to the Big Day</h2>
+      <div class="divider-wrapper" aria-hidden="true">
+        <img src="assets/divider.svg" alt="" class="floral-divider" width="160" height="16">
+      </div>
+
+      <div class="timer-grid" role="timer" aria-live="polite" id="countdownTimer">
+        <div class="timer-box">
+          <span class="timer-number" id="timerDays">00</span>
+          <span class="timer-label" id="labelDays">Days</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="timerHours">00</span>
+          <span class="timer-label" id="labelHours">Hours</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="timerMinutes">00</span>
+          <span class="timer-label" id="labelMinutes">Mins</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="timerSeconds">00</span>
+          <span class="timer-label" id="labelSeconds">Secs</span>
+        </div>
+      </div>
+      <p class="timer-status" id="timerStatus" aria-live="polite"></p>
+    </section>
+
+    <!-- 3. DETAILS CARD & ACTIONS -->
+    <section class="details-section card" aria-labelledby="details-heading">
+      <h2 class="section-title" id="details-heading">When &amp; Where</h2>
+      <div class="divider-wrapper" aria-hidden="true">
+        <img src="assets/divider.svg" alt="" class="floral-divider" width="160" height="16">
+      </div>
+
+      <div class="details-list">
+        <!-- Date & Day -->
+        <div class="detail-item">
+          <div class="detail-icon" aria-hidden="true">📅</div>
+          <div class="detail-info">
+            <h3 class="detail-subtitle" id="detailDateLabel">Date</h3>
+            <p class="detail-val" id="detailDate">Sunday, 14 February 2027</p>
+          </div>
+        </div>
+
+        <!-- Auspicious Time -->
+        <div class="detail-item">
+          <div class="detail-icon" aria-hidden="true">⏰</div>
+          <div class="detail-info">
+            <h3 class="detail-subtitle" id="detailTimeLabel">Muhurtham &amp; Timings</h3>
+            <p class="detail-val" id="detailTime">Muhurtham: 09:00 AM – 10:30 AM (IST)<br><span class="detail-subval">Reception: 06:30 PM onwards</span></p>
+          </div>
+        </div>
+
+        <!-- Venue -->
+        <div class="detail-item">
+          <div class="detail-icon" aria-hidden="true">📍</div>
+          <div class="detail-info">
+            <h3 class="detail-subtitle" id="detailVenueLabel">Venue</h3>
+            <p class="detail-val venue-title" id="detailVenueName">Sri Krishna Grand Convention Hall</p>
+            <p class="detail-address" id="detailVenueAddress">No. 42, 100 Feet Bypass Road, Velachery, Chennai, Tamil Nadu 600042</p>
+          </div>
+        </div>
+
+        <!-- Dress Code / Notes -->
+        <div class="detail-item">
+          <div class="detail-icon" aria-hidden="true">✨</div>
+          <div class="detail-info">
+            <h3 class="detail-subtitle" id="detailDressLabel">Dress Code &amp; Notes</h3>
+            <p class="detail-val" id="detailDress">Traditional Indian / Festive Ethnic Wear</p>
+            <p class="detail-subval" id="detailNotes">Your presence and blessings are our greatest gift.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons: Google Maps & Add to Calendar -->
+      <div class="actions-group">
+        <!-- 4. Open in Google Maps Button -->
+        <a id="btnGoogleMaps" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Open venue location in Google Maps">
+          <span class="btn-icon" aria-hidden="true">🗺️</span>
+          <span id="labelGoogleMaps">Open in Google Maps</span>
+        </a>
+
+        <!-- 5. Add to Calendar Button -->
+        <button id="btnAddToCalendar" class="btn btn-secondary" aria-label="Add wedding to your calendar (downloads .ics file)">
+          <span class="btn-icon" aria-hidden="true">🗓️</span>
+          <span id="labelAddToCalendar">Add to Calendar (.ics)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. PROGRAMME / SCHEDULE -->
+    <section class="schedule-section card" aria-labelledby="schedule-heading">
+      <h2 class="section-title" id="schedule-heading">Programme Schedule</h2>
+      <div class="divider-wrapper" aria-hidden="true">
+        <img src="assets/divider.svg" alt="" class="floral-divider" width="160" height="16">
+      </div>
+
+      <div class="timeline" id="timelineList" role="list">
+        <!-- Injected dynamically from CONFIG.schedule -->
+      </div>
+    </section>
+
+    <!-- 7. RSVP SECTION -->
+    <section class="rsvp-section card" aria-labelledby="rsvp-heading">
+      <h2 class="section-title" id="rsvp-heading">RSVP</h2>
+      <div class="divider-wrapper" aria-hidden="true">
+        <img src="assets/divider.svg" alt="" class="floral-divider" width="160" height="16">
+      </div>
+
+      <p class="rsvp-intro" id="rsvpIntro">
+        Please confirm your gracious presence via WhatsApp to help us welcome you with warmth.
+      </p>
+
+      <!-- RSVP Action Buttons -->
+      <div class="rsvp-buttons">
+        <a id="btnRsvpYes" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-rsvp-yes" aria-label="RSVP: Yes, I will be there via WhatsApp">
+          <span class="btn-icon" aria-hidden="true">💐</span>
+          <span id="labelRsvpYes">Yes, I'll be there!</span>
+        </a>
+
+        <a id="btnRsvpNo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-rsvp-no" aria-label="RSVP: Sorry, cannot make it via WhatsApp">
+          <span class="btn-icon" aria-hidden="true">💌</span>
+          <span id="labelRsvpNo">Sorry, can't make it</span>
+        </a>
+      </div>
+
+      <p class="rsvp-note" id="rsvpNote">
+        Clicking a button opens WhatsApp with a pre-filled confirmation message.
+      </p>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer class="footer-section card" role="contentinfo">
+      <div class="emblem-wrapper" aria-hidden="true">
+        <img src="assets/mandala.svg" alt="" class="footer-mandala" width="60" height="60" loading="lazy">
+      </div>
+      <p class="footer-blessing" id="footerBlessing">With the divine blessings of our elders and ancestors</p>
+      <h3 class="footer-family" id="footerFamily">Sundaram &amp; Natarajan Families</h3>
+      <p class="footer-thanks" id="footerThanks">Thank you for being part of our special journey!</p>
+      
+      <div class="divider-wrapper" aria-hidden="true">
+        <img src="assets/divider.svg" alt="" class="floral-divider" width="140" height="14">
+      </div>
+
+      <p class="footer-hashtag" id="footerHashtag">#BoseWedsBabi &bull; 2027</p>
+      <div class="corner-flourish bottom-left" aria-hidden="true"></div>
+      <div class="corner-flourish bottom-right" aria-hidden="true"></div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
