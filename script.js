@@ -243,28 +243,18 @@ function applyLanguage(lang) {
     langToggleBtn.setAttribute('aria-label', isTa ? 'Switch Language to English' : 'Switch Language to Tamil');
   }
 
-  // Envelope Intro
-  setText('envelopeTitleMain', isTa ? 'திருமண அழைப்பிதழ்' : 'WEDDING INVITATION');
-  setText('envelopeBlessing', isTa ? 'சுப முகூர்த்த அழைப்பிதழ் • மங்கள நாண் பூட்டுதல்' : 'Subha Muhurtham • Mangalya Dharanam');
-  setText('envelopeProfLine', isTa ? '📐 கட்டடக் கலை • மருத்துவம் 🩺' : '📐 Architecture • Medicine 🩺');
-  setText('cardSlideMantra', isTa ? 'கட்டடக் கலையும் மருத்துவமும் இணையும் • அன்பின் புதிய தொடக்கம் ♥' : 'Where Architecture Meets Medicine • A Lifetime of Love');
-  setText('cardSlideWelcome', isTa ? 'எங்கள் திருமண நன்னாளுக்கு தங்களை அன்புடன் வரவேற்கிறோம்!' : 'Welcome to our wedding celebrations!');
-  const openLabel = document.querySelector('.open-label-text');
-  if (openLabel) {
-    openLabel.textContent = isTa ? 'அழைப்பிதழைத் திறக்க' : 'Tap to Open Invitation';
-  }
-  const openInviteMusicHint = document.getElementById('openInviteMusicHint');
-  if (openInviteMusicHint) {
-    openInviteMusicHint.textContent = isTa ? '🎵 திருமண மங்கள இசை ஒலிக்கும்' : '🎵 Celebratory music will play';
-  }
-  const envelopeGuestTag = document.getElementById('envelopeGuestTag');
-  if (envelopeGuestTag) {
-    if (guestName) {
-      envelopeGuestTag.textContent = isTa ? `அன்பார்ந்த ${guestName},` : `Dear ${guestName},`;
-    } else {
-      envelopeGuestTag.textContent = isTa ? 'அன்பார்ந்த சுற்றமும் நட்பும்,' : 'Dear Family & Friends,';
-    }
-  }
+  // Cinematic Architect & Doctor Story Intro
+  setText('introBlessing', isTa ? 'சுப முகூர்த்த திருமண அழைப்பிதழ்' : 'Subha Muhurtham • Auspicious Invitation');
+  setText('introTitleMain', isTa ? 'திருமண அழைப்பிதழ்' : 'WEDDING INVITATION');
+  setText('introCtaText', isTa ? 'எங்கள் கதையைக் காண தொடுக' : 'Tap to Unveil Our Story & Invitation');
+  setText('introMusicSub', isTa ? '🎵 திருமண மங்கள இசை • சிரிக்காதே ஒலிக்கும்' : '🎵 Celebratory music • Sirikkadhey will play');
+  setText('storyArchitectTitle', isTa ? 'கட்டடக் கலைஞர் • Ar. போஸ்' : 'The Architect • Ar. Bose');
+  setText('storyArchitectMotto', isTa ? 'நிலையான இல்லத்தின் வரைபடம்' : 'Designing our forever home');
+  setText('storyDoctorTitle', isTa ? 'மருத்துவர் • Dr. பபி' : 'The Doctor • Dr. Babi');
+  setText('storyDoctorMotto', isTa ? 'இதயங்களைக் குணமாக்கும் அன்பு' : 'Healing hearts, beating as one');
+  setText('storyConvergenceTagline', isTa ? 'கட்டடக் கலையும் மருத்துவமும் இணையும் • இரு இதயங்கள், ஒரே துடிப்பு ♥' : 'Where Architecture Meets Medicine • Two Hearts, One Rhythm ♥');
+  setText('storyUnveilingText', isTa ? 'திருமண விழா அழைப்பிதழ் திறக்கிறது...' : 'Opening Wedding Celebrations...');
+  setText('skipIntroLabel', isTa ? 'நேரடியாகப் பார்க்க ➔' : 'Skip to Invitation ➔');
 
   // Hero Section
   setText('topMantra', isTa ? EVENT_CONFIG.topMantraTa : EVENT_CONFIG.topMantraEn);
@@ -414,7 +404,7 @@ function renderCelebrationCards(isTa) {
 }
 
 // ==============================================================================
-// 3.5. ROYAL ENVELOPE OPENING ANIMATION (INTERACTIVE START PAGE)
+// 3.5. CINEMATIC ARCHITECT & DOCTOR STORY INTRO & CEREMONY
 // ==============================================================================
 function initEnvelopeIntro() {
   const overlay = document.getElementById('envelopeOverlay');
@@ -424,41 +414,49 @@ function initEnvelopeIntro() {
 
   if (!overlay) return;
 
-  function openEnvelope() {
-    if (overlay.classList.contains('is-opening')) return;
-    overlay.classList.add('is-opening');
+  let storyTimer = null;
 
-    // Start celebratory music upon user tap interaction
+  function playStoryAnimation() {
+    if (overlay.classList.contains('is-animating-story')) return;
+    overlay.classList.add('is-animating-story');
+
+    // 1. Trigger celebratory music immediately on user gesture
     if (!isMusicPlaying) {
       toggleMusic();
     }
 
-    // Trigger golden sparkles and rose petal burst from the wax seal
-    if (typeof window.triggerPetalBurst === 'function') {
-      window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight / 2);
-    }
-
-    // Transition smoothly to full invitation card
+    // 2. Convergence moment at ~2.4s: Trigger golden sparkles & rose petal burst
     setTimeout(() => {
+      if (typeof window.triggerPetalBurst === 'function') {
+        window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight * 0.45);
+      }
+    }, 2400);
+
+    // 3. Complete cinematic story sequence at ~3.8s and unveil invitation website
+    storyTimer = setTimeout(() => {
       overlay.classList.add('is-hidden');
-      overlay.classList.remove('is-opening');
-    }, 950);
+      setTimeout(() => {
+        overlay.classList.remove('is-animating-story');
+      }, 900);
+    }, 3800);
   }
 
   function skipIntro() {
+    if (storyTimer) clearTimeout(storyTimer);
     overlay.classList.add('is-hidden');
-    overlay.classList.remove('is-opening');
+    overlay.classList.remove('is-animating-story');
     if (!isMusicPlaying) {
       toggleMusic();
     }
   }
 
   function replayIntro() {
-    overlay.classList.remove('is-hidden', 'is-opening');
+    if (storyTimer) clearTimeout(storyTimer);
+    overlay.classList.remove('is-hidden', 'is-animating-story');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  if (btnOpen) btnOpen.addEventListener('click', openEnvelope);
+  if (btnOpen) btnOpen.addEventListener('click', playStoryAnimation);
   if (btnSkip) btnSkip.addEventListener('click', skipIntro);
   if (btnReplay) btnReplay.addEventListener('click', replayIntro);
 }
