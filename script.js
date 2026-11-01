@@ -15,8 +15,26 @@ const EVENT_CONFIG = {
   coupleNamesEn: "Bose & Babi",
   coupleNamesTa: "போஸ் & பேபி",
 
-  hostsEn: "Mr. & Mrs. S. Sundaram & Mr. & Mrs. R. Natarajan",
-  hostsTa: "திரு. & திருமதி. எஸ். சுந்தரம் & திரு. & திருமதி. ஆர். நடராஜன்",
+  // Groom: the Architect · Bride: the Doctor
+  groomPrefixEn: "Ar.",
+  groomPrefixTa: "Ar.",
+  groomNameEn: "Bose",
+  groomNameTa: "போஸ்",
+  groomRoleEn: "The Architect",
+  groomRoleTa: "கட்டடக் கலைஞர்",
+
+  bridePrefixEn: "Dr.",
+  bridePrefixTa: "டாக்டர்",
+  brideNameEn: "Babi",
+  brideNameTa: "பேபி",
+  brideRoleEn: "The Doctor",
+  brideRoleTa: "மருத்துவர்",
+
+  themeTaglineEn: "He designs spaces. She heals hearts. Together, they are building a forever home — one heartbeat at a time.",
+  themeTaglineTa: "அவன் இடங்களை வடிவமைக்கிறான்; அவள் இதயங்களைக் குணமாக்குகிறாள். இருவரும் இணைந்து, ஒவ்வொரு இதயத் துடிப்பிலும் ஒரு நிலையான இல்லம் கட்டுகிறார்கள்.",
+
+  hostsNamesEn: "Mr. & Mrs. S. Sundaram & Mr. & Mrs. R. Natarajan",
+  hostsNamesTa: "திரு. & திருமதி. எஸ். சுந்தரம் & திரு. & திருமதி. ஆர். நடராஜன்",
 
   eventTitleEn: "Wedding Ceremony & Reception",
   eventTitleTa: "திருமண விழா மற்றும் வரவேற்பு",
@@ -78,7 +96,19 @@ const EVENT_CONFIG = {
   rsvpWhatsAppNumber: "919876543210",
 
   // ---------------------------------------------------------------------------
-  // 6. PROGRAMME / SCHEDULE TIMELINE
+  // 6. PROJECT BRIEF (Blueprint spec sheet rows)
+  // ---------------------------------------------------------------------------
+  projectBrief: [
+    { labelEn: "Project", labelTa: "திட்டம்", valueEn: "Forever Home", valueTa: "நிரந்தர இல்லம்" },
+    { labelEn: "Lead Architect", labelTa: "முதன்மைக் கட்டடக் கலைஞர்", valueEn: "Ar. Bose", valueTa: "Ar. போஸ்" },
+    { labelEn: "Chief Physician", labelTa: "முதன்மை மருத்துவர்", valueEn: "Dr. Babi", valueTa: "டாக்டர் பேபி" },
+    { labelEn: "Foundation", labelTa: "அடித்தளம்", valueEn: "Love, Trust & Family Blessings", valueTa: "அன்பு, நம்பிக்கை & பெரியோர் ஆசி" },
+    { labelEn: "Vital Signs", labelTa: "உயிர்க் குறிகள்", valueEn: "Two hearts, one rhythm", valueTa: "இரு இதயங்கள், ஒரே துடிப்பு" },
+    { labelEn: "Groundbreaking", labelTa: "அடிக்கல் நாள்", valueEn: "14 · 02 · 2027", valueTa: "14 · 02 · 2027" }
+  ],
+
+  // ---------------------------------------------------------------------------
+  // 7. PROGRAMME / SCHEDULE TIMELINE
   // ---------------------------------------------------------------------------
   schedule: [
     {
@@ -116,7 +146,7 @@ const EVENT_CONFIG = {
   ],
 
   // ---------------------------------------------------------------------------
-  // 7. FOOTER DETAILS
+  // 8. FOOTER DETAILS
   // ---------------------------------------------------------------------------
   footerBlessingEn: "With the divine blessings of our elders and ancestors",
   footerBlessingTa: "பெரியோர்கள் மற்றும் முன்னோர்களின் நல்லாசிகளுடன்",
@@ -146,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCalendarGenerator();
   initAudioPlayer();
   setupEventListeners();
+  initReveal();
 });
 
 /**
@@ -195,13 +226,27 @@ function applyLanguage(lang) {
   setText('hostsIntro', isTa ? EVENT_CONFIG.hostsIntroTa : EVENT_CONFIG.hostsIntroEn);
   setText('hostsNames', isTa ? EVENT_CONFIG.hostsNamesTa : EVENT_CONFIG.hostsNamesEn);
   setText('inviteLine', isTa ? EVENT_CONFIG.inviteLineTa : EVENT_CONFIG.inviteLineEn);
-  setText('coupleNames', isTa ? EVENT_CONFIG.coupleNamesTa : EVENT_CONFIG.coupleNamesEn);
+  setText('groomPrefix', isTa ? EVENT_CONFIG.groomPrefixTa : EVENT_CONFIG.groomPrefixEn);
+  setText('groomName', isTa ? EVENT_CONFIG.groomNameTa : EVENT_CONFIG.groomNameEn);
+  setText('groomRole', isTa ? EVENT_CONFIG.groomRoleTa : EVENT_CONFIG.groomRoleEn);
+  setText('bridePrefix', isTa ? EVENT_CONFIG.bridePrefixTa : EVENT_CONFIG.bridePrefixEn);
+  setText('brideName', isTa ? EVENT_CONFIG.brideNameTa : EVENT_CONFIG.brideNameEn);
+  setText('brideRole', isTa ? EVENT_CONFIG.brideRoleTa : EVENT_CONFIG.brideRoleEn);
+  setText('wedsWord', isTa ? 'திருமணம்' : 'weds');
+  setText('captionSkyline', isTa ? 'இடங்களை வடிவமைப்பவர்' : 'designs spaces');
+  setText('captionEcg', isTa ? 'இதயங்களைக் காப்பவர்' : 'heals hearts');
+  setText('themeTagline', isTa ? EVENT_CONFIG.themeTaglineTa : EVENT_CONFIG.themeTaglineEn);
   setText('heroEventTitle', isTa ? EVENT_CONFIG.eventTitleTa : EVENT_CONFIG.eventTitleEn);
   setText('heroDate', isTa ? EVENT_CONFIG.dateFormattedTa : EVENT_CONFIG.dateFormattedEn);
   setText('heroVenueCity', isTa ? EVENT_CONFIG.cityTa : EVENT_CONFIG.cityEn);
 
   // Countdown Labels
-  setText('countdown-heading', isTa ? 'திருமண நன்னாளுக்கான காத்திருப்பு' : 'Counting Down to the Big Day');
+  // Project Brief
+  setText('blueprint-heading', isTa ? 'என்றென்றைக்குமான வரைபடம்' : 'The Blueprint of Forever');
+  setText('blueprintDim', isTa ? '1 : என்றென்றும்' : '1 : FOREVER');
+  renderSpecSheet(isTa);
+
+  setText('countdown-heading', isTa ? 'திருமண நன்னாளுக்கான காத்திருப்பு' : 'Groundbreaking In');
   setText('labelDays', isTa ? 'நாட்கள்' : 'Days');
   setText('labelHours', isTa ? 'மணி' : 'Hours');
   setText('labelMinutes', isTa ? 'நிமிடம்' : 'Mins');
@@ -243,11 +288,17 @@ function applyLanguage(lang) {
 
   // RSVP Section
   setText('rsvp-heading', isTa ? 'வருகையை உறுதிசெய்க' : 'RSVP');
+  setText('rxClinic', isTa
+    ? `பரிந்துரை: டாக்டர் ${EVENT_CONFIG.brideNameTa} · வடிவமைப்பு: Ar. ${EVENT_CONFIG.groomNameTa}`
+    : `Prescribed by ${EVENT_CONFIG.bridePrefixEn} ${EVENT_CONFIG.brideNameEn} · Drafted by ${EVENT_CONFIG.groomPrefixEn} ${EVENT_CONFIG.groomNameEn}`);
+  setText('rxLine1', isTa ? 'தங்கள் வருகை — ஒரு மகிழ்ச்சியான அளவு' : 'Your presence — one joyful dose');
+  setText('rxLine2', isTa ? '14 பிப்ரவரி 2027 அன்று, குடும்பத்துடன் எடுத்துக்கொள்ளவும்' : 'To be taken on 14 Feb 2027, with family');
+  setText('rxLine3', isTa ? 'பக்க விளைவுகள்: முடிவில்லா புன்னகையும் நிறைந்த மனமும்' : 'Side effects: endless smiles & a full heart');
   setText('rsvpIntro', isTa
     ? 'தங்கள் நல்வருகையை வாட்ஸ்அப் மூலம் உறுதிசெய்து எங்களை மகிழ்விக்க வேண்டுகிறோம்.'
     : 'Please confirm your gracious presence via WhatsApp to help us welcome you with warmth.');
-  setText('labelRsvpYes', isTa ? 'மகிழ்ச்சியுடன் வருகிறோம்! 💐' : "Yes, I'll be there! 💐");
-  setText('labelRsvpNo', isTa ? 'வர இயலவில்லை, வாழ்த்துகள் 💌' : "Sorry, can't make it 💌");
+  setText('labelRsvpYes', isTa ? 'மகிழ்ச்சியுடன் வருகிறோம்!' : "Yes, I'll be there!");
+  setText('labelRsvpNo', isTa ? 'வர இயலவில்லை, வாழ்த்துகள்' : "Sorry, can't make it");
   setText('rsvpNote', isTa
     ? 'பட்டனை அழுத்தினால் வாட்ஸ்அப்பில் தானாக தட்டச்சு செய்யப்பட்ட செய்தி திறக்கும்.'
     : 'Clicking a button opens WhatsApp with a pre-filled confirmation message.');
@@ -259,11 +310,45 @@ function applyLanguage(lang) {
   setText('footerFamily', isTa ? EVENT_CONFIG.footerFamilyTa : EVENT_CONFIG.footerFamilyEn);
   setText('footerThanks', isTa ? EVENT_CONFIG.footerThanksTa : EVENT_CONFIG.footerThanksEn);
   setText('footerHashtag', EVENT_CONFIG.footerHashtag);
+  setText('tbProjectLabel', isTa ? 'திட்டம்' : 'Project');
+  setText('tbProject', isTa ? 'நிரந்தர இல்லம்' : 'Forever Home');
+  setText('tbScaleLabel', isTa ? 'அளவு' : 'Scale');
+  setText('tbDateLabel', isTa ? 'நாள்' : 'Date');
+  setText('tbSheetLabel', isTa ? 'தாள்' : 'Sheet');
+
+  document.documentElement.lang = isTa ? 'ta' : 'en';
 }
 
 function setText(elementId, text) {
   const el = document.getElementById(elementId);
   if (el) el.textContent = text;
+}
+
+// ==============================================================================
+// 3a. PROJECT BRIEF (SPEC SHEET) RENDERER
+// ==============================================================================
+function renderSpecSheet(isTa) {
+  const container = document.getElementById('specSheet');
+  if (!container || !EVENT_CONFIG.projectBrief) return;
+
+  container.innerHTML = '';
+
+  EVENT_CONFIG.projectBrief.forEach((row, index) => {
+    const rowEl = document.createElement('div');
+    rowEl.className = 'spec-row';
+
+    const dt = document.createElement('dt');
+    dt.className = 'spec-label';
+    dt.textContent = `${String(index + 1).padStart(2, '0')} · ${isTa ? row.labelTa : row.labelEn}`;
+
+    const dd = document.createElement('dd');
+    dd.className = 'spec-value';
+    dd.textContent = isTa ? row.valueTa : row.valueEn;
+
+    rowEl.appendChild(dt);
+    rowEl.appendChild(dd);
+    container.appendChild(rowEl);
+  });
 }
 
 // ==============================================================================
@@ -318,11 +403,11 @@ function updateRsvpLinks(isTa) {
 
   if (isTa) {
     if (guestName) {
-      msgYes = `வணக்கம்! ${guestName} சார்பாக மகிழ்ச்சியுடன் தெரிவிக்கிறோம்: பிரியா & கார்த்திக் திருமண விழாவிற்கு நாங்கள் தவறாமல் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
-      msgNo = `வணக்கம்! ${guestName} சார்பாக எங்கள் அன்பான வாழ்த்துகள். தவிர்க்க முடியாத காரணத்தால் எங்களால் பிரியா & கார்த்திக் திருமணத்திற்கு வர இயலவில்லை. மணமக்களுக்கு எங்களது உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
+      msgYes = `வணக்கம்! ${guestName} சார்பாக மகிழ்ச்சியுடன் தெரிவிக்கிறோம்: ${EVENT_CONFIG.coupleNamesTa} திருமண விழாவிற்கு நாங்கள் தவறாமல் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
+      msgNo = `வணக்கம்! ${guestName} சார்பாக எங்கள் அன்பான வாழ்த்துகள். தவிர்க்க முடியாத காரணத்தால் எங்களால் ${EVENT_CONFIG.coupleNamesTa} திருமணத்திற்கு வர இயலவில்லை. மணமக்களுக்கு எங்களது உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
     } else {
-      msgYes = `வணக்கம்! பிரியா & கார்த்திக் திருமண விழாவிற்கு நான்/நாங்கள் மகிழ்ச்சியுடன் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
-      msgNo = `வணக்கம்! தவிர்க்க முடியாத காரணத்தால் பிரியா & கார்த்திக் திருமண விழாவிற்கு வர இயலவில்லை. மணமக்களுக்கு எங்கள் உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
+      msgYes = `வணக்கம்! ${EVENT_CONFIG.coupleNamesTa} திருமண விழாவிற்கு நான்/நாங்கள் மகிழ்ச்சியுடன் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
+      msgNo = `வணக்கம்! தவிர்க்க முடியாத காரணத்தால் ${EVENT_CONFIG.coupleNamesTa} திருமண விழாவிற்கு வர இயலவில்லை. மணமக்களுக்கு எங்கள் உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
     }
   } else {
     if (guestName) {
@@ -600,4 +685,26 @@ function setupEventListeners() {
       applyLanguage(nextLang);
     });
   }
+}
+
+// ==============================================================================
+// 9. SCROLL REVEAL
+// ==============================================================================
+function initReveal() {
+  const items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  items.forEach(el => observer.observe(el));
 }
