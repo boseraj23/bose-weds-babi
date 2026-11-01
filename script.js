@@ -573,9 +573,9 @@ function initAudioPlayer() {
   if (!musicBtn) return;
 
   try {
-    audioPlayer = new Audio('assets/music.mp3');
+    audioPlayer = new Audio('assets/Sirikkadhey.mp3');
     audioPlayer.loop = true;
-    audioPlayer.volume = 0.55;
+    audioPlayer.volume = 0.6;
   } catch (e) {
     audioPlayer = null;
   }
