@@ -227,6 +227,7 @@ function parseGuestParameter() {
 function applyLanguage(lang) {
   currentLang = lang;
   const isTa = lang === 'ta';
+  document.documentElement.lang = isTa ? 'ta' : 'en';
 
   // Toggle button label
   const langLabel = document.getElementById('langLabel');

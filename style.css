@@ -32,9 +32,11 @@
   --text-gold: #A3791A;
 
   /* Typography */
-  --font-serif: 'Cinzel', Georgia, serif;
-  --font-script: 'Great Vibes', cursive;
-  --font-sans: 'Outfit', 'Noto Sans Tamil', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Cinzel', 'Noto Serif Tamil', Georgia, serif;
+  --font-script: 'Great Vibes', 'Mukta Malar', cursive;
+  --font-sans: 'Outfit', 'Mukta Malar', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-tamil-serif: 'Noto Serif Tamil', 'Mukta Malar', Georgia, serif;
+  --font-tamil-sans: 'Mukta Malar', 'Noto Serif Tamil', sans-serif;
 
   /* Shadows & Radius */
   --radius-sm: 8px;
@@ -906,6 +908,47 @@ body {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ==========================================================================
+   AUTHENTIC TRADITIONAL TAMIL INVITATION TYPOGRAPHY
+   Uses Noto Serif Tamil & Mukta Malar for royal auspicious Pathirikai look
+   ========================================================================== */
+html[lang="ta"] body {
+  font-family: var(--font-tamil-sans);
+  line-height: 1.7;
+}
+
+html[lang="ta"] .person-name,
+html[lang="ta"] .section-title,
+html[lang="ta"] .event-title,
+html[lang="ta"] .top-mantra,
+html[lang="ta"] .family-blessing,
+html[lang="ta"] .closing-quote,
+html[lang="ta"] .footer-family-names {
+  font-family: var(--font-tamil-serif);
+  letter-spacing: 0.3px;
+}
+
+html[lang="ta"] .celebrations-title {
+  font-family: var(--font-tamil-serif);
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-crimson);
+}
+
+html[lang="ta"] .quote-pill.script-text {
+  font-family: var(--font-tamil-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-crimson);
+}
+
+html[lang="ta"] .closing-heart {
+  font-family: var(--font-tamil-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 @media (prefers-reduced-motion: reduce) {
