@@ -202,6 +202,7 @@ let arePetalsActive = true;
 document.addEventListener('DOMContentLoaded', () => {
   parseGuestParameter();
   applyLanguage(currentLang);
+  initEnvelopeIntro();
   initCountdown();
   initPetalsCanvas();
   initAudioPlayer();
@@ -212,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /**
  * Extracts and sanitizes the '?to=...' parameter from the URL.
- * Example: https://bosewedsbabi.netlify.app/?to=Ramesh%20Family
+ * Example: https://boseraj23.github.io/bose-weds-babi/?to=Ramesh%20Family
  */
 function parseGuestParameter() {
   try {
@@ -240,6 +241,22 @@ function applyLanguage(lang) {
   if (langLabel && langToggleBtn) {
     langLabel.textContent = isTa ? 'English' : 'தமிழ்';
     langToggleBtn.setAttribute('aria-label', isTa ? 'Switch Language to English' : 'Switch Language to Tamil');
+  }
+
+  // Envelope Intro
+  setText('envelopeTitleMain', isTa ? 'திருமண அழைப்பிதழ்' : 'WEDDING INVITATION');
+  setText('envelopeBlessing', isTa ? 'சுப முகூர்த்த அழைப்பிதழ் • மங்கல நாண் பூட்டுதல்' : 'शुभ विवाह • Mangalya Dharanam');
+  const openLabel = document.querySelector('.open-label-text');
+  if (openLabel) {
+    openLabel.textContent = isTa ? 'அழைப்பிதழைத் திறக்க' : 'Tap to Open Invitation';
+  }
+  const envelopeGuestTag = document.getElementById('envelopeGuestTag');
+  if (envelopeGuestTag) {
+    if (guestName) {
+      envelopeGuestTag.textContent = isTa ? `அன்பார்ந்த ${guestName},` : `Dear ${guestName},`;
+    } else {
+      envelopeGuestTag.textContent = isTa ? 'அன்பார்ந்த சுற்றமும் நட்பும்,' : 'Dear Family & Friends,';
+    }
   }
 
   // Hero Section
@@ -376,10 +393,71 @@ function renderCelebrationCards(isTa) {
 }
 
 // ==============================================================================
-// 4. ACCURATE COUNTDOWN TIMER
+// 3.5. ROYAL ENVELOPE OPENING ANIMATION (INTERACTIVE START PAGE)
+// ==============================================================================
+function initEnvelopeIntro() {
+  const overlay = document.getElementById('envelopeOverlay');
+  const btnOpen = document.getElementById('btnOpenInvitation');
+  const btnSkip = document.getElementById('btnSkipIntro');
+  const btnReplay = document.getElementById('introReplayBtn');
+
+  if (!overlay) return;
+
+  function openEnvelope() {
+    if (overlay.classList.contains('is-opening')) return;
+    overlay.classList.add('is-opening');
+
+    // Start celebratory music upon user tap interaction
+    if (!isMusicPlaying) {
+      toggleMusic();
+    }
+
+    // Trigger golden sparkles and rose petal burst from the wax seal
+    if (typeof window.triggerPetalBurst === 'function') {
+      window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight / 2);
+    }
+
+    // Transition smoothly to full invitation card
+    setTimeout(() => {
+      overlay.classList.add('is-hidden');
+      overlay.classList.remove('is-opening');
+    }, 950);
+  }
+
+  function skipIntro() {
+    overlay.classList.add('is-hidden');
+    overlay.classList.remove('is-opening');
+    if (!isMusicPlaying) {
+      toggleMusic();
+    }
+  }
+
+  function replayIntro() {
+    overlay.classList.remove('is-hidden', 'is-opening');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  if (btnOpen) btnOpen.addEventListener('click', openEnvelope);
+  if (btnSkip) btnSkip.addEventListener('click', skipIntro);
+  if (btnReplay) btnReplay.addEventListener('click', replayIntro);
+}
+
+// ==============================================================================
+// 4. ACCURATE COUNTDOWN TIMER WITH TICK-PULSE ANIMATION
 // ==============================================================================
 function initCountdown() {
   const targetTime = new Date(EVENT_CONFIG.countdownTargetISO).getTime();
+
+  function setNumberAnimated(el, num) {
+    if (!el) return;
+    const str = String(num).padStart(2, '0');
+    if (el.textContent !== str) {
+      el.textContent = str;
+      el.classList.remove('tick-pulse');
+      void el.offsetWidth; // Trigger DOM reflow to re-trigger CSS keyframe
+      el.classList.add('tick-pulse');
+    }
+  }
 
   function update() {
     const now = new Date().getTime();
@@ -392,10 +470,10 @@ function initCountdown() {
     const statusEl = document.getElementById('timerStatus');
 
     if (distance <= 0) {
-      if (daysEl) daysEl.textContent = '00';
-      if (hoursEl) hoursEl.textContent = '00';
-      if (minsEl) minsEl.textContent = '00';
-      if (secsEl) secsEl.textContent = '00';
+      setNumberAnimated(daysEl, 0);
+      setNumberAnimated(hoursEl, 0);
+      setNumberAnimated(minsEl, 0);
+      setNumberAnimated(secsEl, 0);
       if (statusEl) {
         statusEl.textContent = currentLang === 'ta'
           ? 'திருமண கொண்டாட்டங்கள் இனிதே துவங்கி நடைபெறுகின்றன! 🎉'
@@ -409,10 +487,10 @@ function initCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
-    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-    if (minsEl) minsEl.textContent = String(minutes).padStart(2, '0');
-    if (secsEl) secsEl.textContent = String(seconds).padStart(2, '0');
+    setNumberAnimated(daysEl, days);
+    setNumberAnimated(hoursEl, hours);
+    setNumberAnimated(minsEl, minutes);
+    setNumberAnimated(secsEl, seconds);
     if (statusEl) statusEl.textContent = '';
   }
 
@@ -434,7 +512,7 @@ function downloadSingleEventICS(ev) {
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
-    `UID:${ev.id}-20261128@bosewedsbabi.netlify.app`,
+    `UID:${ev.id}-20261128@boseraj23.github.io`,
     `DTSTAMP:${dtStamp}`,
     `DTSTART:${icsData.start}`,
     `DTEND:${icsData.end}`,
@@ -458,7 +536,7 @@ function downloadSingleEventICS(ev) {
 }
 
 // ==============================================================================
-// 7. JOYFUL FALLING PETALS CANVAS (Marigold & Rose Petals)
+// 7. JOYFUL FALLING PETALS & GOLDEN SPARKLES CANVAS
 // ==============================================================================
 function initPetalsCanvas() {
   const canvas = document.getElementById('petalsCanvas');
@@ -473,45 +551,93 @@ function initPetalsCanvas() {
     height = canvas.height = window.innerHeight;
   });
 
-  // Palette: Gold marigold petals & soft pink/rose petals
+  // Palette: Gold marigold petals, romantic rose petals & golden twinkle sparkles
   const petalColors = [
-    'rgba(255, 175, 45, 0.85)',  // Warm golden marigold
-    'rgba(255, 120, 30, 0.8)',   // Deep orange marigold
-    'rgba(255, 95, 130, 0.82)',  // Romantic rose pink
-    'rgba(235, 60, 95, 0.78)',   // Festive crimson petal
-    'rgba(255, 215, 110, 0.75)'  // Pale gold sparkle petal
+    'rgba(255, 185, 45, 0.88)',  // Golden marigold
+    'rgba(255, 120, 30, 0.82)',  // Saffron orange marigold
+    'rgba(235, 60, 95, 0.85)',   // Romantic crimson rose petal
+    'rgba(255, 105, 140, 0.8)',  // Soft pink rose petal
+    'rgba(255, 225, 130, 0.9)'   // Shimmering gold star
   ];
 
-  const petalCount = window.innerWidth < 600 ? 24 : 45;
+  const petalCount = window.innerWidth < 600 ? 28 : 50;
   const petals = [];
+  const bursts = [];
 
   for (let i = 0; i < petalCount; i++) {
     petals.push({
       x: Math.random() * width,
       y: Math.random() * height - height,
-      size: Math.random() * 8 + 6,
-      speedX: Math.random() * 1.5 - 0.75,
-      speedY: Math.random() * 1.4 + 0.8,
+      size: Math.random() * 8 + 5,
+      speedX: Math.random() * 1.4 - 0.7,
+      speedY: Math.random() * 1.5 + 0.8,
       rotation: Math.random() * 360,
-      rotSpeed: (Math.random() - 0.5) * 2,
+      rotSpeed: (Math.random() - 0.5) * 2.2,
       color: petalColors[Math.floor(Math.random() * petalColors.length)],
       sway: Math.random() * 2 * Math.PI,
-      swaySpeed: Math.random() * 0.03 + 0.01
+      swaySpeed: Math.random() * 0.03 + 0.012,
+      isSparkle: Math.random() > 0.75
     });
   }
 
+  // Draw 4-point golden star sparkle
+  function drawSparkle(s) {
+    ctx.save();
+    ctx.translate(s.x, s.y);
+    ctx.rotate((s.rotation * Math.PI) / 180);
+    ctx.fillStyle = s.color;
+    ctx.beginPath();
+    const r = s.size * 0.8;
+    ctx.moveTo(0, -r);
+    ctx.quadraticCurveTo(0, 0, r, 0);
+    ctx.quadraticCurveTo(0, 0, 0, r);
+    ctx.quadraticCurveTo(0, 0, -r, 0);
+    ctx.quadraticCurveTo(0, 0, 0, -r);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // Draw smooth organic petal
   function drawPetal(p) {
     ctx.save();
     ctx.translate(p.x, p.y);
     ctx.rotate((p.rotation * Math.PI) / 180);
     ctx.fillStyle = p.color;
-
-    // Petal ellipse shape
     ctx.beginPath();
-    ctx.ellipse(0, 0, p.size * 0.6, p.size, 0, 0, 2 * Math.PI);
+    ctx.ellipse(0, 0, p.size * 0.55, p.size, 0, 0, 2 * Math.PI);
     ctx.fill();
     ctx.restore();
   }
+
+  // Celebratory Burst Generator
+  window.triggerPetalBurst = function(cx, cy) {
+    const burstCount = 40;
+    for (let i = 0; i < burstCount; i++) {
+      const angle = (Math.PI * 2 * i) / burstCount + (Math.random() - 0.5);
+      const velocity = Math.random() * 7 + 4;
+      bursts.push({
+        x: cx,
+        y: cy,
+        vx: Math.cos(angle) * velocity,
+        vy: Math.sin(angle) * velocity - 2,
+        size: Math.random() * 9 + 5,
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 5,
+        color: petalColors[Math.floor(Math.random() * petalColors.length)],
+        life: 1.0,
+        decay: Math.random() * 0.015 + 0.01,
+        isSparkle: Math.random() > 0.5
+      });
+    }
+  };
+
+  // Subtle wind response on mouse / touch interaction
+  window.addEventListener('pointermove', (e) => {
+    const wind = (e.movementX || 0) * 0.05;
+    petals.forEach(p => {
+      p.x += wind;
+    });
+  }, { passive: true });
 
   let animationFrameId;
 
@@ -523,10 +649,11 @@ function initPetalsCanvas() {
 
     ctx.clearRect(0, 0, width, height);
 
+    // 1. Regular falling petals and sparkles
     for (let i = 0; i < petals.length; i++) {
       const p = petals[i];
       p.sway += p.swaySpeed;
-      p.x += Math.sin(p.sway) * 0.9 + p.speedX;
+      p.x += Math.sin(p.sway) * 1.1 + p.speedX;
       p.y += p.speedY;
       p.rotation += p.rotSpeed;
 
@@ -537,7 +664,36 @@ function initPetalsCanvas() {
       if (p.x > width + 20) p.x = -20;
       if (p.x < -20) p.x = width + 20;
 
-      drawPetal(p);
+      if (p.isSparkle) {
+        drawSparkle(p);
+      } else {
+        drawPetal(p);
+      }
+    }
+
+    // 2. Active burst particles
+    for (let j = bursts.length - 1; j >= 0; j--) {
+      const b = bursts[j];
+      b.x += b.vx;
+      b.y += b.vy;
+      b.vy += 0.15; // Gravity
+      b.vx *= 0.98; // Friction
+      b.rotation += b.rotSpeed;
+      b.life -= b.decay;
+
+      if (b.life <= 0) {
+        bursts.splice(j, 1);
+        continue;
+      }
+
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, b.life);
+      if (b.isSparkle) {
+        drawSparkle(b);
+      } else {
+        drawPetal(b);
+      }
+      ctx.restore();
     }
 
     animationFrameId = requestAnimationFrame(animate);

@@ -9,13 +9,13 @@
   <meta name="description" content="With the blessings of our families, we invite you to celebrate the wedding celebrations of Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai on 28th &amp; 29th November 2026 in Chennai.">
   <meta name="theme-color" content="#8C182B">
 
-  <!-- Open Graph / WhatsApp Preview Meta Tags -->
+  <!-- Open Graph / WhatsApp Preview Meta Tags (GitHub Pages) -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bosewedsbabi.netlify.app/">
+  <meta property="og:url" content="https://boseraj23.github.io/bose-weds-babi/">
   <meta property="og:title" content="Wedding Celebrations | Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai">
-  <meta property="og:description" content="Saturday 28th &amp; Sunday 29th Nov 2026 • Thangam Maaligai, Chennai. Click to view invitation, programme &amp; venue details!">
-  <meta property="og:image" content="https://bosewedsbabi.netlify.app/assets/og-image.jpg">
-  <meta property="og:image:secure_url" content="https://bosewedsbabi.netlify.app/assets/og-image.jpg">
+  <meta property="og:description" content="Saturday 28th &amp; Sunday 29th Nov 2026 • Thangam Maaligai, Chennai. Click to open invitation, programme &amp; venue details!">
+  <meta property="og:image" content="https://boseraj23.github.io/bose-weds-babi/assets/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://boseraj23.github.io/bose-weds-babi/assets/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -24,8 +24,8 @@
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Wedding Celebrations | Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai">
-  <meta name="twitter:description" content="Saturday 28th &amp; Sunday 29th Nov 2026 • Thangam Maaligai, Chennai. Click to view invitation, programme &amp; venue details!">
-  <meta name="twitter:image" content="https://bosewedsbabi.netlify.app/assets/og-image.jpg">
+  <meta name="twitter:description" content="Saturday 28th &amp; Sunday 29th Nov 2026 • Thangam Maaligai, Chennai. Click to open invitation, programme &amp; venue details!">
+  <meta name="twitter:image" content="https://boseraj23.github.io/bose-weds-babi/assets/og-image.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -39,12 +39,102 @@
 </head>
 <body>
 
+  <!-- =========================================================================
+       0. ROYAL WEDDING INVITATION OPENING ENVELOPE (INTERACTIVE START PAGE)
+       ========================================================================= -->
+  <aside id="envelopeOverlay" class="envelope-overlay" role="dialog" aria-modal="true" aria-label="Wedding Invitation Envelope">
+    <div class="envelope-backdrop" aria-hidden="true"></div>
+
+    <div class="envelope-stage">
+      <!-- Auspicious Floating Petals in Intro -->
+      <div class="envelope-petals-intro" aria-hidden="true">
+        <span class="intro-petal p1">🌸</span>
+        <span class="intro-petal p2">✨</span>
+        <span class="intro-petal p3">🌼</span>
+        <span class="intro-petal p4">💛</span>
+        <span class="intro-petal p5">🌸</span>
+        <span class="intro-petal p6">✨</span>
+      </div>
+
+      <!-- The 3D Royal Wedding Envelope -->
+      <div class="royal-envelope" id="royalEnvelope">
+        <!-- Top Triangular Flap that rotates open in 3D -->
+        <div class="envelope-flap" id="envelopeFlap" aria-hidden="true">
+          <div class="flap-corner-trim"></div>
+          <div class="flap-gold-edge"></div>
+        </div>
+
+        <!-- Envelope Body / Pocket -->
+        <div class="envelope-pocket">
+          <!-- Auspicious Mandapam & Gopuram Motif -->
+          <div class="envelope-gopuram-motif" aria-hidden="true">
+            <svg viewBox="0 0 100 70" class="mini-gopuram-svg" fill="currentColor">
+              <path d="M50 4 L54 16 L66 16 L56 24 L60 36 L50 28 L40 36 L44 24 L34 16 L46 16 Z"/>
+              <path d="M22 42 L78 42 L72 68 L28 68 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="50" cy="55" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+
+          <p class="envelope-blessing-calligraphy" id="envelopeBlessing">शुभ विवाह &bull; மங்கல நாண் பூட்டுதல்</p>
+          <p class="envelope-title-main" id="envelopeTitleMain">WEDDING INVITATION</p>
+          <div class="envelope-gold-divider" aria-hidden="true"></div>
+
+          <div class="envelope-names">
+            <span class="env-groom">Ar. N. Bose Raj</span>
+            <span class="env-amp">&amp;</span>
+            <span class="env-bride">Dr. H. Sree Babitha Sai</span>
+          </div>
+
+          <p class="envelope-date-line">28 &amp; 29 November 2026 &bull; Chennai</p>
+
+          <!-- Personalized Greeting Tag -->
+          <p class="envelope-guest-tag" id="envelopeGuestTag">Dear Family &amp; Friends,</p>
+
+          <!-- Interactive Golden Wax Seal Button -->
+          <button id="btnOpenInvitation" class="wax-seal-btn" aria-label="Open wedding invitation and play background song">
+            <div class="wax-seal" id="waxSeal">
+              <div class="wax-seal-inner">
+                <span class="seal-monogram">B ♥ B</span>
+                <span class="seal-glow" aria-hidden="true"></span>
+              </div>
+            </div>
+            <span class="open-invite-text" id="openInviteText">
+              <span class="hand-tap-icon" aria-hidden="true">👉</span> 
+              <span class="open-label-text">Tap to Open Invitation</span>
+            </span>
+            <span class="music-hint-badge" aria-hidden="true">🎵 Celebratory music will play</span>
+          </button>
+        </div>
+
+        <!-- The Royal Letter/Card that slides up out of the pocket -->
+        <div class="envelope-card-slide" id="envelopeCardSlide" aria-hidden="true">
+          <div class="card-slide-inner">
+            <p class="card-slide-mantra">A New Beginning, A Lifetime Together ♥</p>
+            <p class="card-slide-couple">Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai</p>
+            <p class="card-slide-welcome">Welcome to our wedding celebrations!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Skip Button for accessibility -->
+      <button id="btnSkipIntro" class="btn-skip-intro" aria-label="Skip invitation opening animation and view details">
+        Skip intro &rarr;
+      </button>
+    </div>
+  </aside>
+
   <!-- Floating Falling Petals Canvas (Joyful Wedding Ambience) -->
   <canvas id="petalsCanvas" class="petals-canvas" aria-hidden="true"></canvas>
 
   <!-- Floating Header Controls -->
   <header class="top-controls" role="banner" aria-label="Page controls">
     <div class="controls-container">
+      <!-- Replay Envelope Intro -->
+      <button id="introReplayBtn" class="control-btn" aria-label="Replay Invitation Opening Animation" title="Replay Envelope Opening">
+        <span class="control-icon" aria-hidden="true">✉️</span>
+        <span class="control-text">Intro</span>
+      </button>
+
       <!-- Language Switcher Toggle -->
       <button id="langToggleBtn" class="control-btn" aria-label="Switch Language to Tamil" title="Switch language">
         <span class="control-icon" aria-hidden="true">🌐</span>
@@ -94,11 +184,29 @@
         <span class="quote-pill italic-text" id="taglineRight">With great joy, we invite you to share our happiness and make our wedding truly special with your gracious presence.</span>
       </div>
 
-      <!-- COUPLE PORTRAIT IN ROYAL GOLD ARCH -->
+      <!-- COUPLE PORTRAIT IN ROYAL GOLD ARCH WITH ROTATING CELESTIAL AURA -->
       <div class="couple-portrait-wrapper">
+        <!-- Celestial Rotating Aura / Golden Sacred Mandala behind Arch -->
+        <div class="portrait-celestial-aura" aria-hidden="true">
+          <svg viewBox="0 0 400 400" class="rotating-mandala-svg">
+            <g fill="none" stroke="rgba(194, 150, 48, 0.4)" stroke-width="1.5">
+              <circle cx="200" cy="200" r="190" stroke-dasharray="6,8" />
+              <circle cx="200" cy="200" r="170" stroke-width="1.2" />
+              <circle cx="200" cy="200" r="145" stroke-dasharray="4,6" />
+              <circle cx="200" cy="200" r="120" stroke="rgba(226, 40, 71, 0.3)" stroke-width="1" />
+              <!-- Mandala Petal Ornaments -->
+              <path d="M200 12 C 215 65, 245 95, 298 110 C 245 125, 215 155, 200 208 C 185 155, 155 125, 102 110 C 155 95, 185 65, 200 12 Z" />
+              <path d="M200 12 C 215 65, 245 95, 298 110 C 245 125, 215 155, 200 208 C 185 155, 155 125, 102 110 C 155 95, 185 65, 200 12 Z" transform="rotate(45 200 200)" />
+              <path d="M200 12 C 215 65, 245 95, 298 110 C 245 125, 215 155, 200 208 C 185 155, 155 125, 102 110 C 155 95, 185 65, 200 12 Z" transform="rotate(90 200 200)" />
+              <path d="M200 12 C 215 65, 245 95, 298 110 C 245 125, 215 155, 200 208 C 185 155, 155 125, 102 110 C 155 95, 185 65, 200 12 Z" transform="rotate(135 200 200)" />
+            </g>
+          </svg>
+        </div>
+
         <div class="portrait-arch">
-          <img src="assets/couple-portrait.jpg" alt="Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai" class="couple-img" width="775" height="1120" loading="eager">
+          <img src="assets/couple-portrait.jpg" alt="Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai" class="couple-img" width="775" height="1144" loading="eager">
           <div class="arch-gold-trim" aria-hidden="true"></div>
+          <div class="arch-shimmer-sweep" aria-hidden="true"></div>
         </div>
         <p class="tap-card-hint">
           <button id="btnOpenCardModal" class="btn-text-link" aria-label="Tap to view full invitation card">
@@ -136,18 +244,102 @@
         📅 <span id="heroDates">28th &amp; 29th November 2026</span> &bull; 📍 <span id="heroCity">Chennai</span>
       </p>
 
-      <!-- Architect & Doctor Skyline & Heartbeat Line -->
-      <figure class="lifeline" aria-hidden="true">
-        <svg viewBox="0 0 600 110" preserveAspectRatio="xMidYMid meet" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path class="draw draw-skyline" pathLength="1" d="M10 85H34V55H58V85H70V35L84 20L98 35V85H110V50H128V30H146V85H158V62H176V42L190 42V85H204V52H226V85H262"/>
-          <path class="draw draw-heart" pathLength="1" d="M300 95C278 79 266 67 266 53C266 43 274 36 283 36C291 36 297 41 300 47C303 41 309 36 317 36C326 36 334 43 334 53C334 67 322 79 300 95Z"/>
-          <path class="draw draw-ecg" pathLength="1" d="M338 85H372L380 73L388 85H404L414 25L426 105L436 85H456L464 67L474 85H590"/>
-        </svg>
+      <!-- Architect & Doctor Skyline & Heartbeat Line (Dynamic Glowing Animation) -->
+      <div class="lifeline-showcase" aria-hidden="true">
+        <div class="lifeline-header-row">
+          <span class="role-badge architect-badge">🏛️ The Architect &bull; Ar. Bose</span>
+          <span class="heart-pulse-indicator">
+            <span class="pulse-dot"></span>
+            <span class="pulse-text">Two Hearts &bull; One Rhythm</span>
+          </span>
+          <span class="role-badge doctor-badge">🩺 The Doctor &bull; Dr. Babi</span>
+        </div>
+
+        <figure class="lifeline">
+          <svg viewBox="0 0 620 120" preserveAspectRatio="xMidYMid meet" fill="none">
+            <!-- Glow filter for laser/neon heartbeat effect -->
+            <defs>
+              <filter id="glowGold" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="glowCrimson" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <linearGradient id="skylineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#132E52" />
+                <stop offset="70%" stop-color="#C29630" />
+                <stop offset="100%" stop-color="#8C182B" />
+              </linearGradient>
+              <linearGradient id="ecgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8C182B" />
+                <stop offset="50%" stop-color="#E22847" />
+                <stop offset="100%" stop-color="#C29630" />
+              </linearGradient>
+            </defs>
+
+            <!-- Base Drafting Grid Lines in Background -->
+            <g class="drafting-grid" opacity="0.2">
+              <line x1="10" y1="95" x2="610" y2="95" stroke="#C29630" stroke-width="1" stroke-dasharray="4,4" />
+              <line x1="10" y1="65" x2="610" y2="65" stroke="#C29630" stroke-width="0.8" stroke-dasharray="2,4" />
+              <line x1="10" y1="35" x2="610" y2="35" stroke="#C29630" stroke-width="0.8" stroke-dasharray="2,4" />
+            </g>
+
+            <!-- 1. Architectural Building & Skyline Path -->
+            <path class="draw-skyline-animated" d="M10 95 H36 V60 H60 V95 H72 V40 L86 24 L100 40 V95 H114 V55 H132 V32 H150 V95 H164 V68 H182 V45 L196 45 V95 H210 V58 H232 V95 H268" />
+
+            <!-- Traveling Laser Energy Pulse from Building to Heart -->
+            <circle class="energy-bead-skyline" r="4.5" fill="#C29630">
+              <animateMotion path="M10 95 H36 V60 H60 V95 H72 V40 L86 24 L100 40 V95 H114 V55 H132 V32 H150 V95 H164 V68 H182 V45 L196 45 V95 H210 V58 H232 V95 H268" dur="4s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Connector from Skyline into Heart -->
+            <path class="skyline-to-heart" d="M268 95 C 285 95, 290 85, 305 75" stroke="#C29630" stroke-width="2.5" stroke-linecap="round" />
+
+            <!-- 2. The Beating Romantic 3D Heart Centerpiece -->
+            <g transform="translate(310, 60)">
+              <g class="beating-heart-pulse">
+                <!-- Outer Glowing Heart Ripple Waves -->
+                <path class="heart-ripple-wave wave1" d="M0 24 C -22 6, -34 -6, -34 -22 C -34 -32, -26 -40, -14 -40 C -5 -40, 0 -33, 0 -33 C 0 -33, 5 -40, 14 -40 C 26 -40, 34 -32, 34 -22 C 34 -6, 22 6, 0 24 Z" fill="none" stroke="rgba(226, 40, 71, 0.5)" stroke-width="2" />
+                <path class="heart-ripple-wave wave2" d="M0 30 C -28 8, -42 -8, -42 -28 C -42 -42, -32 -52, -17 -52 C -6 -52, 0 -43, 0 -43 C 0 -43, 6 -52, 17 -52 C 32 -52, 42 -42, 42 -28 C 42 -8, 28 8, 0 30 Z" fill="none" stroke="rgba(194, 150, 48, 0.35)" stroke-width="1.5" />
+
+                <!-- Main Solid Beating Heart with Gradient Fill -->
+                <path class="main-beating-heart" d="M0 20 C -18 4, -28 -5, -28 -18 C -28 -27, -21 -34, -11 -34 C -4 -34, 0 -28, 0 -28 C 0 -28, 4 -34, 11 -34 C 21 -34, 28 -27, 28 -18 C 28 -5, 18 4, 0 20 Z" fill="url(#ecgGrad)" stroke="#C29630" stroke-width="2" filter="url(#glowCrimson)" />
+
+                <!-- Auspicious Intertwined Initial inside Heart -->
+                <text x="0" y="-10" text-anchor="middle" font-family="'Cinzel', serif" font-size="11" font-weight="700" fill="#FFFDF5" letter-spacing="0.5">B♥B</text>
+              </g>
+            </g>
+
+            <!-- Connector from Heart into ECG -->
+            <path class="heart-to-ecg" d="M315 75 C 330 85, 335 95, 350 95" stroke="#E22847" stroke-width="2.5" stroke-linecap="round" />
+
+            <!-- 3. Dynamic ECG Heartbeat Line Trace -->
+            <path class="draw-ecg-animated" d="M350 95 H380 L388 80 L396 95 H410 L420 20 L434 112 L444 95 H466 L474 74 L484 95 H610" />
+
+            <!-- Traveling Energy Bead along ECG -->
+            <circle class="energy-bead-ecg" r="4.5" fill="#E22847">
+              <animateMotion path="M350 95 H380 L388 80 L396 95 H410 L420 20 L434 112 L444 95 H466 L474 74 L484 95 H610" dur="2.4s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Decorative End Circles -->
+            <circle cx="10" cy="95" r="4" fill="#132E52" stroke="#C29630" stroke-width="1.5" />
+            <circle cx="610" cy="95" r="4" fill="#1E6B38" stroke="#C29630" stroke-width="1.5" />
+          </svg>
+        </figure>
+
         <figcaption class="lifeline-caption">
-          <span>Designs Spaces 🏛️</span>
-          <span>Heals Hearts 🩺</span>
+          <span>🏛️ He designs spaces</span>
+          <span>🩺 She heals hearts</span>
         </figcaption>
-      </figure>
+      </div>
 
       <p class="tagline-story" id="architectDoctorTagline">
         He designs spaces. She heals hearts. Together, they are building a forever home — one heartbeat at a time.
@@ -157,25 +349,34 @@
       <div class="floral-corner bottom-right" aria-hidden="true"></div>
     </section>
 
-    <!-- 2. COUNTDOWN TIMER SECTION -->
+    <!-- 2. COUNTDOWN TIMER SECTION (LIVE PULSING ANIMATION) -->
     <section class="card countdown-card reveal" aria-labelledby="countdownHeading">
+      <div class="live-pulse-badge">
+        <span class="live-pulse-dot" aria-hidden="true"></span>
+        <span class="live-pulse-text">AUSPICIOUS MUHURTHAM COUNTDOWN</span>
+      </div>
+
       <h2 class="section-title" id="countdownHeading">Counting Down to the Celebrations</h2>
       <p class="countdown-target-note" id="countdownNote">Reception: Saturday, 28 Nov 2026 &bull; 7:00 PM</p>
 
       <div class="timer-grid" role="timer" aria-live="polite" id="countdownTimer">
-        <div class="timer-box">
+        <div class="timer-box" id="boxDays">
+          <div class="timer-box-glow" aria-hidden="true"></div>
           <span class="timer-number" id="timerDays">00</span>
           <span class="timer-label" id="labelDays">Days</span>
         </div>
-        <div class="timer-box">
+        <div class="timer-box" id="boxHours">
+          <div class="timer-box-glow" aria-hidden="true"></div>
           <span class="timer-number" id="timerHours">00</span>
           <span class="timer-label" id="labelHours">Hours</span>
         </div>
-        <div class="timer-box">
+        <div class="timer-box" id="boxMinutes">
+          <div class="timer-box-glow" aria-hidden="true"></div>
           <span class="timer-number" id="timerMinutes">00</span>
           <span class="timer-label" id="labelMinutes">Mins</span>
         </div>
-        <div class="timer-box">
+        <div class="timer-box" id="boxSeconds">
+          <div class="timer-box-glow" aria-hidden="true"></div>
           <span class="timer-number" id="timerSeconds">00</span>
           <span class="timer-label" id="labelSeconds">Secs</span>
         </div>
