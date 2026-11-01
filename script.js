@@ -243,18 +243,15 @@ function applyLanguage(lang) {
     langToggleBtn.setAttribute('aria-label', isTa ? 'Switch Language to English' : 'Switch Language to Tamil');
   }
 
-  // Cinematic Architect & Doctor Story Intro
-  setText('introBlessing', isTa ? 'சுப முகூர்த்த திருமண அழைப்பிதழ்' : 'Subha Muhurtham • Auspicious Invitation');
-  setText('introTitleMain', isTa ? 'திருமண அழைப்பிதழ்' : 'WEDDING INVITATION');
-  setText('introCtaText', isTa ? 'எங்கள் கதையைக் காண தொடுக' : 'Tap to Unveil Our Story & Invitation');
-  setText('introMusicSub', isTa ? '🎵 திருமண மங்கள இசை • சிரிக்காதே ஒலிக்கும்' : '🎵 Celebratory music • Sirikkadhey will play');
-  setText('storyArchitectTitle', isTa ? 'கட்டடக் கலைஞர் • Ar. போஸ்' : 'The Architect • Ar. Bose');
-  setText('storyArchitectMotto', isTa ? 'நிலையான இல்லத்தின் வரைபடம்' : 'Designing our forever home');
-  setText('storyDoctorTitle', isTa ? 'மருத்துவர் • Dr. பபி' : 'The Doctor • Dr. Babi');
-  setText('storyDoctorMotto', isTa ? 'இதயங்களைக் குணமாக்கும் அன்பு' : 'Healing hearts, beating as one');
-  setText('storyConvergenceTagline', isTa ? 'கட்டடக் கலையும் மருத்துவமும் இணையும் • இரு இதயங்கள், ஒரே துடிப்பு ♥' : 'Where Architecture Meets Medicine • Two Hearts, One Rhythm ♥');
-  setText('storyUnveilingText', isTa ? 'திருமண விழா அழைப்பிதழ் திறக்கிறது...' : 'Opening Wedding Celebrations...');
-  setText('skipIntroLabel', isTa ? 'நேரடியாகப் பார்க்க ➔' : 'Skip to Invitation ➔');
+  // Traditional South Indian Pathirikai Gatefold Card Localization
+  // EXACTLY ONE SINGLE TITLE - ZERO REPETITION!
+  setText('pathirikaiTitle', isTa ? 'சுப முகூர்த்த அழைப்பிதழ்' : 'WEDDING INVITATION');
+  setText('pathirikaiGroom', isTa ? 'Ar. N. போஸ் ராஜ்' : 'Ar. N. Bose Raj');
+  setText('pathirikaiBride', isTa ? 'Dr. H. ஸ்ரீ பபிதா சாய்' : 'Dr. H. Sree Babitha Sai');
+  setText('pathirikaiDate', isTa ? '28 & 29 நவம்பர் 2026 • சென்னை' : '28 & 29 November 2026 • Chennai');
+  setText('pathirikaiTapLabel', isTa ? 'அழைப்பிதழைத் திறக்க' : 'Tap to Open Invitation');
+  setText('pathirikaiMusicNote', isTa ? '🎵 திருமண மங்கள இசை • சிரிக்காதே ஒலிக்கும்' : '🎵 Celebratory music • Sirikkadhey will play');
+  setText('pathirikaiSkipLabel', isTa ? 'நேரடியாகப் பார்க்க ➔' : 'Skip to details ➔');
 
   // Hero Section
   setText('topMantra', isTa ? EVENT_CONFIG.topMantraTa : EVENT_CONFIG.topMantraEn);
@@ -404,7 +401,7 @@ function renderCelebrationCards(isTa) {
 }
 
 // ==============================================================================
-// 3.5. CINEMATIC ARCHITECT & DOCTOR STORY INTRO & CEREMONY
+// 3.5. TRADITIONAL PATHIRIKAI GATEFOLD CARD (REAL 3D DOOR OPENING)
 // ==============================================================================
 function initEnvelopeIntro() {
   const overlay = document.getElementById('envelopeOverlay');
@@ -414,49 +411,47 @@ function initEnvelopeIntro() {
 
   if (!overlay) return;
 
-  let storyTimer = null;
+  let openTimer = null;
 
-  function playStoryAnimation() {
-    if (overlay.classList.contains('is-animating-story')) return;
-    overlay.classList.add('is-animating-story');
+  function openPathirikai() {
+    if (overlay.classList.contains('is-opening')) return;
+    
+    // 1. Swing open the hinged 3D doors
+    overlay.classList.add('is-opening');
 
-    // 1. Trigger celebratory music immediately on user gesture
+    // 2. Start celebratory music immediately on user click gesture
     if (!isMusicPlaying) {
       toggleMusic();
     }
 
-    // 2. Convergence moment at ~2.4s: Trigger golden sparkles & rose petal burst
+    // 3. Flower petal burst at door opening
     setTimeout(() => {
       if (typeof window.triggerPetalBurst === 'function') {
         window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight * 0.45);
       }
-    }, 2400);
+    }, 280);
 
-    // 3. Complete cinematic story sequence at ~3.8s and unveil invitation website
-    storyTimer = setTimeout(() => {
+    // 4. Smoothly reveal the full invitation website
+    openTimer = setTimeout(() => {
       overlay.classList.add('is-hidden');
-      setTimeout(() => {
-        overlay.classList.remove('is-animating-story');
-      }, 900);
-    }, 3800);
+    }, 1150);
   }
 
   function skipIntro() {
-    if (storyTimer) clearTimeout(storyTimer);
-    overlay.classList.add('is-hidden');
-    overlay.classList.remove('is-animating-story');
+    if (openTimer) clearTimeout(openTimer);
+    overlay.classList.add('is-opening', 'is-hidden');
     if (!isMusicPlaying) {
       toggleMusic();
     }
   }
 
   function replayIntro() {
-    if (storyTimer) clearTimeout(storyTimer);
-    overlay.classList.remove('is-hidden', 'is-animating-story');
+    if (openTimer) clearTimeout(openTimer);
+    overlay.classList.remove('is-opening', 'is-hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  if (btnOpen) btnOpen.addEventListener('click', playStoryAnimation);
+  if (btnOpen) btnOpen.addEventListener('click', openPathirikai);
   if (btnSkip) btnSkip.addEventListener('click', skipIntro);
   if (btnReplay) btnReplay.addEventListener('click', replayIntro);
 }
