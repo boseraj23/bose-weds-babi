@@ -49,8 +49,8 @@ const EVENT_CONFIG = {
   heroCityEn: "Chennai",
   heroCityTa: "சென்னை",
 
-  architectDoctorTaglineEn: "He designs spaces. She heals hearts. Together, they are building a forever home — one heartbeat at a time.",
-  architectDoctorTaglineTa: "அவர் இடங்களை வடிவமைக்கிறார்; அவர் இதயங்களைக் குணமாக்குகிறார். இருவரும் இணைந்து, ஒவ்வொரு இதயத் துடிப்பிலும் ஒரு நிலையான இல்லம் கட்டுகிறார்கள்.",
+  architectDoctorTaglineEn: "Together, they are building a forever home — one heartbeat at a time.",
+  architectDoctorTaglineTa: "இருவரும் இணைந்து, ஒவ்வொரு இதயத் துடிப்பிலும் ஒரு நிலையான இல்லம் கட்டுகிறார்கள்.",
 
   // ---------------------------------------------------------------------------
   // 2. COUNTDOWN TARGET (Wedding Muhurtham: Sunday, 29 Nov 2026, 8:00 AM IST)
