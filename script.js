@@ -133,7 +133,7 @@ const EVENT_CONFIG = {
     {
       id: "feast",
       titleEn: "FEAST ON US",
-      titleTa: "கல்யாண விருந்து",
+      titleTa: "கல்யாண கறி விருந்து",
       iconSvg: `
         <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <ellipse cx="32" cy="38" rx="26" ry="14" />
@@ -151,15 +151,15 @@ const EVENT_CONFIG = {
       venueNameTa: "விருதுநகர் நாடார் மாளிகை",
       venueDetailsEn: "27, Somu Chetty 5th St, Royapuram, Chennai - 600013",
       venueDetailsTa: "27, சோமு செட்டி 5வது தெரு, ராயபுரம், சென்னை - 600013",
-      transitEn: "Traditional South Indian feast served with love",
-      transitTa: "அறுசுவை நிறைந்த பாரம்பரிய தலைவாழை இலைத் திருமண விருந்து உபசரிப்பு",
+      transitEn: "Traditional South Indian Kari virunthu served with love",
+      transitTa: "அன்புடன் பரிமாறப்படும் பாரம்பரிய தென்னிந்திய கறி விருந்து",
       mapsUrl: "https://www.google.com/maps/search/?api=1&query=Virudhunagar+Nadar+Maaligai+Royapuram+Chennai",
       icsEvent: {
-        summary: "Wedding Feast: Ar. N. Bose Raj & Dr. H. Sree Babitha Sai",
+        summary: "Kari Virunthu: Ar. N. Bose Raj & Dr. H. Sree Babitha Sai",
         start: "20261129T070000Z",
         end: "20261129T093000Z",
         location: "Virudhunagar Nadar Maaligai, 27, Somu Chetty 5th St, Royapuram, Chennai - 600013",
-        description: "Wedding Feast (Virundhu) of Ar. N. Bose Raj & Dr. H. Sree Babitha Sai."
+        description: "Traditional South Indian Kari virunthu served with love for Ar. N. Bose Raj & Dr. H. Sree Babitha Sai."
       }
     }
   ],
