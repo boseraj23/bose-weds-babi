@@ -287,19 +287,17 @@ function applyLanguage(lang) {
   setText('specValDates', isTa ? '28 & 29 நவம்பர் 2026' : '28 & 29 November 2026');
 
   // RSVP Section
-  setText('rsvpHeading', isTa ? 'வருகையை உறுதிசெய்க (RSVP)' : 'RSVP');
-  setText('rxSubtitle', isTa ? 'Dr. பபிதா பரிந்துரை • Ar. போஸ் வடிவமைப்பு' : 'Prescribed by Dr. Babitha • Designed by Ar. Bose');
-  setText('rxDose', isTa ? 'தங்கள் நல்வருகை — ஒரு மகிழ்ச்சியான மாமருந்து' : 'Your presence — one joyful dose');
-  setText('rxDates', isTa ? '28 & 29 நவம்பர் 2026 அன்று குடும்பத்துடன் வருக' : 'To be taken on 28th & 29th Nov 2026, with family');
-  setText('rxSideEffects', isTa ? 'பக்க விளைவுகள்: எல்லையற்ற புன்னகை, நிறைவான வயிறு மற்றும் ஆனந்த மனம்!' : 'Side effects: endless smiles, full bellies & happy hearts!');
+  // Confirm Presence Section
+  setText('rsvpHeading', isTa ? 'எங்களுடன் இணைந்து சிறப்பிக்க வருகிறீர்களா?' : 'Will You Be Joining Us?');
+  setText('rsvpSubtitle', isTa ? 'தங்களை அன்புடன் வரவேற்க காத்திருக்கிறோம்!' : 'We look forward to welcoming you and celebrating together!');
   setText('rsvpPrompt', isTa
-    ? 'தங்கள் வருகையை வாட்ஸ்அப் மூலம் உறுதிசெய்து எங்களை மகிழ்விக்க வேண்டுகிறோம்:'
-    : 'Please confirm your gracious presence via WhatsApp to help us welcome you with warmth:');
-  setText('labelRsvpYes', isTa ? 'மகிழ்ச்சியுடன் வருகிறோம்! 💐' : "Yes, We'll Be There! 💐");
-  setText('labelRsvpNo', isTa ? 'வர இயலவில்லை, நல்வாழ்த்துகள் 💌' : "Sorry, Can't Make It 💌");
+    ? 'தங்களின் வருகையும் ஆசியுமே எங்கள் இல்ல திருமண விழாவின் பெருமகிழ்ச்சி. தங்கள் வருகையை வாட்ஸ்அப் மூலம் உறுதிசெய்ய வேண்டுகிறோம்:'
+    : 'Your presence and blessings are our greatest joy. Please let us know if you can join the celebrations via WhatsApp:');
+  setText('labelRsvpYes', isTa ? "மகிழ்ச்சியுடன் வருகிறோம்! 💐" : "Yes, We'll Be There! 💐");
+  setText('labelRsvpNo', isTa ? "நல்வாழ்த்துகளுடன் ஆசிகள் 💌" : "Sending Our Blessings 💌");
   setText('rsvpFooterNote', isTa
-    ? 'பட்டனை அழுத்தினால் வாட்ஸ்அப்பில் தானாக தட்டச்சு செய்யப்பட்ட செய்தி திறக்கும்.'
-    : 'Clicking either button opens WhatsApp with a pre-filled confirmation message.');
+    ? 'பட்டனைத் தட்டினால் வாட்ஸ்அப்பில் தானாக தட்டச்சு செய்யப்பட்ட செய்தி திறக்கும்.'
+    : 'Tap a button to send a quick WhatsApp message to the couple & family.');
 
   updateRsvpLinks(isTa);
 

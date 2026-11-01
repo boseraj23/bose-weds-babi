@@ -752,68 +752,42 @@ body {
 }
 
 /* ==========================================================================
-   5. RSVP SECTION (Prescription Pad Theme)
+   5. CONFIRM ATTENDANCE SECTION (Joyful WhatsApp Confirmation)
    ========================================================================== */
 .rsvp-card {
-  border-color: var(--color-crimson);
+  border-color: var(--color-gold);
   background-image: 
-    linear-gradient(180deg, rgba(140, 24, 43, 0.03) 0%, transparent 60%);
+    radial-gradient(circle at 50% 0%, rgba(244, 219, 135, 0.18) 0%, transparent 60%);
+  padding: 36px 22px;
 }
 
-.rx-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.rx-symbol {
-  font-family: var(--font-serif);
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: var(--color-crimson);
+.rsvp-emblem {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
   line-height: 1;
 }
 
-.rx-title {
-  margin: 0;
-  text-align: left;
+.rsvp-main-title {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--color-crimson);
+  margin-bottom: 6px;
 }
 
-.rx-subtitle {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-style: italic;
-  text-align: left;
-}
-
-.rx-prescription-note {
-  background: var(--bg-card-alt);
-  border: 1.5px dashed var(--color-gold);
-  border-radius: var(--radius-md);
-  padding: 16px 14px;
-  margin: 14px 0 18px;
-}
-
-.rx-line {
+.rsvp-sub-title {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-dark);
-  margin: 4px 0;
-}
-
-.rx-line.rx-side {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: var(--color-crimson);
-  margin-top: 8px;
+  color: var(--color-navy);
+  margin-bottom: 14px;
 }
 
 .rsvp-prompt {
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   color: var(--text-secondary);
-  margin-bottom: 18px;
+  line-height: 1.55;
+  margin-bottom: 20px;
+  padding: 0 10px;
 }
 
 .rsvp-buttons {
