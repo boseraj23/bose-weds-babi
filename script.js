@@ -286,21 +286,6 @@ function applyLanguage(lang) {
   setText('specValVitals', isTa ? 'இரு இதயங்கள், ஒரே துடிப்பு' : 'Two hearts, one rhythm');
   setText('specValDates', isTa ? '28 & 29 நவம்பர் 2026' : '28 & 29 November 2026');
 
-  // RSVP Section
-  // Confirm Presence Section
-  setText('rsvpHeading', isTa ? 'எங்களுடன் இணைந்து சிறப்பிக்க வருகிறீர்களா?' : 'Will You Be Joining Us?');
-  setText('rsvpSubtitle', isTa ? 'தங்களை அன்புடன் வரவேற்க காத்திருக்கிறோம்!' : 'We look forward to welcoming you and celebrating together!');
-  setText('rsvpPrompt', isTa
-    ? 'தங்களின் வருகையும் ஆசியுமே எங்கள் இல்ல திருமண விழாவின் பெருமகிழ்ச்சி. தங்கள் வருகையை வாட்ஸ்அப் மூலம் உறுதிசெய்ய வேண்டுகிறோம்:'
-    : 'Your presence and blessings are our greatest joy. Please let us know if you can join the celebrations via WhatsApp:');
-  setText('labelRsvpYes', isTa ? "மகிழ்ச்சியுடன் வருகிறோம்! 💐" : "Yes, We'll Be There! 💐");
-  setText('labelRsvpNo', isTa ? "நல்வாழ்த்துகளுடன் ஆசிகள் 💌" : "Sending Our Blessings 💌");
-  setText('rsvpFooterNote', isTa
-    ? 'பட்டனைத் தட்டினால் வாட்ஸ்அப்பில் தானாக தட்டச்சு செய்யப்பட்ட செய்தி திறக்கும்.'
-    : 'Tap a button to send a quick WhatsApp message to the couple & family.');
-
-  updateRsvpLinks(isTa);
-
   // Footer Section
   setText('closingQuote', isTa ? EVENT_CONFIG.closingQuoteTa : EVENT_CONFIG.closingQuoteEn);
   setText('closingHeart', isTa ? EVENT_CONFIG.closingHeartTa : EVENT_CONFIG.closingHeartEn);
@@ -385,40 +370,7 @@ function renderCelebrationCards(isTa) {
 }
 
 // ==============================================================================
-// 4. RSVP WHATSAPP LINK GENERATOR
-// ==============================================================================
-function updateRsvpLinks(isTa) {
-  const btnYes = document.getElementById('btnRsvpYes');
-  const btnNo = document.getElementById('btnRsvpNo');
-  const phone = EVENT_CONFIG.rsvpWhatsAppNumber;
-
-  let msgYes = '';
-  let msgNo = '';
-
-  if (isTa) {
-    if (guestName) {
-      msgYes = `வணக்கம்! ${guestName} சார்பாக மகிழ்ச்சியுடன் தெரிவிக்கிறோம்: Ar. N. போஸ் ராஜ் & Dr. H. ஸ்ரீ பபிதா சாய் திருமண விழாவிற்கு (நவம்பர் 28 & 29, 2026) நாங்கள் தவறாமல் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
-      msgNo = `வணக்கம்! ${guestName} சார்பாக எங்கள் அன்பான வாழ்த்துகள். தவிர்க்க முடியாத காரணத்தால் எங்களால் திருமண விழாவிற்கு வர இயலவில்லை. மணமக்களுக்கு எங்களது உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
-    } else {
-      msgYes = `வணக்கம்! Ar. N. போஸ் ராஜ் & Dr. H. ஸ்ரீ பபிதா சாய் திருமண விழாவிற்கு (நவம்பர் 28 & 29, 2026) நான்/நாங்கள் மகிழ்ச்சியுடன் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
-      msgNo = `வணக்கம்! தவிர்க்க முடியாத காரணத்தால் திருமண விழாவிற்கு வர இயலவில்லை. மணமக்களுக்கு எங்கள் உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
-    }
-  } else {
-    if (guestName) {
-      msgYes = `Namaste! ${guestName} will joyfully attend the wedding celebrations of Ar. N. Bose Raj & Dr. H. Sree Babitha Sai on 28th & 29th Nov 2026. Can't wait to celebrate together! 🎉`;
-      msgNo = `Namaste! ${guestName} sends heartfelt wishes. Unfortunately, we won't be able to attend the wedding celebrations, but our warmest blessings are with the lovely couple! 🙏`;
-    } else {
-      msgYes = `Namaste! I/We will joyfully attend the wedding celebrations of Ar. N. Bose Raj & Dr. H. Sree Babitha Sai on 28th & 29th Nov 2026. Looking forward to celebrating with you! 🎉`;
-      msgNo = `Namaste! Sending my warmest wishes. Unfortunately, I won't be able to attend, but my heartfelt blessings are with the couple! 🙏`;
-    }
-  }
-
-  if (btnYes) btnYes.href = `https://wa.me/${phone}?text=${encodeURIComponent(msgYes)}`;
-  if (btnNo) btnNo.href = `https://wa.me/${phone}?text=${encodeURIComponent(msgNo)}`;
-}
-
-// ==============================================================================
-// 5. ACCURATE COUNTDOWN TIMER
+// 4. ACCURATE COUNTDOWN TIMER
 // ==============================================================================
 function initCountdown() {
   const targetTime = new Date(EVENT_CONFIG.countdownTargetISO).getTime();
