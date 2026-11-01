@@ -1,163 +1,187 @@
 /**
  * ==============================================================================
- * WEDDING E-INVITATION CONFIGURATION & SCRIPT
- * Plain Vanilla JavaScript - No build step, no external dependencies.
- * ==============================================================================
- * Edit the EVENT_CONFIG object below to personalize all event details,
- * timings, venue links, schedule, and RSVP phone number.
+ * WEDDING CELEBRATIONS CONFIGURATION & SCRIPT
+ * Ar. N. Bose Raj & Dr. H. Sree Babitha Sai
+ * Mobile-First, Accessible, Bilingual (English & Tamil)
  * ==============================================================================
  */
 
 const EVENT_CONFIG = {
   // ---------------------------------------------------------------------------
-  // 1. COUPLE & HOST DETAILS
+  // 1. COUPLE & DESIGNATIONS
   // ---------------------------------------------------------------------------
-  coupleNamesEn: "Bose & Babi",
-  coupleNamesTa: "போஸ் & பேபி",
-
-  // Groom: the Architect · Bride: the Doctor
   groomPrefixEn: "Ar.",
   groomPrefixTa: "Ar.",
-  groomNameEn: "Bose",
-  groomNameTa: "போஸ்",
+  groomNameEn: "N. Bose Raj",
+  groomNameTa: "என். போஸ் ராஜ்",
   groomRoleEn: "The Architect",
   groomRoleTa: "கட்டடக் கலைஞர்",
 
   bridePrefixEn: "Dr.",
-  bridePrefixTa: "டாக்டர்",
-  brideNameEn: "Babi",
-  brideNameTa: "பேபி",
+  bridePrefixTa: "Dr.",
+  brideNameEn: "H. Sree Babitha Sai",
+  brideNameTa: "எச். ஸ்ரீ பபிதா சாய்",
   brideRoleEn: "The Doctor",
   brideRoleTa: "மருத்துவர்",
 
-  themeTaglineEn: "He designs spaces. She heals hearts. Together, they are building a forever home — one heartbeat at a time.",
-  themeTaglineTa: "அவன் இடங்களை வடிவமைக்கிறான்; அவள் இதயங்களைக் குணமாக்குகிறாள். இருவரும் இணைந்து, ஒவ்வொரு இதயத் துடிப்பிலும் ஒரு நிலையான இல்லம் கட்டுகிறார்கள்.",
+  coupleNamesEn: "Ar. N. Bose Raj & Dr. H. Sree Babitha Sai",
+  coupleNamesTa: "Ar. என். போஸ் ராஜ் & Dr. எச். ஸ்ரீ பபிதா சாய்",
 
-  hostsNamesEn: "Mr. & Mrs. S. Sundaram & Mr. & Mrs. R. Natarajan",
-  hostsNamesTa: "திரு. & திருமதி. எஸ். சுந்தரம் & திரு. & திருமதி. ஆர். நடராஜன்",
+  topMantraEn: "LOVE   ♥   FAMILY   ♥   FOREVER",
+  topMantraTa: "அன்பு   ♥   குடும்பம்   ♥   என்றென்றும்",
 
-  eventTitleEn: "Wedding Ceremony & Reception",
-  eventTitleTa: "திருமண விழா மற்றும் வரவேற்பு",
+  familyBlessingEn: "With the blessings of our families, we invite you to be a part of our special celebrations as we begin our journey together.",
+  familyBlessingTa: "எங்கள் குடும்பத்தினரின் நல்லாசிகளுடன், நாங்கள் தொடங்கும் இந்த இனிய புதுப்பயணத்தில் தாங்கள் பங்கேற்று சிறப்பிக்க அன்புடன் அழைக்கிறோம்.",
 
-  hostsIntroEn: "Together with their families",
-  hostsIntroTa: "குடும்பத்தினர் மற்றும் உறவினர்கள் சூழ",
+  taglineLeftEn: "A New Beginning, A Lifetime Together ♥",
+  taglineLeftTa: "ஒரு புதிய தொடக்கம், ஆயுள் முழுமைக்கும் இணைந்த பயணம் ♥",
 
-  inviteLineEn: "cordially invite you to celebrate the auspicious wedding of",
-  inviteLineTa: "நடைபெறும் மங்கலத் திருமண விழாவிற்கு தங்களை அன்புடன் அழைக்கிறோம்",
+  taglineRightEn: "With great joy, we invite you to share our happiness and make our wedding truly special with your gracious presence.",
+  taglineRightTa: "மிக்க மகிழ்ச்சியுடன், எங்கள் ஆனந்தத்தைப் பகிர்ந்துகொண்டு, தங்கள் நல்வருகையால் எங்கள் திருமணத்தை சிறப்பிக்க வேண்டுகிறோம்.",
 
-  auspiciousMantraEn: "|| OM SHREE GANESHAYA NAMAHA ||",
-  auspiciousMantraTa: "|| ஸ்ரீ கணேசாய நம: ||",
+  inviteCallEn: "CORDIALLY INVITE YOU TO OUR",
+  inviteCallTa: "நடைபெறும் மங்கல",
+  celebrationTitleEn: "Wedding Celebrations",
+  celebrationTitleTa: "திருமண விழா கொண்டாட்டங்கள்",
 
-  // ---------------------------------------------------------------------------
-  // 2. DATE, TIME & TIMEZONE (Asia/Kolkata)
-  // Format: YYYY-MM-DDTHH:mm:ss+05:30
-  // ---------------------------------------------------------------------------
-  eventDateISO: "2027-02-14T09:00:00+05:30",
-  eventEndDateISO: "2027-02-14T13:30:00+05:30",
+  heroDatesEn: "28th & 29th November 2026",
+  heroDatesTa: "28 & 29 நவம்பர் 2026",
+  heroCityEn: "Chennai",
+  heroCityTa: "சென்னை",
 
-  dateFormattedEn: "Sunday, 14 February 2027",
-  dateFormattedTa: "ஞாயிற்றுக்கிழமை, 14 பிப்ரவரி 2027",
-
-  timeRangeEn: "Muhurtham: 09:00 AM – 10:30 AM (IST)",
-  timeRangeTa: "சுப முகூர்த்தம்: காலை 09:00 – 10:30 மணி",
-
-  receptionTimeEn: "Reception: 06:30 PM onwards",
-  receptionTimeTa: "வரவேற்பு: மாலை 06:30 மணி முதல்",
+  architectDoctorTaglineEn: "He designs spaces. She heals hearts. Together, they are building a forever home — one heartbeat at a time.",
+  architectDoctorTaglineTa: "அவர் இடங்களை வடிவமைக்கிறார்; அவர் இதயங்களைக் குணமாக்குகிறார். இருவரும் இணைந்து, ஒவ்வொரு இதயத் துடிப்பிலும் ஒரு நிலையான இல்லம் கட்டுகிறார்கள்.",
 
   // ---------------------------------------------------------------------------
-  // 3. VENUE & LOCATION
+  // 2. COUNTDOWN TARGET (Reception: 28 Nov 2026, 7:00 PM IST)
   // ---------------------------------------------------------------------------
-  venueNameEn: "Sri Krishna Grand Convention Hall",
-  venueNameTa: "ஸ்ரீ கிருஷ்ணா கிராண்ட் கன்வென்ஷன் ஹால்",
+  countdownTargetISO: "2026-11-28T19:00:00+05:30",
+  muhurthamTargetISO: "2026-11-29T08:00:00+05:30",
 
-  venueAddressEn: "No. 42, 100 Feet Bypass Road, Velachery, Chennai, Tamil Nadu 600042",
-  venueAddressTa: "எண். 42, 100 அடி பைபாஸ் சாலை, வேளச்சேரி, சென்னை, தமிழ்நாடு 600042",
-
-  cityEn: "Chennai, Tamil Nadu",
-  cityTa: "சென்னை, தமிழ்நாடு",
-
-  // Replace with your exact Google Maps link
-  googleMapsUrl: "https://maps.google.com/?q=12.9784,80.2184",
+  countdownNoteEn: "Celebrations begin with Reception on Saturday, 28 Nov 2026 • 7:00 PM",
+  countdownNoteTa: "வரவேற்பு விழா: சனிக்கிழமை, 28 நவம்பர் 2026 • மாலை 7:00 மணி முதல்",
 
   // ---------------------------------------------------------------------------
-  // 4. DRESS CODE & SPECIAL NOTES
+  // 3. THE THREE CELEBRATIONS (EXACTLY FROM THE INVITATION CARD)
   // ---------------------------------------------------------------------------
-  dressCodeEn: "Traditional Indian / Festive Ethnic Wear",
-  dressCodeTa: "பாரம்பரிய பட்டு ஆடை / பண்டிகை உடை",
-
-  specialNotesEn: "Your presence and blessings are our greatest gift.",
-  specialNotesTa: "தங்கள் வருகையும் ஆசியுமே நாங்கள் நாடும் சிறந்த பரிசு.",
-
-  // ---------------------------------------------------------------------------
-  // 5. RSVP WHATSAPP NUMBER
-  // Country code + Phone number (NO '+' sign, NO spaces, NO dashes)
-  // Example for India (+91 98765 43210): "919876543210"
-  // ---------------------------------------------------------------------------
-  rsvpWhatsAppNumber: "919876543210",
-
-  // ---------------------------------------------------------------------------
-  // 6. PROJECT BRIEF (Blueprint spec sheet rows)
-  // ---------------------------------------------------------------------------
-  projectBrief: [
-    { labelEn: "Project", labelTa: "திட்டம்", valueEn: "Forever Home", valueTa: "நிரந்தர இல்லம்" },
-    { labelEn: "Lead Architect", labelTa: "முதன்மைக் கட்டடக் கலைஞர்", valueEn: "Ar. Bose", valueTa: "Ar. போஸ்" },
-    { labelEn: "Chief Physician", labelTa: "முதன்மை மருத்துவர்", valueEn: "Dr. Babi", valueTa: "டாக்டர் பேபி" },
-    { labelEn: "Foundation", labelTa: "அடித்தளம்", valueEn: "Love, Trust & Family Blessings", valueTa: "அன்பு, நம்பிக்கை & பெரியோர் ஆசி" },
-    { labelEn: "Vital Signs", labelTa: "உயிர்க் குறிகள்", valueEn: "Two hearts, one rhythm", valueTa: "இரு இதயங்கள், ஒரே துடிப்பு" },
-    { labelEn: "Groundbreaking", labelTa: "அடிக்கல் நாள்", valueEn: "14 · 02 · 2027", valueTa: "14 · 02 · 2027" }
-  ],
-
-  // ---------------------------------------------------------------------------
-  // 7. PROGRAMME / SCHEDULE TIMELINE
-  // ---------------------------------------------------------------------------
-  schedule: [
+  events: [
     {
-      timeEn: "07:30 AM",
-      timeTa: "காலை 07:30",
-      titleEn: "Mangala Vadyam & Ganapathi Pooja",
-      titleTa: "மங்கள வாத்தியம் & கணபதி பூஜை",
-      descEn: "Divine invocation, Nadhaswaram melodies, and sacred blessings.",
-      descTa: "நாதஸ்வர மங்கள இசை மற்றும் விக்னேஸ்வர பூஜை."
+      id: "reception",
+      titleEn: "RECEPTION",
+      titleTa: "மங்கல வரவேற்பு",
+      iconSvg: `
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 14l6 14h-12l6-14z" />
+          <path d="M22 28v18M14 46h16" />
+          <path d="M42 14l6 14h-12l6-14z" />
+          <path d="M42 28v18M34 46h16" />
+          <path d="M32 10c0-2 2-4 4-2s2 4 0 6-4 0-4-4z" fill="currentColor" stroke="none" />
+        </svg>
+      `,
+      dateEn: "Saturday, 28th Nov 2026",
+      dateTa: "சனிக்கிழமை, 28 நவம்பர் 2026",
+      timeEn: "7:00 PM onwards",
+      timeTa: "மாலை 7:00 மணி முதல்",
+      venueNameEn: "Thangam Maaligai",
+      venueNameTa: "தங்கம் மாளிகை",
+      venueDetailsEn: "(Near Tollgate Metro, Chennai - 600081)",
+      venueDetailsTa: "(டோல்கேட் மெட்ரோ அருகில், சென்னை - 600081)",
+      transitEn: "Bus Stop: Tollgate Bus Stand (6A, 6D, 56, 28, 56A)",
+      transitTa: "பேருந்து நிறுத்தம்: டோல்கேட் பேருந்து நிலையம் (6A, 6D, 56, 28, 56A)",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Thangam+Maaligai+Tollgate+Chennai",
+      icsEvent: {
+        summary: "Reception: Ar. N. Bose Raj & Dr. H. Sree Babitha Sai",
+        start: "20261128T133000Z",
+        end: "20261128T173000Z",
+        location: "Thangam Maaligai, Near Tollgate Metro, Chennai - 600081",
+        description: "Wedding Reception of Ar. N. Bose Raj & Dr. H. Sree Babitha Sai."
+      }
     },
     {
-      timeEn: "09:00 AM – 10:30 AM",
-      timeTa: "காலை 09:00 – 10:30",
-      titleEn: "Subha Muhurtham",
-      titleTa: "சுப முகூர்த்தம் (மாங்கல்ய தாரணம்)",
-      descEn: "Sacred tying of the Thali amidst chanting of Vedic mantras and akshata.",
-      descTa: "வேத மந்திரங்கள் மற்றும் மங்கள வாத்தியங்கள் முழங்க மாங்கல்ய தாரணம்."
+      id: "wedding",
+      titleEn: "WEDDING (MUHURTHAM)",
+      titleTa: "திருமணம் (சுப முகூர்த்தம்)",
+      iconSvg: `
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 48h40l-4-16H16l-4 16z" />
+          <path d="M32 12c-4 6-8 12-4 18 4 6 12 0 8-8-2-4-2-8-4-10z" fill="currentColor" opacity="0.8" />
+          <path d="M24 22c-2 4-4 8-2 11 2 3 6 0 4-5-1-3-1-5-2-6z" fill="currentColor" opacity="0.9" />
+          <path d="M40 22c2 4 4 8 2 11-2 3-6 0-4-5 1-3 1-5 2-6z" fill="currentColor" opacity="0.9" />
+          <line x1="8" y1="48" x2="56" y2="48" />
+          <line x1="14" y1="54" x2="50" y2="54" />
+        </svg>
+      `,
+      dateEn: "Sunday, 29th Nov 2026",
+      dateTa: "ஞாயிற்றுக்கிழமை, 29 நவம்பர் 2026",
+      timeEn: "8:00 AM – 9:00 AM",
+      timeTa: "காலை 8:00 – 9:00 மணி",
+      venueNameEn: "Thangam Maaligai",
+      venueNameTa: "தங்கம் மாளிகை",
+      venueDetailsEn: "(Near Tollgate Metro, Chennai - 600081)",
+      venueDetailsTa: "(டோல்கேட் மெட்ரோ அருகில், சென்னை - 600081)",
+      transitEn: "Bus Stop: Tollgate Bus Stand (6A, 6D, 56, 28, 56A)",
+      transitTa: "பேருந்து நிறுத்தம்: டோல்கேட் பேருந்து நிலையம் (6A, 6D, 56, 28, 56A)",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Thangam+Maaligai+Tollgate+Chennai",
+      icsEvent: {
+        summary: "Wedding Muhurtham: Ar. N. Bose Raj & Dr. H. Sree Babitha Sai",
+        start: "20261129T023000Z",
+        end: "20261129T043000Z",
+        location: "Thangam Maaligai, Near Tollgate Metro, Chennai - 600081",
+        description: "Auspicious Wedding Ceremony (Subha Muhurtham) of Ar. N. Bose Raj & Dr. H. Sree Babitha Sai."
+      }
     },
     {
-      timeEn: "11:30 AM onwards",
-      timeTa: "காலை 11:30 முதல்",
-      titleEn: "Traditional Wedding Feast (Virundhu)",
+      id: "feast",
+      titleEn: "FEAST ON US",
       titleTa: "கல்யாண விருந்து",
-      descEn: "Sumptuous traditional South Indian feast served on fresh plantain leaf.",
-      descTa: "அறுசுவை நிறைந்த பாரம்பரிய தலைவாழை இலைத் திருமண விருந்து உபசரிப்பு."
-    },
-    {
-      timeEn: "06:30 PM onwards",
-      timeTa: "மாலை 06:30 முதல்",
-      titleEn: "Grand Reception & Musical Evening",
-      titleTa: "மங்கல வரவேற்பு & இன்னிசை",
-      descEn: "An evening of celebration, dining, and felicitating the newly wedded couple.",
-      descTa: "மணமக்களை வாழ்த்தும் இனிய வரவேற்பு மற்றும் விருந்து உபசரிப்பு."
+      iconSvg: `
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="32" cy="38" rx="26" ry="14" />
+          <path d="M10 38c8-16 36-16 44 0" />
+          <circle cx="26" cy="36" r="4" fill="currentColor" />
+          <circle cx="38" cy="36" r="4" fill="currentColor" />
+          <circle cx="32" cy="30" r="5" fill="currentColor" />
+        </svg>
+      `,
+      dateEn: "Sunday, 29th Nov 2026",
+      dateTa: "ஞாயிற்றுக்கிழமை, 29 நவம்பர் 2026",
+      timeEn: "12:30 PM – 3:00 PM",
+      timeTa: "மதியம் 12:30 – 3:00 மணி",
+      venueNameEn: "Virudhunagar Nadar Maaligai",
+      venueNameTa: "விருதுநகர் நாடார் மாளிகை",
+      venueDetailsEn: "27, Somu Chetty 5th St, Royapuram, Chennai - 600013",
+      venueDetailsTa: "27, சோமு செட்டி 5வது தெரு, ராயபுரம், சென்னை - 600013",
+      transitEn: "Traditional South Indian feast served with love",
+      transitTa: "அறுசுவை நிறைந்த பாரம்பரிய தலைவாழை இலைத் திருமண விருந்து உபசரிப்பு",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Virudhunagar+Nadar+Maaligai+Royapuram+Chennai",
+      icsEvent: {
+        summary: "Wedding Feast: Ar. N. Bose Raj & Dr. H. Sree Babitha Sai",
+        start: "20261129T070000Z",
+        end: "20261129T093000Z",
+        location: "Virudhunagar Nadar Maaligai, 27, Somu Chetty 5th St, Royapuram, Chennai - 600013",
+        description: "Wedding Feast (Virundhu) of Ar. N. Bose Raj & Dr. H. Sree Babitha Sai."
+      }
     }
   ],
 
   // ---------------------------------------------------------------------------
-  // 8. FOOTER DETAILS
+  // 4. CLOSING & FOOTER
   // ---------------------------------------------------------------------------
-  footerBlessingEn: "With the divine blessings of our elders and ancestors",
-  footerBlessingTa: "பெரியோர்கள் மற்றும் முன்னோர்களின் நல்லாசிகளுடன்",
+  closingQuoteEn: "“Some moments in life become truly special because they are shared with the people who have been part of our journey.”",
+  closingQuoteTa: "“நம் வாழ்வில் சில தருணங்கள் மிகவும் சிறப்பானவையாக மாறுகின்றன; ஏனெனில் அவை நமது பயணத்தின் அங்கமாக இருந்த உறவுகளுடன் பகிரப்படுகின்றன.”",
 
-  footerFamilyEn: "Sundaram & Natarajan Families",
-  footerFamilyTa: "சுந்தரம் & நடராஜன் குடும்பத்தினர்",
+  closingHeartEn: "We can't wait to celebrate with you! ♥",
+  closingHeartTa: "தங்களுடன் இணைந்து கொண்டாட ஆவலுடன் காத்திருக்கிறோம்! ♥",
 
-  footerThanksEn: "Thank you for gracing our joyous occasion with your presence and blessings!",
-  footerThanksTa: "எங்கள் இல்லத் திருமண விழாவிற்கு வருகை தந்து ஆசீர்வதித்தமைக்கு மனமார்ந்த நன்றிகள்!",
+  footerFamilyEn: "Bose Raj & Sree Babitha Sai Families",
+  footerFamilyTa: "போஸ் ராஜ் & ஸ்ரீ பபிதா சாய் குடும்பத்தினர்",
 
-  footerHashtag: "#BoseWedsBabi • 2027"
+  footerHashtag: "#BoseWedsBabi • 2026",
+
+  // ---------------------------------------------------------------------------
+  // 5. RSVP WHATSAPP NUMBER
+  // ---------------------------------------------------------------------------
+  rsvpWhatsAppNumber: "919876543210"
 };
 
 // ==============================================================================
@@ -165,30 +189,31 @@ const EVENT_CONFIG = {
 // ==============================================================================
 let currentLang = 'en'; // 'en' | 'ta'
 let guestName = '';
+let arePetalsActive = true;
 
 // ==============================================================================
-// 1. INITIALIZATION & URL PARAMETER PARSING
+// 1. INITIALIZATION
 // ==============================================================================
 document.addEventListener('DOMContentLoaded', () => {
   parseGuestParameter();
   applyLanguage(currentLang);
   initCountdown();
-  initCalendarGenerator();
+  initPetalsCanvas();
   initAudioPlayer();
+  initModal();
   setupEventListeners();
   initReveal();
 });
 
 /**
  * Extracts and sanitizes the '?to=...' parameter from the URL.
- * Example: https://site.com/?to=Ramesh%20Family
+ * Example: https://bosewedsbabi.netlify.app/?to=Ramesh%20Family
  */
 function parseGuestParameter() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
     const toParam = urlParams.get('to');
     if (toParam && toParam.trim() !== '') {
-      // Decode and sanitize: trim excess spaces, keep text safe
       guestName = toParam.trim().replace(/[<>]/g, '');
     }
   } catch (e) {
@@ -212,7 +237,8 @@ function applyLanguage(lang) {
   }
 
   // Hero Section
-  setText('auspiciousMantra', isTa ? EVENT_CONFIG.auspiciousMantraTa : EVENT_CONFIG.auspiciousMantraEn);
+  setText('topMantra', isTa ? EVENT_CONFIG.topMantraTa : EVENT_CONFIG.topMantraEn);
+  setText('familyBlessing', isTa ? EVENT_CONFIG.familyBlessingTa : EVENT_CONFIG.familyBlessingEn);
   
   const personalizedGreeting = document.getElementById('personalizedGreeting');
   if (personalizedGreeting) {
@@ -223,100 +249,65 @@ function applyLanguage(lang) {
     }
   }
 
-  setText('hostsIntro', isTa ? EVENT_CONFIG.hostsIntroTa : EVENT_CONFIG.hostsIntroEn);
-  setText('hostsNames', isTa ? EVENT_CONFIG.hostsNamesTa : EVENT_CONFIG.hostsNamesEn);
-  setText('inviteLine', isTa ? EVENT_CONFIG.inviteLineTa : EVENT_CONFIG.inviteLineEn);
-  setText('groomPrefix', isTa ? EVENT_CONFIG.groomPrefixTa : EVENT_CONFIG.groomPrefixEn);
+  setText('taglineLeft', isTa ? EVENT_CONFIG.taglineLeftTa : EVENT_CONFIG.taglineLeftEn);
+  setText('taglineRight', isTa ? EVENT_CONFIG.taglineRightTa : EVENT_CONFIG.taglineRightEn);
+  
   setText('groomName', isTa ? EVENT_CONFIG.groomNameTa : EVENT_CONFIG.groomNameEn);
   setText('groomRole', isTa ? EVENT_CONFIG.groomRoleTa : EVENT_CONFIG.groomRoleEn);
-  setText('bridePrefix', isTa ? EVENT_CONFIG.bridePrefixTa : EVENT_CONFIG.bridePrefixEn);
   setText('brideName', isTa ? EVENT_CONFIG.brideNameTa : EVENT_CONFIG.brideNameEn);
   setText('brideRole', isTa ? EVENT_CONFIG.brideRoleTa : EVENT_CONFIG.brideRoleEn);
-  setText('wedsWord', isTa ? 'திருமணம்' : 'weds');
-  setText('captionSkyline', isTa ? 'இடங்களை வடிவமைப்பவர்' : 'designs spaces');
-  setText('captionEcg', isTa ? 'இதயங்களைக் காப்பவர்' : 'heals hearts');
-  setText('themeTagline', isTa ? EVENT_CONFIG.themeTaglineTa : EVENT_CONFIG.themeTaglineEn);
-  setText('heroEventTitle', isTa ? EVENT_CONFIG.eventTitleTa : EVENT_CONFIG.eventTitleEn);
-  setText('heroDate', isTa ? EVENT_CONFIG.dateFormattedTa : EVENT_CONFIG.dateFormattedEn);
-  setText('heroVenueCity', isTa ? EVENT_CONFIG.cityTa : EVENT_CONFIG.cityEn);
 
-  // Countdown Labels
-  // Project Brief
-  setText('blueprint-heading', isTa ? 'என்றென்றைக்குமான வரைபடம்' : 'The Blueprint of Forever');
-  setText('blueprintDim', isTa ? '1 : என்றென்றும்' : '1 : FOREVER');
-  renderSpecSheet(isTa);
+  setText('inviteCall', isTa ? EVENT_CONFIG.inviteCallTa : EVENT_CONFIG.inviteCallEn);
+  setText('celebrationTitle', isTa ? EVENT_CONFIG.celebrationTitleTa : EVENT_CONFIG.celebrationTitleEn);
+  setText('heroDates', isTa ? EVENT_CONFIG.heroDatesTa : EVENT_CONFIG.heroDatesEn);
+  setText('heroCity', isTa ? EVENT_CONFIG.heroCityTa : EVENT_CONFIG.heroCityEn);
+  setText('architectDoctorTagline', isTa ? EVENT_CONFIG.architectDoctorTaglineTa : EVENT_CONFIG.architectDoctorTaglineEn);
 
-  setText('countdown-heading', isTa ? 'திருமண நன்னாளுக்கான காத்திருப்பு' : 'Groundbreaking In');
+  // Countdown Section
+  setText('countdownHeading', isTa ? 'திருமண கொண்டாட்டங்களுக்கான காத்திருப்பு' : 'Counting Down to the Celebrations');
+  setText('countdownNote', isTa ? EVENT_CONFIG.countdownNoteTa : EVENT_CONFIG.countdownNoteEn);
   setText('labelDays', isTa ? 'நாட்கள்' : 'Days');
   setText('labelHours', isTa ? 'மணி' : 'Hours');
   setText('labelMinutes', isTa ? 'நிமிடம்' : 'Mins');
   setText('labelSeconds', isTa ? 'விநாடி' : 'Secs');
 
-  // Details Card
-  setText('details-heading', isTa ? 'நேரம் மற்றும் இடம்' : 'When & Where');
-  setText('detailDateLabel', isTa ? 'திருமண நாள்' : 'Date');
-  setText('detailDate', isTa ? EVENT_CONFIG.dateFormattedTa : EVENT_CONFIG.dateFormattedEn);
+  // Events Section
+  setText('eventsHeading', isTa ? 'நிகழ்ச்சி நிரல்' : 'Programme of Celebrations');
+  setText('eventsSubtitle', isTa ? 'மங்கல நிகழ்வுகள் மற்றும் விருந்தில் கலந்து சிறப்பிக்க வேண்டுகிறோம்' : 'Join us for every blessed ceremony and feast');
+  renderCelebrationCards(isTa);
 
-  setText('detailTimeLabel', isTa ? 'முகூர்த்தம் மற்றும் நேரங்கள்' : 'Muhurtham & Timings');
-  const detailTimeEl = document.getElementById('detailTime');
-  if (detailTimeEl) {
-    const primaryTime = isTa ? EVENT_CONFIG.timeRangeTa : EVENT_CONFIG.timeRangeEn;
-    const subTime = isTa ? EVENT_CONFIG.receptionTimeTa : EVENT_CONFIG.receptionTimeEn;
-    detailTimeEl.innerHTML = `${primaryTime}<br><span class="detail-subval">${subTime}</span>`;
-  }
-
-  setText('detailVenueLabel', isTa ? 'திருமண மண்டபம்' : 'Venue');
-  setText('detailVenueName', isTa ? EVENT_CONFIG.venueNameTa : EVENT_CONFIG.venueNameEn);
-  setText('detailVenueAddress', isTa ? EVENT_CONFIG.venueAddressTa : EVENT_CONFIG.venueAddressEn);
-
-  setText('detailDressLabel', isTa ? 'ஆடை நெறிமுறை & குறிப்பு' : 'Dress Code & Notes');
-  setText('detailDress', isTa ? EVENT_CONFIG.dressCodeTa : EVENT_CONFIG.dressCodeEn);
-  setText('detailNotes', isTa ? EVENT_CONFIG.specialNotesTa : EVENT_CONFIG.specialNotesEn);
-
-  // Action Buttons
-  setText('labelGoogleMaps', isTa ? 'கூகுள் மேப்பில் பார்க்க' : 'Open in Google Maps');
-  setText('labelAddToCalendar', isTa ? 'நாள்காட்டியில் சேர்க்க (.ics)' : 'Add to Calendar (.ics)');
-
-  const mapsBtn = document.getElementById('btnGoogleMaps');
-  if (mapsBtn) {
-    mapsBtn.href = EVENT_CONFIG.googleMapsUrl;
-  }
-
-  // Schedule Section
-  setText('schedule-heading', isTa ? 'நிகழ்ச்சி நிரல்' : 'Programme Schedule');
-  renderSchedule(isTa);
+  // Project Brief
+  setText('briefHeading', isTa ? 'நிரந்தர இல்லத்தின் வரைபடம்' : 'The Blueprint of Forever');
+  setText('briefSubtitle', isTa ? 'திட்ட விவரங்கள் • அளவு 1 : ∞' : 'Project Specifications • Scale 1 : ∞');
+  setText('specValProject', isTa ? 'நிரந்தர இல்லம்' : 'Forever Home');
+  setText('specValArchitect', isTa ? 'Ar. என். போஸ் ராஜ்' : 'Ar. N. Bose Raj');
+  setText('specValDoctor', isTa ? 'Dr. எச். ஸ்ரீ பபிதா சாய்' : 'Dr. H. Sree Babitha Sai');
+  setText('specValFoundation', isTa ? 'அன்பு, நம்பிக்கை & குடும்பத்தினர் ஆசி' : 'Love, Trust & Family Blessings');
+  setText('specValVitals', isTa ? 'இரு இதயங்கள், ஒரே துடிப்பு' : 'Two hearts, one rhythm');
+  setText('specValDates', isTa ? '28 & 29 நவம்பர் 2026' : '28 & 29 November 2026');
 
   // RSVP Section
-  setText('rsvp-heading', isTa ? 'வருகையை உறுதிசெய்க' : 'RSVP');
-  setText('rxClinic', isTa
-    ? `பரிந்துரை: டாக்டர் ${EVENT_CONFIG.brideNameTa} · வடிவமைப்பு: Ar. ${EVENT_CONFIG.groomNameTa}`
-    : `Prescribed by ${EVENT_CONFIG.bridePrefixEn} ${EVENT_CONFIG.brideNameEn} · Drafted by ${EVENT_CONFIG.groomPrefixEn} ${EVENT_CONFIG.groomNameEn}`);
-  setText('rxLine1', isTa ? 'தங்கள் வருகை — ஒரு மகிழ்ச்சியான அளவு' : 'Your presence — one joyful dose');
-  setText('rxLine2', isTa ? '14 பிப்ரவரி 2027 அன்று, குடும்பத்துடன் எடுத்துக்கொள்ளவும்' : 'To be taken on 14 Feb 2027, with family');
-  setText('rxLine3', isTa ? 'பக்க விளைவுகள்: முடிவில்லா புன்னகையும் நிறைந்த மனமும்' : 'Side effects: endless smiles & a full heart');
-  setText('rsvpIntro', isTa
-    ? 'தங்கள் நல்வருகையை வாட்ஸ்அப் மூலம் உறுதிசெய்து எங்களை மகிழ்விக்க வேண்டுகிறோம்.'
-    : 'Please confirm your gracious presence via WhatsApp to help us welcome you with warmth.');
-  setText('labelRsvpYes', isTa ? 'மகிழ்ச்சியுடன் வருகிறோம்!' : "Yes, I'll be there!");
-  setText('labelRsvpNo', isTa ? 'வர இயலவில்லை, வாழ்த்துகள்' : "Sorry, can't make it");
-  setText('rsvpNote', isTa
+  setText('rsvpHeading', isTa ? 'வருகையை உறுதிசெய்க (RSVP)' : 'RSVP');
+  setText('rxSubtitle', isTa ? 'Dr. பபிதா பரிந்துரை • Ar. போஸ் வடிவமைப்பு' : 'Prescribed by Dr. Babitha • Designed by Ar. Bose');
+  setText('rxDose', isTa ? 'தங்கள் நல்வருகை — ஒரு மகிழ்ச்சியான மாமருந்து' : 'Your presence — one joyful dose');
+  setText('rxDates', isTa ? '28 & 29 நவம்பர் 2026 அன்று குடும்பத்துடன் வருக' : 'To be taken on 28th & 29th Nov 2026, with family');
+  setText('rxSideEffects', isTa ? 'பக்க விளைவுகள்: எல்லையற்ற புன்னகை, நிறைவான வயிறு மற்றும் ஆனந்த மனம்!' : 'Side effects: endless smiles, full bellies & happy hearts!');
+  setText('rsvpPrompt', isTa
+    ? 'தங்கள் வருகையை வாட்ஸ்அப் மூலம் உறுதிசெய்து எங்களை மகிழ்விக்க வேண்டுகிறோம்:'
+    : 'Please confirm your gracious presence via WhatsApp to help us welcome you with warmth:');
+  setText('labelRsvpYes', isTa ? 'மகிழ்ச்சியுடன் வருகிறோம்! 💐' : "Yes, We'll Be There! 💐");
+  setText('labelRsvpNo', isTa ? 'வர இயலவில்லை, நல்வாழ்த்துகள் 💌' : "Sorry, Can't Make It 💌");
+  setText('rsvpFooterNote', isTa
     ? 'பட்டனை அழுத்தினால் வாட்ஸ்அப்பில் தானாக தட்டச்சு செய்யப்பட்ட செய்தி திறக்கும்.'
-    : 'Clicking a button opens WhatsApp with a pre-filled confirmation message.');
+    : 'Clicking either button opens WhatsApp with a pre-filled confirmation message.');
 
   updateRsvpLinks(isTa);
 
   // Footer Section
-  setText('footerBlessing', isTa ? EVENT_CONFIG.footerBlessingTa : EVENT_CONFIG.footerBlessingEn);
-  setText('footerFamily', isTa ? EVENT_CONFIG.footerFamilyTa : EVENT_CONFIG.footerFamilyEn);
-  setText('footerThanks', isTa ? EVENT_CONFIG.footerThanksTa : EVENT_CONFIG.footerThanksEn);
+  setText('closingQuote', isTa ? EVENT_CONFIG.closingQuoteTa : EVENT_CONFIG.closingQuoteEn);
+  setText('closingHeart', isTa ? EVENT_CONFIG.closingHeartTa : EVENT_CONFIG.closingHeartEn);
+  setText('footerFamilyNames', isTa ? EVENT_CONFIG.footerFamilyTa : EVENT_CONFIG.footerFamilyEn);
   setText('footerHashtag', EVENT_CONFIG.footerHashtag);
-  setText('tbProjectLabel', isTa ? 'திட்டம்' : 'Project');
-  setText('tbProject', isTa ? 'நிரந்தர இல்லம்' : 'Forever Home');
-  setText('tbScaleLabel', isTa ? 'அளவு' : 'Scale');
-  setText('tbDateLabel', isTa ? 'நாள்' : 'Date');
-  setText('tbSheetLabel', isTa ? 'தாள்' : 'Sheet');
-
-  document.documentElement.lang = isTa ? 'ta' : 'en';
 }
 
 function setText(elementId, text) {
@@ -325,68 +316,73 @@ function setText(elementId, text) {
 }
 
 // ==============================================================================
-// 3a. PROJECT BRIEF (SPEC SHEET) RENDERER
+// 3. RENDER THREE CELEBRATION CARDS
 // ==============================================================================
-function renderSpecSheet(isTa) {
-  const container = document.getElementById('specSheet');
-  if (!container || !EVENT_CONFIG.projectBrief) return;
+function renderCelebrationCards(isTa) {
+  const container = document.getElementById('celebrationCardsContainer');
+  if (!container) return;
 
   container.innerHTML = '';
 
-  EVENT_CONFIG.projectBrief.forEach((row, index) => {
-    const rowEl = document.createElement('div');
-    rowEl.className = 'spec-row';
+  EVENT_CONFIG.events.forEach((ev, idx) => {
+    const card = document.createElement('article');
+    card.className = `event-card event-${ev.id}`;
 
-    const dt = document.createElement('dt');
-    dt.className = 'spec-label';
-    dt.textContent = `${String(index + 1).padStart(2, '0')} · ${isTa ? row.labelTa : row.labelEn}`;
+    card.innerHTML = `
+      <div class="event-card-header">
+        <div class="event-icon-badge" aria-hidden="true">${ev.iconSvg}</div>
+        <div>
+          <h3 class="event-title">${isTa ? ev.titleTa : ev.titleEn}</h3>
+          <p class="event-date-badge">📅 ${isTa ? ev.dateTa : ev.dateEn}</p>
+        </div>
+      </div>
 
-    const dd = document.createElement('dd');
-    dd.className = 'spec-value';
-    dd.textContent = isTa ? row.valueTa : row.valueEn;
+      <div class="event-details-body">
+        <div class="event-meta-row">
+          <span class="meta-icon" aria-hidden="true">⏰</span>
+          <div class="meta-content">
+            <strong>${isTa ? 'நேரம்' : 'Time'}:</strong>
+            <span>${isTa ? ev.timeTa : ev.timeEn}</span>
+          </div>
+        </div>
 
-    rowEl.appendChild(dt);
-    rowEl.appendChild(dd);
-    container.appendChild(rowEl);
+        <div class="event-meta-row">
+          <span class="meta-icon" aria-hidden="true">📍</span>
+          <div class="meta-content">
+            <strong class="venue-name-highlight">${isTa ? ev.venueNameTa : ev.venueNameEn}</strong>
+            <p class="venue-address">${isTa ? ev.venueDetailsTa : ev.venueDetailsEn}</p>
+          </div>
+        </div>
+
+        <div class="event-meta-row transit-row">
+          <span class="meta-icon" aria-hidden="true">🚌</span>
+          <div class="meta-content">
+            <p class="transit-info">${isTa ? ev.transitTa : ev.transitEn}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card-actions">
+        <a href="${ev.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-event-map" aria-label="Open ${ev.venueNameEn} in Google Maps">
+          <span>🗺️</span>
+          <span>${isTa ? 'கூகுள் மேப்பில் பார்க்க' : 'Open in Google Maps'}</span>
+        </a>
+        <button class="btn btn-event-cal" data-event-idx="${idx}" aria-label="Add ${ev.titleEn} to Calendar">
+          <span>🗓️</span>
+          <span>${isTa ? 'நாள்காட்டியில் சேர்' : 'Add to Calendar'}</span>
+        </button>
+      </div>
+    `;
+
+    container.appendChild(card);
   });
-}
 
-// ==============================================================================
-// 3. SCHEDULE / PROGRAMME RENDERER
-// ==============================================================================
-function renderSchedule(isTa) {
-  const container = document.getElementById('timelineList');
-  if (!container || !EVENT_CONFIG.schedule) return;
-
-  container.innerHTML = '';
-
-  EVENT_CONFIG.schedule.forEach(item => {
-    const itemEl = document.createElement('div');
-    itemEl.className = 'timeline-item';
-    itemEl.setAttribute('role', 'listitem');
-
-    const timeBadge = document.createElement('div');
-    timeBadge.className = 'timeline-time-badge';
-    timeBadge.textContent = isTa ? item.timeTa : item.timeEn;
-
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'timeline-content';
-
-    const titleH3 = document.createElement('h3');
-    titleH3.className = 'timeline-title';
-    titleH3.textContent = isTa ? item.titleTa : item.titleEn;
-
-    const descP = document.createElement('p');
-    descP.className = 'timeline-desc';
-    descP.textContent = isTa ? item.descTa : item.descEn;
-
-    contentDiv.appendChild(titleH3);
-    contentDiv.appendChild(descP);
-
-    itemEl.appendChild(timeBadge);
-    itemEl.appendChild(contentDiv);
-
-    container.appendChild(itemEl);
+  // Attach calendar download listeners
+  container.querySelectorAll('.btn-event-cal').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const idx = parseInt(btn.getAttribute('data-event-idx'), 10);
+      downloadSingleEventICS(EVENT_CONFIG.events[idx]);
+    });
   });
 }
 
@@ -403,34 +399,31 @@ function updateRsvpLinks(isTa) {
 
   if (isTa) {
     if (guestName) {
-      msgYes = `வணக்கம்! ${guestName} சார்பாக மகிழ்ச்சியுடன் தெரிவிக்கிறோம்: ${EVENT_CONFIG.coupleNamesTa} திருமண விழாவிற்கு நாங்கள் தவறாமல் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
-      msgNo = `வணக்கம்! ${guestName} சார்பாக எங்கள் அன்பான வாழ்த்துகள். தவிர்க்க முடியாத காரணத்தால் எங்களால் ${EVENT_CONFIG.coupleNamesTa} திருமணத்திற்கு வர இயலவில்லை. மணமக்களுக்கு எங்களது உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
+      msgYes = `வணக்கம்! ${guestName} சார்பாக மகிழ்ச்சியுடன் தெரிவிக்கிறோம்: Ar. என். போஸ் ராஜ் & Dr. எச். ஸ்ரீ பபிதா சாய் திருமண விழாவிற்கு (நவம்பர் 28 & 29, 2026) நாங்கள் தவறாமல் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
+      msgNo = `வணக்கம்! ${guestName} சார்பாக எங்கள் அன்பான வாழ்த்துகள். தவிர்க்க முடியாத காரணத்தால் எங்களால் திருமண விழாவிற்கு வர இயலவில்லை. மணமக்களுக்கு எங்களது உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
     } else {
-      msgYes = `வணக்கம்! ${EVENT_CONFIG.coupleNamesTa} திருமண விழாவிற்கு நான்/நாங்கள் மகிழ்ச்சியுடன் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
-      msgNo = `வணக்கம்! தவிர்க்க முடியாத காரணத்தால் ${EVENT_CONFIG.coupleNamesTa} திருமண விழாவிற்கு வர இயலவில்லை. மணமக்களுக்கு எங்கள் உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
+      msgYes = `வணக்கம்! Ar. என். போஸ் ராஜ் & Dr. எச். ஸ்ரீ பபிதா சாய் திருமண விழாவிற்கு (நவம்பர் 28 & 29, 2026) நான்/நாங்கள் மகிழ்ச்சியுடன் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
+      msgNo = `வணக்கம்! தவிர்க்க முடியாத காரணத்தால் திருமண விழாவிற்கு வர இயலவில்லை. மணமக்களுக்கு எங்கள் உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
     }
   } else {
     if (guestName) {
-      msgYes = `Namaste! ${guestName} will joyfully attend the wedding celebration of ${EVENT_CONFIG.coupleNamesEn}. Looking forward to celebrating with you! 🎉`;
-      msgNo = `Namaste! ${guestName} sends heartfelt wishes. Unfortunately, we won't be able to attend the wedding of ${EVENT_CONFIG.coupleNamesEn}, but our warmest blessings are with the couple! 🙏`;
+      msgYes = `Namaste! ${guestName} will joyfully attend the wedding celebrations of Ar. N. Bose Raj & Dr. H. Sree Babitha Sai on 28th & 29th Nov 2026. Can't wait to celebrate together! 🎉`;
+      msgNo = `Namaste! ${guestName} sends heartfelt wishes. Unfortunately, we won't be able to attend the wedding celebrations, but our warmest blessings are with the lovely couple! 🙏`;
     } else {
-      msgYes = `Namaste! I/We will joyfully attend the wedding celebration of ${EVENT_CONFIG.coupleNamesEn}. Looking forward to celebrating with you! 🎉`;
-      msgNo = `Namaste! Sending my warmest wishes. Unfortunately, I won't be able to attend the wedding of ${EVENT_CONFIG.coupleNamesEn}, but my heartfelt blessings are with the couple! 🙏`;
+      msgYes = `Namaste! I/We will joyfully attend the wedding celebrations of Ar. N. Bose Raj & Dr. H. Sree Babitha Sai on 28th & 29th Nov 2026. Looking forward to celebrating with you! 🎉`;
+      msgNo = `Namaste! Sending my warmest wishes. Unfortunately, I won't be able to attend, but my heartfelt blessings are with the couple! 🙏`;
     }
   }
 
-  const urlYes = `https://wa.me/${phone}?text=${encodeURIComponent(msgYes)}`;
-  const urlNo = `https://wa.me/${phone}?text=${encodeURIComponent(msgNo)}`;
-
-  if (btnYes) btnYes.href = urlYes;
-  if (btnNo) btnNo.href = urlNo;
+  if (btnYes) btnYes.href = `https://wa.me/${phone}?text=${encodeURIComponent(msgYes)}`;
+  if (btnNo) btnNo.href = `https://wa.me/${phone}?text=${encodeURIComponent(msgNo)}`;
 }
 
 // ==============================================================================
 // 5. ACCURATE COUNTDOWN TIMER
 // ==============================================================================
 function initCountdown() {
-  const targetTime = new Date(EVENT_CONFIG.eventDateISO).getTime();
+  const targetTime = new Date(EVENT_CONFIG.countdownTargetISO).getTime();
 
   function update() {
     const now = new Date().getTime();
@@ -448,9 +441,9 @@ function initCountdown() {
       if (minsEl) minsEl.textContent = '00';
       if (secsEl) secsEl.textContent = '00';
       if (statusEl) {
-        statusEl.textContent = currentLang === 'ta' 
-          ? 'திருமண விழா இனிதே துவங்கி நடைபெறுகிறது! 🎉'
-          : 'The celebration is underway! 🎉';
+        statusEl.textContent = currentLang === 'ta'
+          ? 'திருமண கொண்டாட்டங்கள் இனிதே துவங்கி நடைபெறுகின்றன! 🎉'
+          : 'The wedding celebrations are underway! 🎉';
       }
       return;
     }
@@ -472,48 +465,26 @@ function initCountdown() {
 }
 
 // ==============================================================================
-// 6. DYNAMIC .ICS CALENDAR FILE GENERATOR
+// 6. DYNAMIC .ICS CALENDAR GENERATOR
 // ==============================================================================
-function initCalendarGenerator() {
-  const calBtn = document.getElementById('btnAddToCalendar');
-  if (!calBtn) return;
-
-  calBtn.addEventListener('click', () => {
-    generateAndDownloadICS();
-  });
-}
-
-function generateAndDownloadICS() {
-  const startDate = new Date(EVENT_CONFIG.eventDateISO);
-  const endDate = new Date(EVENT_CONFIG.eventEndDateISO);
-
-  // Format to standard iCalendar UTC: YYYYMMDDTHHmmssZ
-  const formatDateICS = (d) => {
-    return d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-  };
-
-  const dtStart = formatDateICS(startDate);
-  const dtEnd = formatDateICS(endDate);
-  const dtStamp = formatDateICS(new Date());
-
-  const summary = `Wedding: ${EVENT_CONFIG.coupleNamesEn}`;
-  const description = `${EVENT_CONFIG.eventTitleEn} - ${EVENT_CONFIG.coupleNamesEn}. Venue: ${EVENT_CONFIG.venueNameEn}, ${EVENT_CONFIG.venueAddressEn}. Google Maps: ${EVENT_CONFIG.googleMapsUrl}`;
-  const location = `${EVENT_CONFIG.venueNameEn}, ${EVENT_CONFIG.venueAddressEn}`;
+function downloadSingleEventICS(ev) {
+  const dtStamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  const icsData = ev.icsEvent;
 
   const icsContent = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Our Wedding Invitation//EN',
+    'PRODID:-//Bose & Babi Wedding//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
-    `UID:wedding-${startDate.getTime()}@ourwedding.invitation`,
+    `UID:${ev.id}-20261128@bosewedsbabi.netlify.app`,
     `DTSTAMP:${dtStamp}`,
-    `DTSTART:${dtStart}`,
-    `DTEND:${dtEnd}`,
-    `SUMMARY:${summary}`,
-    `DESCRIPTION:${description.replace(/\n/g, '\\n')}`,
-    `LOCATION:${location}`,
+    `DTSTART:${icsData.start}`,
+    `DTEND:${icsData.end}`,
+    `SUMMARY:${icsData.summary}`,
+    `DESCRIPTION:${icsData.description.replace(/\n/g, '\\n')}`,
+    `LOCATION:${icsData.location}`,
     'STATUS:CONFIRMED',
     'END:VEVENT',
     'END:VCALENDAR'
@@ -523,7 +494,7 @@ function generateAndDownloadICS() {
   const url = URL.createObjectURL(blob);
   const downloadLink = document.createElement('a');
   downloadLink.href = url;
-  downloadLink.setAttribute('download', 'wedding-bose-babi.ics');
+  downloadLink.setAttribute('download', `${ev.id}-bose-and-babi.ics`);
   document.body.appendChild(downloadLink);
   downloadLink.click();
   document.body.removeChild(downloadLink);
@@ -531,9 +502,116 @@ function generateAndDownloadICS() {
 }
 
 // ==============================================================================
-// 7. BACKGROUND MUSIC (Muted by Default)
-// Plays external assets/music.mp3 if present, or uses Web Audio API synthesizer
-// for an elegant, serene traditional Indian drone / flute harmonic melody.
+// 7. JOYFUL FALLING PETALS CANVAS (Marigold & Rose Petals)
+// ==============================================================================
+function initPetalsCanvas() {
+  const canvas = document.getElementById('petalsCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  // Palette: Gold marigold petals & soft pink/rose petals
+  const petalColors = [
+    'rgba(255, 175, 45, 0.85)',  // Warm golden marigold
+    'rgba(255, 120, 30, 0.8)',   // Deep orange marigold
+    'rgba(255, 95, 130, 0.82)',  // Romantic rose pink
+    'rgba(235, 60, 95, 0.78)',   // Festive crimson petal
+    'rgba(255, 215, 110, 0.75)'  // Pale gold sparkle petal
+  ];
+
+  const petalCount = window.innerWidth < 600 ? 24 : 45;
+  const petals = [];
+
+  for (let i = 0; i < petalCount; i++) {
+    petals.push({
+      x: Math.random() * width,
+      y: Math.random() * height - height,
+      size: Math.random() * 8 + 6,
+      speedX: Math.random() * 1.5 - 0.75,
+      speedY: Math.random() * 1.4 + 0.8,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 2,
+      color: petalColors[Math.floor(Math.random() * petalColors.length)],
+      sway: Math.random() * 2 * Math.PI,
+      swaySpeed: Math.random() * 0.03 + 0.01
+    });
+  }
+
+  function drawPetal(p) {
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate((p.rotation * Math.PI) / 180);
+    ctx.fillStyle = p.color;
+
+    // Petal ellipse shape
+    ctx.beginPath();
+    ctx.ellipse(0, 0, p.size * 0.6, p.size, 0, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  let animationFrameId;
+
+  function animate() {
+    if (!arePetalsActive) {
+      ctx.clearRect(0, 0, width, height);
+      return;
+    }
+
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < petals.length; i++) {
+      const p = petals[i];
+      p.sway += p.swaySpeed;
+      p.x += Math.sin(p.sway) * 0.9 + p.speedX;
+      p.y += p.speedY;
+      p.rotation += p.rotSpeed;
+
+      if (p.y > height + 20) {
+        p.y = -20;
+        p.x = Math.random() * width;
+      }
+      if (p.x > width + 20) p.x = -20;
+      if (p.x < -20) p.x = width + 20;
+
+      drawPetal(p);
+    }
+
+    animationFrameId = requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // Petals Toggle button
+  const petalsToggleBtn = document.getElementById('petalsToggleBtn');
+  const petalsLabel = document.getElementById('petalsLabel');
+  if (petalsToggleBtn) {
+    petalsToggleBtn.addEventListener('click', () => {
+      arePetalsActive = !arePetalsActive;
+      petalsToggleBtn.setAttribute('aria-pressed', arePetalsActive ? 'true' : 'false');
+      if (petalsLabel) {
+        petalsLabel.textContent = arePetalsActive ? 'Petals On' : 'Petals Off';
+      }
+      if (arePetalsActive) {
+        animate();
+      } else {
+        cancelAnimationFrame(animationFrameId);
+        ctx.clearRect(0, 0, width, height);
+      }
+    });
+  }
+}
+
+// ==============================================================================
+// 8. JOYFUL INDIAN WEDDING MUSIC (Web Audio Synthesizer + MP3 fallback)
+// Plays a warm, celebratory Raga Shankarabharanam / Kalyani nadaswaram chime harmony
 // ==============================================================================
 let isMusicPlaying = false;
 let audioPlayer = null;
@@ -544,11 +622,10 @@ function initAudioPlayer() {
   const musicBtn = document.getElementById('musicToggleBtn');
   if (!musicBtn) return;
 
-  // Try creating an Audio element pointing to assets/music.mp3
   try {
     audioPlayer = new Audio('assets/music.mp3');
     audioPlayer.loop = true;
-    audioPlayer.volume = 0.5;
+    audioPlayer.volume = 0.55;
   } catch (e) {
     audioPlayer = null;
   }
@@ -562,13 +639,11 @@ function toggleMusic() {
   const musicIcon = document.getElementById('musicIcon');
 
   if (!isMusicPlaying) {
-    // Attempt playback of audio file
     let playedExternal = false;
     if (audioPlayer) {
       audioPlayer.play().then(() => {
         playedExternal = true;
       }).catch(() => {
-        // Fallback to Web Audio Ambient Chime
         startSynthesizerMelody();
       });
     } else {
@@ -578,34 +653,29 @@ function toggleMusic() {
     isMusicPlaying = true;
     if (musicBtn) {
       musicBtn.setAttribute('aria-pressed', 'true');
-      musicBtn.setAttribute('aria-label', 'Turn off background music');
+      musicBtn.setAttribute('aria-label', 'Turn off wedding music');
     }
     if (musicLabel) musicLabel.textContent = 'Music On';
     if (musicIcon) {
-      // Unmuted Speaker SVG
       musicIcon.innerHTML = `
-        <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
           <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
         </svg>
       `;
     }
   } else {
-    // Pause / Mute
-    if (audioPlayer) {
-      audioPlayer.pause();
-    }
+    if (audioPlayer) audioPlayer.pause();
     stopSynthesizerMelody();
 
     isMusicPlaying = false;
     if (musicBtn) {
       musicBtn.setAttribute('aria-pressed', 'false');
-      musicBtn.setAttribute('aria-label', 'Turn on background music');
+      musicBtn.setAttribute('aria-label', 'Turn on wedding music');
     }
     if (musicLabel) musicLabel.textContent = 'Music Off';
     if (musicIcon) {
-      // Muted Speaker SVG
       musicIcon.innerHTML = `
-        <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
           <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
         </svg>
       `;
@@ -613,53 +683,45 @@ function toggleMusic() {
   }
 }
 
-/**
- * Built-in Web Audio API synthesizer:
- * Generates warm, gentle tanpura drone + flute acoustic tones in Raga Yaman / Kalyani
- * completely client-side with 0 external network requests.
- */
 function startSynthesizerMelody() {
   try {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     if (!AudioCtx) return;
     synthAudioContext = new AudioCtx();
 
-    // Raga Kalyani notes (Hz): Sa (C4 ~261.63), Ga (E4 ~329.63), Pa (G4 ~392.00), Ni (B4 ~493.88), Sa' (C5 ~523.25)
-    const melodyNotes = [261.63, 329.63, 392.00, 493.88, 523.25, 392.00, 329.63, 261.63];
+    // Joyful traditional Indian wedding notes: Sa, Ri, Ga, Ma, Pa, Dha, Ni, Sa'
+    const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 440.00, 392.00, 329.63];
     let noteIdx = 0;
 
-    function playBellTone(freq) {
+    function playNote(freq) {
       if (!synthAudioContext || synthAudioContext.state === 'closed') return;
       const osc = synthAudioContext.createOscillator();
       const gain = synthAudioContext.createGain();
 
-      osc.type = 'sine';
+      osc.type = 'triangle'; // warm festive tone
       osc.frequency.setValueAtTime(freq, synthAudioContext.currentTime);
 
-      // Soft envelope (gentle flute/bell chime)
       gain.gain.setValueAtTime(0.001, synthAudioContext.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.08, synthAudioContext.currentTime + 0.3);
-      gain.gain.exponentialRampToValueAtTime(0.0001, synthAudioContext.currentTime + 2.2);
+      gain.gain.exponentialRampToValueAtTime(0.09, synthAudioContext.currentTime + 0.15);
+      gain.gain.exponentialRampToValueAtTime(0.0001, synthAudioContext.currentTime + 1.8);
 
       osc.connect(gain);
       gain.connect(synthAudioContext.destination);
 
       osc.start();
-      osc.stop(synthAudioContext.currentTime + 2.3);
+      osc.stop(synthAudioContext.currentTime + 1.9);
     }
 
-    // Play first tone immediately
-    playBellTone(melodyNotes[noteIdx]);
-    noteIdx = (noteIdx + 1) % melodyNotes.length;
+    playNote(notes[noteIdx]);
+    noteIdx = (noteIdx + 1) % notes.length;
 
-    // Play next note every 2.4 seconds
     synthInterval = setInterval(() => {
-      playBellTone(melodyNotes[noteIdx]);
-      noteIdx = (noteIdx + 1) % melodyNotes.length;
-    }, 2400);
+      playNote(notes[noteIdx]);
+      noteIdx = (noteIdx + 1) % notes.length;
+    }, 1800);
 
   } catch (e) {
-    console.warn('Web Audio synthesis not supported or blocked', e);
+    console.warn('Web Audio playback error', e);
   }
 }
 
@@ -675,7 +737,40 @@ function stopSynthesizerMelody() {
 }
 
 // ==============================================================================
-// 8. EVENT LISTENERS
+// 9. ORIGINAL INVITATION CARD LIGHTBOX MODAL
+// ==============================================================================
+function initModal() {
+  const modal = document.getElementById('cardModal');
+  const btnOpen = document.getElementById('btnOpenCardModal');
+  const btnClose = document.getElementById('btnCloseModal');
+
+  if (!modal || !btnOpen) return;
+
+  btnOpen.addEventListener('click', () => {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (btnClose) btnClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+}
+
+// ==============================================================================
+// 10. SCROLL REVEAL & EVENT LISTENERS
 // ==============================================================================
 function setupEventListeners() {
   const langToggleBtn = document.getElementById('langToggleBtn');
@@ -687,9 +782,6 @@ function setupEventListeners() {
   }
 }
 
-// ==============================================================================
-// 9. SCROLL REVEAL
-// ==============================================================================
 function initReveal() {
   const items = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
@@ -704,7 +796,7 @@ function initReveal() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.08 });
 
   items.forEach(el => observer.observe(el));
 }

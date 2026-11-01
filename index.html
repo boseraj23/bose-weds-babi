@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Wedding Invitation | Bose &amp; Babi</title>
-  <meta name="description" content="You are cordially invited to celebrate the auspicious wedding ceremony of Bose &amp; Babi on Sunday, 14 February 2027 in Chennai.">
-  <meta name="theme-color" content="#0B1A33">
+  <title>Wedding Celebrations | Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai</title>
+  <meta name="description" content="With the blessings of our families, we invite you to celebrate the wedding celebrations of Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai on 28th &amp; 29th November 2026 in Chennai.">
+  <meta name="theme-color" content="#8C182B">
 
   <!-- Open Graph / WhatsApp Preview Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bosewedsbabi.netlify.app/">
-  <meta property="og:title" content="Wedding Invitation | Bose &amp; Babi">
-  <meta property="og:description" content="You are cordially invited to celebrate the auspicious wedding ceremony of Bose &amp; Babi on Sunday, 14 February 2027 in Chennai.">
+  <meta property="og:title" content="Wedding Celebrations | Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai">
+  <meta property="og:description" content="Saturday 28th &amp; Sunday 29th Nov 2026 • Thangam Maaligai, Chennai. Click to view invitation, timings, map &amp; RSVP!">
   <meta property="og:image" content="https://bosewedsbabi.netlify.app/assets/og-image.jpg">
   <meta property="og:image:secure_url" content="https://bosewedsbabi.netlify.app/assets/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -23,26 +23,26 @@
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Wedding Invitation | Bose &amp; Babi">
-  <meta name="twitter:description" content="You are cordially invited to celebrate the auspicious wedding ceremony of Bose &amp; Babi on Sunday, 14 February 2027 in Chennai.">
+  <meta name="twitter:title" content="Wedding Celebrations | Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai">
+  <meta name="twitter:description" content="Saturday 28th &amp; Sunday 29th Nov 2026 • Thangam Maaligai, Chennai. Click to view invitation, timings, map &amp; RSVP!">
   <meta name="twitter:image" content="https://bosewedsbabi.netlify.app/assets/og-image.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Google Fonts: display serif, drafting mono & Tamil, with font-display: swap -->
+  <!-- Google Fonts: Festive Calligraphy, Royal Roman Serif, and Clean Tamil/English body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Great+Vibes&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Blueprint backdrop: drafting grid + faint compass arcs -->
-  <div class="blueprint-bg" aria-hidden="true"></div>
+  <!-- Floating Falling Petals Canvas (Joyful Wedding Ambience) -->
+  <canvas id="petalsCanvas" class="petals-canvas" aria-hidden="true"></canvas>
 
-  <!-- Floating Header Controls: Language Switcher & Audio Toggle -->
+  <!-- Floating Header Controls -->
   <header class="top-controls" role="banner" aria-label="Page controls">
     <div class="controls-container">
       <!-- Language Switcher Toggle -->
@@ -51,11 +51,16 @@
         <span id="langLabel" class="control-text">தமிழ்</span>
       </button>
 
-      <!-- Music Toggle (Muted by default) -->
-      <button id="musicToggleBtn" class="control-btn" aria-label="Turn on background music" title="Toggle background music" aria-pressed="false">
+      <!-- Petals Falling Animation Toggle -->
+      <button id="petalsToggleBtn" class="control-btn" aria-label="Toggle Falling Petals" title="Toggle petals animation" aria-pressed="true">
+        <span class="control-icon" aria-hidden="true">🌸</span>
+        <span id="petalsLabel" class="control-text">Petals On</span>
+      </button>
+
+      <!-- Celebratory Music Toggle (Muted by default) -->
+      <button id="musicToggleBtn" class="control-btn" aria-label="Turn on wedding music" title="Toggle background music" aria-pressed="false">
         <span id="musicIcon" class="control-icon" aria-hidden="true">
-          <!-- Muted Speaker Icon -->
-          <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
             <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
           </svg>
         </span>
@@ -67,285 +72,240 @@
   <!-- Main Container -->
   <main class="page-container" id="main-content">
 
-    <!-- 1. HERO SECTION -->
-    <section class="hero-section reveal" aria-labelledby="coupleNames">
-      <span class="crop crop-tl" aria-hidden="true"></span>
-      <span class="crop crop-tr" aria-hidden="true"></span>
-      <span class="crop crop-bl" aria-hidden="true"></span>
-      <span class="crop crop-br" aria-hidden="true"></span>
+    <!-- 1. HERO SECTION: Couple Photo, Blessings & Calligraphy -->
+    <section class="card hero-card reveal" aria-labelledby="coupleHeadline">
+      <div class="floral-corner top-left" aria-hidden="true"></div>
+      <div class="floral-corner top-right" aria-hidden="true"></div>
 
-      <p class="sheet-tag" aria-hidden="true">SHEET 01 &middot; PROJECT: FOREVER</p>
+      <!-- Top Header Mantra from Card -->
+      <p class="top-mantra" id="topMantra">LOVE &nbsp;♥&nbsp; FAMILY &nbsp;♥&nbsp; FOREVER</p>
 
-      <div class="auspicious-mantra" id="auspiciousMantra">|| ஸ்ரீ கணேசாய நம: ||</div>
+      <!-- Auspicious Blessing -->
+      <p class="family-blessing" id="familyBlessing">
+        With the blessings of our families, we invite you to be a part of our special celebrations as we begin our journey together.
+      </p>
 
+      <!-- Personalized Greeting -->
       <p class="personalized-greeting" id="personalizedGreeting">Dear Family &amp; Friends,</p>
 
-      <p class="hosts-intro" id="hostsIntro">Together with their families</p>
-      <p class="hosts-names" id="hostsNames">Mr. &amp; Mrs. S. Sundaram &amp; Mr. &amp; Mrs. R. Natarajan</p>
-      <p class="invite-line" id="inviteLine">cordially invite you to celebrate the wedding ceremony of</p>
+      <!-- Joyous Side Badges / Quotes from Card -->
+      <div class="quote-pills-row">
+        <span class="quote-pill script-text" id="taglineLeft">A New Beginning, A Lifetime Together ♥</span>
+        <span class="quote-pill italic-text" id="taglineRight">With great joy, we invite you to share our happiness and make our wedding truly special with your gracious presence.</span>
+      </div>
 
-      <!-- Couple: Architect & Doctor -->
-      <h1 class="couple" id="coupleNames">
-        <span class="partner partner-groom">
-          <span class="partner-emblem" aria-hidden="true">
-            <!-- Drafting compass -->
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="32" cy="32" r="30" stroke-dasharray="2 4" opacity=".55"/>
-              <circle cx="32" cy="14" r="3.5"/>
-              <path d="M32 9V5"/>
-              <path d="M30 17 19 50"/>
-              <path d="M34 17 45 50"/>
-              <path d="M45 50l-1 6"/>
-              <path d="M22 40q10 6 20 0"/>
-              <path d="M14 56h36" opacity=".6"/>
-            </svg>
-          </span>
-          <span class="partner-prefix" id="groomPrefix">Ar.</span>
-          <span class="partner-name" id="groomName">Bose</span>
-          <span class="partner-role" id="groomRole">The Architect</span>
-        </span>
+      <!-- COUPLE PORTRAIT IN ROYAL GOLD ARCH -->
+      <div class="couple-portrait-wrapper">
+        <div class="portrait-arch">
+          <img src="assets/couple-portrait.jpg" alt="Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai" class="couple-img" width="352" height="580" loading="eager">
+          <div class="arch-gold-trim" aria-hidden="true"></div>
+        </div>
+        <p class="tap-card-hint">
+          <button id="btnOpenCardModal" class="btn-text-link" aria-label="Tap to view full invitation card">
+            📜 View Original Invitation Card
+          </button>
+        </p>
+      </div>
 
-        <span class="weds" aria-hidden="true">
-          <span class="weds-line"></span>
-          <span class="weds-word" id="wedsWord">weds</span>
-          <span class="weds-line"></span>
-        </span>
-        <span class="visually-hidden">&amp;</span>
+      <!-- Couple Names & Designations -->
+      <div class="couple-block" id="coupleHeadline">
+        <div class="person-block">
+          <h1 class="person-name groom-color">
+            <span class="prefix">Ar.</span> <span id="groomName">N. Bose Raj</span>
+          </h1>
+          <p class="person-role" id="groomRole">The Architect</p>
+        </div>
 
-        <span class="partner partner-bride">
-          <span class="partner-emblem" aria-hidden="true">
-            <!-- Stethoscope -->
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="32" cy="32" r="30" stroke-dasharray="2 4" opacity=".55"/>
-              <path d="M18 10v12a10 10 0 0 0 20 0V10"/>
-              <path d="M15 10h6M35 10h6"/>
-              <path d="M28 32v6a9 9 0 0 0 18 0v-4"/>
-              <circle cx="46" cy="30" r="4"/>
-              <circle cx="46" cy="30" r="1.2" fill="currentColor"/>
-            </svg>
-          </span>
-          <span class="partner-prefix" id="bridePrefix">Dr.</span>
-          <span class="partner-name" id="brideName">Babi</span>
-          <span class="partner-role" id="brideRole">The Doctor</span>
-        </span>
-      </h1>
+        <div class="weds-emblem" aria-hidden="true">
+          <span class="weds-amp">&amp;</span>
+        </div>
 
-      <!-- Signature line: a skyline that becomes a heartbeat -->
+        <div class="person-block">
+          <h2 class="person-name bride-color">
+            <span class="prefix">Dr.</span> <span id="brideName">H. Sree Babitha Sai</span>
+          </h2>
+          <p class="person-role" id="brideRole">The Doctor</p>
+        </div>
+      </div>
+
+      <!-- Invitation Wording -->
+      <p class="cordially-text" id="inviteCall">CORDIALLY INVITE YOU TO OUR</p>
+      <h2 class="celebrations-title" id="celebrationTitle">Wedding Celebrations</h2>
+
+      <p class="hero-dates-badge">
+        📅 <span id="heroDates">28th &amp; 29th November 2026</span> &bull; 📍 <span id="heroCity">Chennai</span>
+      </p>
+
+      <!-- Architect & Doctor Skyline & Heartbeat Line -->
       <figure class="lifeline" aria-hidden="true">
-        <svg viewBox="0 0 600 120" preserveAspectRatio="xMidYMid meet" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path class="draw draw-skyline" pathLength="1" d="M10 92H34V64H58V92H70V42L84 26L98 42V92H110V56H128V36H146V92H158V70H176V50L190 50V92H204V60H226V92H262"/>
-          <path class="draw draw-heart" pathLength="1" d="M300 100C278 84 266 72 266 58C266 48 274 41 283 41C291 41 297 46 300 52C303 46 309 41 317 41C326 41 334 48 334 58C334 72 322 84 300 100Z"/>
-          <path class="draw draw-ecg" pathLength="1" d="M338 92H372L380 80L388 92H404L414 30L426 112L436 92H456L464 74L474 92H590"/>
+        <svg viewBox="0 0 600 110" preserveAspectRatio="xMidYMid meet" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path class="draw draw-skyline" pathLength="1" d="M10 85H34V55H58V85H70V35L84 20L98 35V85H110V50H128V30H146V85H158V62H176V42L190 42V85H204V52H226V85H262"/>
+          <path class="draw draw-heart" pathLength="1" d="M300 95C278 79 266 67 266 53C266 43 274 36 283 36C291 36 297 41 300 47C303 41 309 36 317 36C326 36 334 43 334 53C334 67 322 79 300 95Z"/>
+          <path class="draw draw-ecg" pathLength="1" d="M338 85H372L380 73L388 85H404L414 25L426 105L436 85H456L464 67L474 85H590"/>
         </svg>
         <figcaption class="lifeline-caption">
-          <span id="captionSkyline">designs spaces</span>
-          <span id="captionEcg">heals hearts</span>
+          <span>Designs Spaces 🏛️</span>
+          <span>Heals Hearts 🩺</span>
         </figcaption>
       </figure>
 
-      <p class="theme-tagline" id="themeTagline">He designs spaces. She heals hearts. Together, they are building a forever home — one heartbeat at a time.</p>
+      <p class="tagline-story" id="architectDoctorTagline">
+        He designs spaces. She heals hearts. Together, they are building a forever home — one heartbeat at a time.
+      </p>
 
-      <div class="hero-meta">
-        <h2 class="hero-event-title" id="heroEventTitle">Wedding Ceremony &amp; Reception</h2>
-        <p class="hero-date" id="heroDate">Sunday, 14 February 2027</p>
-        <p class="hero-venue-city" id="heroVenueCity">Chennai, Tamil Nadu</p>
-      </div>
-
-      <a href="#blueprint-heading" class="scroll-cue" aria-label="Scroll to invitation details">
-        <span aria-hidden="true">&darr;</span>
-      </a>
+      <div class="floral-corner bottom-left" aria-hidden="true"></div>
+      <div class="floral-corner bottom-right" aria-hidden="true"></div>
     </section>
 
-    <!-- 2. PROJECT BRIEF (Blueprint spec sheet) -->
-    <section class="card blueprint-section reveal" aria-labelledby="blueprint-heading">
-      <p class="sheet-tag" aria-hidden="true">SHEET 02</p>
-      <h2 class="section-title" id="blueprint-heading">The Blueprint of Forever</h2>
-      <div class="dimension-line" aria-hidden="true"><span id="blueprintDim">1 : FOREVER</span></div>
+    <!-- 2. COUNTDOWN TIMER SECTION -->
+    <section class="card countdown-card reveal" aria-labelledby="countdownHeading">
+      <h2 class="section-title" id="countdownHeading">Counting Down to the Celebrations</h2>
+      <p class="countdown-target-note" id="countdownNote">Reception: Saturday, 28 Nov 2026 &bull; 7:00 PM</p>
 
-      <dl class="spec-sheet" id="specSheet">
-        <!-- Injected dynamically from EVENT_CONFIG.projectBrief -->
-      </dl>
-    </section>
-
-    <!-- 3. COUNTDOWN TIMER SECTION -->
-    <section class="card countdown-section reveal" aria-labelledby="countdown-heading">
-      <p class="sheet-tag" aria-hidden="true">SHEET 03</p>
-      <h2 class="section-title" id="countdown-heading">Groundbreaking In</h2>
-
-      <div class="monitor">
-        <svg class="monitor-trace" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 24H70L78 16L86 24H104L112 4L122 36L130 24H160L166 18L172 24H300" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        </svg>
-
-        <div class="timer-grid" role="timer" aria-live="polite" id="countdownTimer">
-          <div class="timer-box">
-            <span class="timer-number" id="timerDays">00</span>
-            <span class="timer-label" id="labelDays">Days</span>
-          </div>
-          <div class="timer-box">
-            <span class="timer-number" id="timerHours">00</span>
-            <span class="timer-label" id="labelHours">Hours</span>
-          </div>
-          <div class="timer-box">
-            <span class="timer-number" id="timerMinutes">00</span>
-            <span class="timer-label" id="labelMinutes">Mins</span>
-          </div>
-          <div class="timer-box">
-            <span class="timer-number" id="timerSeconds">00</span>
-            <span class="timer-label" id="labelSeconds">Secs</span>
-          </div>
+      <div class="timer-grid" role="timer" aria-live="polite" id="countdownTimer">
+        <div class="timer-box">
+          <span class="timer-number" id="timerDays">00</span>
+          <span class="timer-label" id="labelDays">Days</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="timerHours">00</span>
+          <span class="timer-label" id="labelHours">Hours</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="timerMinutes">00</span>
+          <span class="timer-label" id="labelMinutes">Mins</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="timerSeconds">00</span>
+          <span class="timer-label" id="labelSeconds">Secs</span>
         </div>
       </div>
       <p class="timer-status" id="timerStatus" aria-live="polite"></p>
     </section>
 
-    <!-- 4. DETAILS CARD & ACTIONS -->
-    <section class="card details-section reveal" aria-labelledby="details-heading">
-      <p class="sheet-tag" aria-hidden="true">SHEET 04 &middot; SITE PLAN</p>
-      <h2 class="section-title" id="details-heading">When &amp; Where</h2>
-      <div class="dimension-line" aria-hidden="true"><span>N &uarr;</span></div>
+    <!-- 3. THREE CELEBRATIONS SECTION (DIRECT FROM THE INVITATION CARD) -->
+    <section class="card events-section reveal" aria-labelledby="eventsHeading">
+      <h2 class="section-title" id="eventsHeading">Programme of Celebrations</h2>
+      <p class="section-subtitle" id="eventsSubtitle">Join us for every blessed ceremony and feast</p>
 
-      <div class="details-list">
-        <div class="detail-item">
-          <div class="detail-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M12 13.5c-.8-1-2.6-.6-2.6.8 0 1.2 2.6 2.7 2.6 2.7s2.6-1.5 2.6-2.7c0-1.4-1.8-1.8-2.6-.8z"/></svg>
-          </div>
-          <div class="detail-info">
-            <h3 class="detail-subtitle" id="detailDateLabel">Date</h3>
-            <p class="detail-val" id="detailDate">Sunday, 14 February 2027</p>
-          </div>
-        </div>
-
-        <div class="detail-item">
-          <div class="detail-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          </div>
-          <div class="detail-info">
-            <h3 class="detail-subtitle" id="detailTimeLabel">Muhurtham &amp; Timings</h3>
-            <p class="detail-val" id="detailTime">Muhurtham: 09:00 AM – 10:30 AM (IST)<br><span class="detail-subval">Reception: 06:30 PM onwards</span></p>
-          </div>
-        </div>
-
-        <div class="detail-item">
-          <div class="detail-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M10 21v-6h4v6"/></svg>
-          </div>
-          <div class="detail-info">
-            <h3 class="detail-subtitle" id="detailVenueLabel">Venue</h3>
-            <p class="detail-val venue-title" id="detailVenueName">Sri Krishna Grand Convention Hall</p>
-            <p class="detail-address" id="detailVenueAddress">No. 42, 100 Feet Bypass Road, Velachery, Chennai, Tamil Nadu 600042</p>
-          </div>
-        </div>
-
-        <div class="detail-item">
-          <div class="detail-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.4L20 9l-4.4 3.8L17 18.5 12 15.6 7 18.5l1.4-5.7L4 9l5.8-.6z"/></svg>
-          </div>
-          <div class="detail-info">
-            <h3 class="detail-subtitle" id="detailDressLabel">Dress Code &amp; Notes</h3>
-            <p class="detail-val" id="detailDress">Traditional Indian / Festive Ethnic Wear</p>
-            <p class="detail-subval" id="detailNotes">Your presence and blessings are our greatest gift.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="actions-group">
-        <a id="btnGoogleMaps" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Open venue location in Google Maps">
-          <span class="btn-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
-          </span>
-          <span id="labelGoogleMaps">Open in Google Maps</span>
-        </a>
-
-        <button id="btnAddToCalendar" class="btn btn-secondary" aria-label="Add wedding to your calendar (downloads .ics file)">
-          <span class="btn-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
-          </span>
-          <span id="labelAddToCalendar">Add to Calendar (.ics)</span>
-        </button>
+      <div class="celebration-cards-container" id="celebrationCardsContainer">
+        <!-- Rendered dynamically by script.js from EVENT_CONFIG.events -->
       </div>
     </section>
 
-    <!-- 5. PROGRAMME / SCHEDULE -->
-    <section class="card schedule-section reveal" aria-labelledby="schedule-heading">
-      <p class="sheet-tag" aria-hidden="true">SHEET 05 &middot; ELEVATION</p>
-      <h2 class="section-title" id="schedule-heading">Programme Schedule</h2>
-      <div class="dimension-line" aria-hidden="true"><span>14 · 02 · 2027</span></div>
+    <!-- 4. THE BLUEPRINT & VITALS PROJECT BRIEF -->
+    <section class="card spec-card reveal" aria-labelledby="briefHeading">
+      <h2 class="section-title" id="briefHeading">The Blueprint of Forever</h2>
+      <p class="section-subtitle" id="briefSubtitle">Project Specifications &bull; Scale 1 : &infin;</p>
 
-      <div class="timeline" id="timelineList" role="list">
-        <!-- Injected dynamically from EVENT_CONFIG.schedule -->
-      </div>
+      <dl class="spec-grid" id="specGrid">
+        <div class="spec-cell">
+          <dt class="spec-dt">01 &bull; Project</dt>
+          <dd class="spec-dd" id="specValProject">Forever Home</dd>
+        </div>
+        <div class="spec-cell">
+          <dt class="spec-dt">02 &bull; Lead Architect</dt>
+          <dd class="spec-dd" id="specValArchitect">Ar. N. Bose Raj</dd>
+        </div>
+        <div class="spec-cell">
+          <dt class="spec-dt">03 &bull; Chief Physician</dt>
+          <dd class="spec-dd" id="specValDoctor">Dr. H. Sree Babitha Sai</dd>
+        </div>
+        <div class="spec-cell">
+          <dt class="spec-dt">04 &bull; Foundation</dt>
+          <dd class="spec-dd" id="specValFoundation">Love, Trust &amp; Family Blessings</dd>
+        </div>
+        <div class="spec-cell">
+          <dt class="spec-dt">05 &bull; Vital Signs</dt>
+          <dd class="spec-dd" id="specValVitals">Two hearts, one rhythm</dd>
+        </div>
+        <div class="spec-cell">
+          <dt class="spec-dt">06 &bull; Celebrations</dt>
+          <dd class="spec-dd" id="specValDates">28 &amp; 29 November 2026</dd>
+        </div>
+      </dl>
     </section>
 
-    <!-- 6. RSVP SECTION (Prescription pad) -->
-    <section class="card rsvp-section reveal" aria-labelledby="rsvp-heading">
+    <!-- 5. RSVP SECTION (Prescription & WhatsApp Buttons) -->
+    <section class="card rsvp-card reveal" aria-labelledby="rsvpHeading">
       <div class="rx-header">
-        <span class="rx-symbol" aria-hidden="true">℞</span>
+        <span class="rx-symbol" aria-hidden="true">&#8478;</span>
         <div>
-          <h2 class="section-title rx-title" id="rsvp-heading">RSVP</h2>
-          <p class="rx-clinic" id="rxClinic">Prescribed by Dr. Babi &middot; Drafted by Ar. Bose</p>
+          <h2 class="section-title rx-title" id="rsvpHeading">RSVP</h2>
+          <p class="rx-subtitle" id="rxSubtitle">Prescribed by Dr. Babitha &bull; Designed by Ar. Bose</p>
         </div>
       </div>
 
-      <div class="rx-body">
-        <p class="rx-line" id="rxLine1">Your presence — one joyful dose</p>
-        <p class="rx-line" id="rxLine2">To be taken on 14 Feb 2027, with family</p>
-        <p class="rx-line rx-side" id="rxLine3">Side effects: endless smiles &amp; a full heart</p>
+      <div class="rx-prescription-note">
+        <p class="rx-line" id="rxDose">Your presence &mdash; one joyful dose</p>
+        <p class="rx-line" id="rxDates">To be taken on 28th &amp; 29th Nov 2026, with family</p>
+        <p class="rx-line rx-side" id="rxSideEffects">Side effects: endless smiles, full bellies &amp; happy hearts!</p>
       </div>
 
-      <p class="rsvp-intro" id="rsvpIntro">
-        Please confirm your gracious presence via WhatsApp to help us welcome you with warmth.
+      <p class="rsvp-prompt" id="rsvpPrompt">
+        Please confirm your gracious presence via WhatsApp to help us welcome you with warmth:
       </p>
 
       <div class="rsvp-buttons">
         <a id="btnRsvpYes" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-rsvp-yes" aria-label="RSVP: Yes, I will be there via WhatsApp">
-          <span id="labelRsvpYes">Yes, I'll be there!</span>
+          <span class="btn-icon" aria-hidden="true">💐</span>
+          <span id="labelRsvpYes">Yes, We'll Be There!</span>
         </a>
 
         <a id="btnRsvpNo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-rsvp-no" aria-label="RSVP: Sorry, cannot make it via WhatsApp">
-          <span id="labelRsvpNo">Sorry, can't make it</span>
+          <span class="btn-icon" aria-hidden="true">💌</span>
+          <span id="labelRsvpNo">Sorry, Can't Make It</span>
         </a>
       </div>
 
-      <p class="rsvp-note" id="rsvpNote">
-        Clicking a button opens WhatsApp with a pre-filled confirmation message.
+      <p class="rsvp-footer-note" id="rsvpFooterNote">
+        Clicking either button opens WhatsApp with a pre-filled confirmation message.
       </p>
-      <div class="rx-signature" aria-hidden="true">
-        <svg viewBox="0 0 160 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 28c10-18 18-20 20-10s-6 14 4 6 12-16 18-8-4 12 8 6 14-14 22-6 6 10 16 4 18-12 30-6 18 8 30 0"/></svg>
-      </div>
     </section>
 
-    <!-- 7. FOOTER (Drawing title block) -->
-    <footer class="footer-section reveal" role="contentinfo">
-      <div class="stamp" aria-hidden="true">
-        <svg viewBox="0 0 120 120">
-          <defs><path id="stampCircle" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1 -88 0"/></defs>
-          <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2"/>
-          <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width="1"/>
-          <text font-size="10.5" letter-spacing="3" fill="currentColor"><textPath href="#stampCircle">APPROVED · BOSE ♥ BABI · 2027 ·</textPath></text>
-          <path d="M60 74C49 66 44 60 44 53c0-5 4-8 8-8 4 0 7 2.5 8 5.5 1-3 4-5.5 8-5.5 4 0 8 3 8 8 0 7-5 13-16 21z" fill="currentColor"/>
-        </svg>
+    <!-- 6. JOYOUS CLOSING & TEMPLE GOPURAM FOOTER -->
+    <footer class="card footer-card reveal" role="contentinfo">
+      <!-- Temple Gopuram Emblem from the Invitation -->
+      <div class="gopuram-wrapper" aria-hidden="true">
+        <img src="assets/gopuram.svg" alt="" class="gopuram-img" width="110" height="130" loading="lazy">
       </div>
 
-      <p class="footer-blessing" id="footerBlessing">With the divine blessings of our elders and ancestors</p>
-      <h3 class="footer-family" id="footerFamily">Sundaram &amp; Natarajan Families</h3>
-      <p class="footer-thanks" id="footerThanks">Thank you for being part of our special journey!</p>
+      <p class="closing-quote" id="closingQuote">
+        &ldquo;Some moments in life become truly special because they are shared with the people who have been part of our journey.&rdquo;
+      </p>
+      
+      <p class="closing-heart" id="closingHeart">
+        We can't wait to celebrate with you! ♥
+      </p>
 
-      <table class="title-block" aria-label="Drawing details">
-        <tr>
-          <th scope="row" id="tbProjectLabel">Project</th><td id="tbProject">Forever Home</td>
-          <th scope="row" id="tbScaleLabel">Scale</th><td>1 : ∞</td>
-        </tr>
-        <tr>
-          <th scope="row" id="tbDateLabel">Date</th><td>14.02.2027</td>
-          <th scope="row" id="tbSheetLabel">Sheet</th><td>06 / 06</td>
-        </tr>
-      </table>
+      <div class="footer-divider-ornament" aria-hidden="true">
+        <span>❖</span> <span>❧</span> <span>❖</span>
+      </div>
 
-      <p class="footer-hashtag" id="footerHashtag">#BoseWedsBabi &bull; 2027</p>
+      <p class="footer-family-names" id="footerFamilyNames">
+        Bose Raj &amp; Sree Babitha Sai Families
+      </p>
+      
+      <p class="footer-hashtag" id="footerHashtag">#BoseWedsBabi &bull; 2026</p>
     </footer>
 
   </main>
+
+  <!-- Full Invitation Card Lightbox Modal -->
+  <div id="cardModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-label="Original Invitation Card">
+    <div class="modal-content">
+      <button id="btnCloseModal" class="btn-close-modal" aria-label="Close original invitation card">&times;</button>
+      <h3 class="modal-title">Original Wedding Invitation</h3>
+      <div class="modal-img-scroll">
+        <img src="assets/invitation-card.jpg" alt="Wedding Invitation Card of Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai" class="modal-card-img" loading="lazy">
+      </div>
+      <div class="modal-actions">
+        <a href="assets/invitation-card.jpg" download="Bose-and-Babi-Wedding-Invitation.jpg" class="btn btn-download-card">
+          📥 Download Invitation Image
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
