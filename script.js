@@ -13,19 +13,19 @@ const EVENT_CONFIG = {
   groomPrefixEn: "Ar.",
   groomPrefixTa: "Ar.",
   groomNameEn: "N. Bose Raj",
-  groomNameTa: "என். போஸ் ராஜ்",
+  groomNameTa: "N. போஸ் ராஜ்",
   groomRoleEn: "The Architect",
   groomRoleTa: "கட்டடக் கலைஞர்",
 
   bridePrefixEn: "Dr.",
   bridePrefixTa: "Dr.",
   brideNameEn: "H. Sree Babitha Sai",
-  brideNameTa: "எச். ஸ்ரீ பபிதா சாய்",
+  brideNameTa: "H. ஸ்ரீ பபிதா சாய்",
   brideRoleEn: "The Doctor",
   brideRoleTa: "மருத்துவர்",
 
   coupleNamesEn: "Ar. N. Bose Raj & Dr. H. Sree Babitha Sai",
-  coupleNamesTa: "Ar. என். போஸ் ராஜ் & Dr. எச். ஸ்ரீ பபிதா சாய்",
+  coupleNamesTa: "Ar. N. போஸ் ராஜ் & Dr. H. ஸ்ரீ பபிதா சாய்",
 
   topMantraEn: "LOVE   ♥   FAMILY   ♥   FOREVER",
   topMantraTa: "அன்பு   ♥   குடும்பம்   ♥   என்றென்றும்",
@@ -280,8 +280,8 @@ function applyLanguage(lang) {
   setText('briefHeading', isTa ? 'நிரந்தர இல்லத்தின் வரைபடம்' : 'The Blueprint of Forever');
   setText('briefSubtitle', isTa ? 'திட்ட விவரங்கள் • அளவு 1 : ∞' : 'Project Specifications • Scale 1 : ∞');
   setText('specValProject', isTa ? 'நிரந்தர இல்லம்' : 'Forever Home');
-  setText('specValArchitect', isTa ? 'Ar. என். போஸ் ராஜ்' : 'Ar. N. Bose Raj');
-  setText('specValDoctor', isTa ? 'Dr. எச். ஸ்ரீ பபிதா சாய்' : 'Dr. H. Sree Babitha Sai');
+  setText('specValArchitect', isTa ? 'Ar. N. போஸ் ராஜ்' : 'Ar. N. Bose Raj');
+  setText('specValDoctor', isTa ? 'Dr. H. ஸ்ரீ பபிதா சாய்' : 'Dr. H. Sree Babitha Sai');
   setText('specValFoundation', isTa ? 'அன்பு, நம்பிக்கை & குடும்பத்தினர் ஆசி' : 'Love, Trust & Family Blessings');
   setText('specValVitals', isTa ? 'இரு இதயங்கள், ஒரே துடிப்பு' : 'Two hearts, one rhythm');
   setText('specValDates', isTa ? '28 & 29 நவம்பர் 2026' : '28 & 29 November 2026');
@@ -399,10 +399,10 @@ function updateRsvpLinks(isTa) {
 
   if (isTa) {
     if (guestName) {
-      msgYes = `வணக்கம்! ${guestName} சார்பாக மகிழ்ச்சியுடன் தெரிவிக்கிறோம்: Ar. என். போஸ் ராஜ் & Dr. எச். ஸ்ரீ பபிதா சாய் திருமண விழாவிற்கு (நவம்பர் 28 & 29, 2026) நாங்கள் தவறாமல் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
+      msgYes = `வணக்கம்! ${guestName} சார்பாக மகிழ்ச்சியுடன் தெரிவிக்கிறோம்: Ar. N. போஸ் ராஜ் & Dr. H. ஸ்ரீ பபிதா சாய் திருமண விழாவிற்கு (நவம்பர் 28 & 29, 2026) நாங்கள் தவறாமல் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
       msgNo = `வணக்கம்! ${guestName} சார்பாக எங்கள் அன்பான வாழ்த்துகள். தவிர்க்க முடியாத காரணத்தால் எங்களால் திருமண விழாவிற்கு வர இயலவில்லை. மணமக்களுக்கு எங்களது உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
     } else {
-      msgYes = `வணக்கம்! Ar. என். போஸ் ராஜ் & Dr. எச். ஸ்ரீ பபிதா சாய் திருமண விழாவிற்கு (நவம்பர் 28 & 29, 2026) நான்/நாங்கள் மகிழ்ச்சியுடன் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
+      msgYes = `வணக்கம்! Ar. N. போஸ் ராஜ் & Dr. H. ஸ்ரீ பபிதா சாய் திருமண விழாவிற்கு (நவம்பர் 28 & 29, 2026) நான்/நாங்கள் மகிழ்ச்சியுடன் வருகை தருகிறோம். விழாவில் சந்திப்போம்! 🎉`;
       msgNo = `வணக்கம்! தவிர்க்க முடியாத காரணத்தால் திருமண விழாவிற்கு வர இயலவில்லை. மணமக்களுக்கு எங்கள் உளமார்ந்த நல்வாழ்த்துகளும் ஆசிகளும்! 🙏`;
     }
   } else {
