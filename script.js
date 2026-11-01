@@ -40,9 +40,9 @@ const EVENT_CONFIG = {
   taglineRightTa: "மிக்க மகிழ்ச்சியுடன், எங்கள் ஆனந்தத்தைப் பகிர்ந்துகொண்டு, தங்கள் நல்வருகையால் எங்கள் திருமணத்தை சிறப்பிக்க வேண்டுகிறோம்.",
 
   inviteCallEn: "CORDIALLY INVITE YOU TO OUR",
-  inviteCallTa: "நடைபெறும் மங்கல",
+  inviteCallTa: "நடைபெறும் மங்கள",
   celebrationTitleEn: "Wedding Celebrations",
-  celebrationTitleTa: "திருமண விழா கொண்டாட்டங்கள்",
+  celebrationTitleTa: "திருமண விழா",
 
   heroDatesEn: "28th & 29th November 2026",
   heroDatesTa: "28 & 29 நவம்பர் 2026",
@@ -53,13 +53,13 @@ const EVENT_CONFIG = {
   architectDoctorTaglineTa: "அவர் இடங்களை வடிவமைக்கிறார்; அவர் இதயங்களைக் குணமாக்குகிறார். இருவரும் இணைந்து, ஒவ்வொரு இதயத் துடிப்பிலும் ஒரு நிலையான இல்லம் கட்டுகிறார்கள்.",
 
   // ---------------------------------------------------------------------------
-  // 2. COUNTDOWN TARGET (Reception: 28 Nov 2026, 7:00 PM IST)
+  // 2. COUNTDOWN TARGET (Wedding Muhurtham: Sunday, 29 Nov 2026, 8:00 AM IST)
   // ---------------------------------------------------------------------------
-  countdownTargetISO: "2026-11-28T19:00:00+05:30",
+  countdownTargetISO: "2026-11-29T08:00:00+05:30",
   muhurthamTargetISO: "2026-11-29T08:00:00+05:30",
 
-  countdownNoteEn: "Celebrations begin with Reception on Saturday, 28 Nov 2026 • 7:00 PM",
-  countdownNoteTa: "வரவேற்பு விழா: சனிக்கிழமை, 28 நவம்பர் 2026 • மாலை 7:00 மணி முதல்",
+  countdownNoteEn: "Subha Muhurtham: Sunday, 29 Nov 2026 • 8:00 AM – 9:00 AM",
+  countdownNoteTa: "சுப முகூர்த்தம்: ஞாயிற்றுக்கிழமை, 29 நவம்பர் 2026 • காலை 8:00 – 9:00 மணி",
 
   // ---------------------------------------------------------------------------
   // 3. THE THREE CELEBRATIONS (EXACTLY FROM THE INVITATION CARD)
@@ -68,7 +68,7 @@ const EVENT_CONFIG = {
     {
       id: "reception",
       titleEn: "RECEPTION",
-      titleTa: "மங்கல வரவேற்பு",
+      titleTa: "மங்கள வரவேற்பு",
       iconSvg: `
         <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 14l6 14h-12l6-14z" />
@@ -245,10 +245,17 @@ function applyLanguage(lang) {
 
   // Envelope Intro
   setText('envelopeTitleMain', isTa ? 'திருமண அழைப்பிதழ்' : 'WEDDING INVITATION');
-  setText('envelopeBlessing', isTa ? 'சுப முகூர்த்த அழைப்பிதழ் • மங்கல நாண் பூட்டுதல்' : 'शुभ विवाह • Mangalya Dharanam');
+  setText('envelopeBlessing', isTa ? 'சுப முகூர்த்த அழைப்பிதழ் • மங்கள நாண் பூட்டுதல்' : 'Subha Muhurtham • Mangalya Dharanam');
+  setText('envelopeProfLine', isTa ? '📐 கட்டடக் கலை • மருத்துவம் 🩺' : '📐 Architecture • Medicine 🩺');
+  setText('cardSlideMantra', isTa ? 'கட்டடக் கலையும் மருத்துவமும் இணையும் • அன்பின் புதிய தொடக்கம் ♥' : 'Where Architecture Meets Medicine • A Lifetime of Love');
+  setText('cardSlideWelcome', isTa ? 'எங்கள் திருமண நன்னாளுக்கு தங்களை அன்புடன் வரவேற்கிறோம்!' : 'Welcome to our wedding celebrations!');
   const openLabel = document.querySelector('.open-label-text');
   if (openLabel) {
     openLabel.textContent = isTa ? 'அழைப்பிதழைத் திறக்க' : 'Tap to Open Invitation';
+  }
+  const openInviteMusicHint = document.getElementById('openInviteMusicHint');
+  if (openInviteMusicHint) {
+    openInviteMusicHint.textContent = isTa ? '🎵 திருமண மங்கள இசை ஒலிக்கும்' : '🎵 Celebratory music will play';
   }
   const envelopeGuestTag = document.getElementById('envelopeGuestTag');
   if (envelopeGuestTag) {
@@ -286,8 +293,17 @@ function applyLanguage(lang) {
   setText('heroCity', isTa ? EVENT_CONFIG.heroCityTa : EVENT_CONFIG.heroCityEn);
   setText('architectDoctorTagline', isTa ? EVENT_CONFIG.architectDoctorTaglineTa : EVENT_CONFIG.architectDoctorTaglineEn);
 
-  // Countdown Section
-  setText('countdownHeading', isTa ? 'திருமண கொண்டாட்டங்களுக்கான காத்திருப்பு' : 'Counting Down to the Celebrations');
+  // Lifeline Caption
+  const lifelineCaption = document.getElementById('lifelineCaption');
+  if (lifelineCaption) {
+    lifelineCaption.innerHTML = isTa
+      ? '<span>🏛️ அவர் இடங்களை வடிவமைக்கிறார்</span> <span class="caption-dot">&bull;</span> <span>🩺 அவர் இதயங்களைக் குணமாக்குகிறார்</span>'
+      : '<span>🏛️ He designs spaces</span> <span class="caption-dot">&bull;</span> <span>🩺 She heals hearts</span>';
+  }
+
+  // Countdown Section (Wedding Muhurtham)
+  setText('countdownBadgeText', isTa ? 'சுப முகூர்த்த திருமண நன்னாள்' : 'AUSPICIOUS WEDDING MUHURTHAM');
+  setText('countdownHeading', isTa ? 'புனித திருமண முகூர்த்தத்திற்கான கவுண்டவுன்' : 'Counting Down to the Wedding Muhurtham');
   setText('countdownNote', isTa ? EVENT_CONFIG.countdownNoteTa : EVENT_CONFIG.countdownNoteEn);
   setText('labelDays', isTa ? 'நாட்கள்' : 'Days');
   setText('labelHours', isTa ? 'மணி' : 'Hours');
@@ -296,7 +312,7 @@ function applyLanguage(lang) {
 
   // Events Section
   setText('eventsHeading', isTa ? 'நிகழ்ச்சி நிரல்' : 'Programme of Celebrations');
-  setText('eventsSubtitle', isTa ? 'மங்கல நிகழ்வுகள் மற்றும் விருந்தில் கலந்து சிறப்பிக்க வேண்டுகிறோம்' : 'Join us for every blessed ceremony and feast');
+  setText('eventsSubtitle', isTa ? 'மங்கள நிகழ்வுகள் மற்றும் விருந்தில் கலந்து சிறப்பிக்க வேண்டுகிறோம்' : 'Join us for every blessed ceremony and feast');
   renderCelebrationCards(isTa);
 
   // Project Brief
@@ -370,8 +386,13 @@ function renderCelebrationCards(isTa) {
 
       <div class="event-card-actions">
         <a href="${ev.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-event-map" aria-label="Open ${ev.venueNameEn} in Google Maps">
-          <span>🗺️</span>
-          <span>${isTa ? 'கூகுள் மேப்பில் பார்க்க' : 'Open in Google Maps'}</span>
+          <svg class="google-maps-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#EA4335"/>
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 5.37 2.87 8.5L12 22l4.13-4.5C17.81 14.37 19 11.38 19 9c0-3.87-3.13-7-7-7z" fill="#34A853"/>
+            <circle cx="12" cy="9" r="3.2" fill="#FFFFFF"/>
+            <circle cx="12" cy="9" r="1.8" fill="#4285F4"/>
+          </svg>
+          <span>${isTa ? 'கூகுள் மேப்' : 'Google Maps'}</span>
         </a>
         <button class="btn btn-event-cal" data-event-idx="${idx}" aria-label="Add ${ev.titleEn} to Calendar">
           <span>🗓️</span>
@@ -476,8 +497,8 @@ function initCountdown() {
       setNumberAnimated(secsEl, 0);
       if (statusEl) {
         statusEl.textContent = currentLang === 'ta'
-          ? 'திருமண கொண்டாட்டங்கள் இனிதே துவங்கி நடைபெறுகின்றன! 🎉'
-          : 'The wedding celebrations are underway! 🎉';
+          ? 'சுப முகூர்த்த திருமண வைபவம் இனிதே துவங்கியது! 🎉'
+          : 'The Auspicious Wedding Muhurtham has arrived! 🎉';
       }
       return;
     }

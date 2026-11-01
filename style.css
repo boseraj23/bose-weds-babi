@@ -592,13 +592,21 @@ body {
 
 .lifeline-caption {
   display: flex;
-  justify-content: space-between;
-  font-size: 0.82rem;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: var(--text-muted);
   padding: 0 10px;
-  margin-top: 4px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.caption-dot {
+  color: var(--color-gold);
+  font-size: 0.9rem;
 }
 
 .tagline-story {
@@ -890,14 +898,9 @@ body {
 
 .event-card-actions {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-@media (min-width: 480px) {
-  .event-card-actions {
-    flex-direction: row;
-  }
+  flex-direction: row;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -906,10 +909,10 @@ body {
   justify-content: center;
   gap: 8px;
   min-height: var(--min-touch-target);
-  padding: 10px 18px;
+  padding: 10px 14px;
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 0.86rem;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
@@ -922,7 +925,8 @@ body {
   background: var(--bg-card-subtle);
   border: 1.5px solid var(--color-gold);
   color: var(--text-dark);
-  flex: 1;
+  flex: 1 1 130px;
+  min-width: 120px;
 }
 
 .btn-event-map:hover {
@@ -934,12 +938,22 @@ body {
   background: #FFFFFF;
   border: 1.5px solid var(--color-crimson);
   color: var(--color-crimson);
-  flex: 1;
+  flex: 1 1 130px;
+  min-width: 120px;
 }
 
 .btn-event-cal:hover {
   background: var(--color-crimson);
   color: #FFFFFF;
+}
+
+.google-maps-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
 }
 
 /* ==========================================================================
@@ -1204,7 +1218,7 @@ body {
 .royal-envelope {
   position: relative;
   width: 100%;
-  height: 485px;
+  height: min(530px, 84vh);
   perspective: 1200px;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1225,7 +1239,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 45px 22px 24px;
+  padding: 38px 16px 14px;
   text-align: center;
   z-index: 3;
   overflow: hidden;
@@ -1247,7 +1261,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 65px;
+  height: 36px;
   background: linear-gradient(180deg, #F4E8CB 0%, #E8D6AB 100%);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   border-top-left-radius: 18px;
@@ -1264,79 +1278,88 @@ body {
 }
 
 .mini-gopuram-svg {
-  width: 46px;
-  height: 32px;
+  width: 36px;
+  height: 24px;
   color: var(--color-gold);
-  margin-top: 10px;
-  margin-bottom: 4px;
+  margin-top: 0;
+  margin-bottom: 2px;
   filter: drop-shadow(0 2px 4px rgba(194, 150, 48, 0.3));
 }
 
 .envelope-blessing-calligraphy {
   font-family: var(--font-tamil-serif);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--color-gold-dark);
+  margin-bottom: 2px;
+}
+
+.envelope-prof-line {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--color-navy);
   margin-bottom: 4px;
 }
 
 .envelope-title-main {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 800;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   color: var(--color-crimson);
-  margin: 4px 0 8px;
+  margin: 2px 0 4px;
 }
 
 .envelope-gold-divider {
-  width: 120px;
+  width: 100px;
   height: 2px;
   background: var(--gold-gradient);
-  margin: 4px auto 14px;
+  margin: 2px auto 8px;
   border-radius: 2px;
 }
 
 .envelope-names {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin-bottom: 8px;
+  gap: 1px;
+  margin-bottom: 4px;
 }
 
 .env-groom {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.18rem;
   font-weight: 700;
   color: var(--color-navy);
 }
 
 .env-amp {
   font-family: var(--font-script);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--color-gold);
   line-height: 1;
 }
 
 .env-bride {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.18rem;
   font-weight: 700;
   color: var(--color-crimson);
 }
 
 .envelope-date-line {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-secondary);
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .envelope-guest-tag {
   font-family: var(--font-script);
-  font-size: 1.2rem;
+  font-size: 1.12rem;
   color: var(--color-gold-dark);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 /* Wax Seal Button */
@@ -1347,8 +1370,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 8px;
+  gap: 5px;
+  padding: 2px;
   border-radius: 24px;
   transition: transform 0.25s ease;
   position: relative;
@@ -1361,12 +1384,12 @@ body {
 }
 
 .wax-seal {
-  width: 72px;
-  height: 72px;
+  width: 66px;
+  height: 66px;
   background: radial-gradient(circle at 35% 35%, #D92546 0%, #8C182B 60%, #4D0A16 100%);
   border-radius: 50%;
   box-shadow: 0 8px 20px rgba(140, 24, 43, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -3px 6px rgba(0, 0, 0, 0.4);
-  border: 3px solid rgba(244, 219, 135, 0.8);
+  border: 3px solid rgba(244, 219, 135, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1385,12 +1408,26 @@ body {
   50% { transform: scale(1.06); box-shadow: 0 12px 28px rgba(226, 40, 71, 0.65), 0 0 20px rgba(244, 219, 135, 0.5); }
 }
 
+.seal-duo-crest {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #FFFDF8;
+}
+
+.seal-icon-svg {
+  opacity: 0.92;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+  flex-shrink: 0;
+}
+
 .seal-monogram {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 800;
   color: #FFFDF8;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
@@ -1424,23 +1461,23 @@ body {
   color: var(--text-muted);
 }
 
-/* Sliding Card inside the envelope */
+/* Sliding Card inside the envelope (Creative Doctor & Architect Theme) */
 .envelope-card-slide {
   position: absolute;
   top: 10px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
   background: #FFFDF8;
   border-radius: 12px;
   border: 2px solid var(--color-gold);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
+  padding: 16px 14px;
   opacity: 0;
   transform: translateY(20px);
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
@@ -1449,6 +1486,51 @@ body {
 .envelope-overlay.is-opening .envelope-card-slide {
   opacity: 1;
   transform: translateY(-80px);
+}
+
+.card-slide-crest {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.slide-crest-badge {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(140, 24, 43, 0.08);
+  color: var(--color-crimson);
+  border: 1px solid rgba(140, 24, 43, 0.2);
+}
+
+.slide-crest-heart {
+  color: var(--color-crimson);
+  font-size: 0.82rem;
+}
+
+.card-slide-mantra {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.card-slide-couple {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-crimson);
+  margin-bottom: 4px;
+}
+
+.card-slide-welcome {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
 }
 
 .btn-skip-intro {
@@ -1497,7 +1579,9 @@ body {
    ========================================================================== */
 html[lang="ta"] body {
   font-family: var(--font-tamil-sans);
-  line-height: 1.7;
+  line-height: 1.65;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 html[lang="ta"] .person-name,
@@ -1507,17 +1591,79 @@ html[lang="ta"] .top-mantra,
 html[lang="ta"] .family-blessing,
 html[lang="ta"] .closing-quote,
 html[lang="ta"] .envelope-title-main,
+html[lang="ta"] .envelope-blessing-calligraphy,
+html[lang="ta"] .envelope-names,
 html[lang="ta"] .footer-family-names {
   font-family: var(--font-tamil-serif);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
+}
+
+html[lang="ta"] .person-name {
+  font-size: clamp(1.25rem, 5vw, 1.8rem);
+  line-height: 1.25;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 html[lang="ta"] .celebrations-title {
   font-family: var(--font-tamil-serif);
-  font-size: 2.3rem;
+  font-size: clamp(1.4rem, 5.5vw, 2.1rem);
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.3;
   color: var(--color-crimson);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  margin: 4px 0 12px;
+}
+
+html[lang="ta"] .cordially-text {
+  font-family: var(--font-tamil-serif);
+  font-size: clamp(0.85rem, 3.4vw, 1rem);
+  letter-spacing: 0.6px;
+}
+
+html[lang="ta"] .section-title {
+  font-size: clamp(1.15rem, 4.8vw, 1.6rem);
+  line-height: 1.35;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+html[lang="ta"] .event-title {
+  font-size: clamp(1.02rem, 4vw, 1.25rem);
+  line-height: 1.3;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+html[lang="ta"] .countdown-target-note {
+  font-size: clamp(0.8rem, 3.2vw, 0.92rem);
+  line-height: 1.45;
+}
+
+html[lang="ta"] .envelope-title-main {
+  font-size: clamp(1.15rem, 4.5vw, 1.55rem);
+  letter-spacing: 1px;
+}
+
+html[lang="ta"] .envelope-blessing-calligraphy {
+  font-size: clamp(0.82rem, 3.2vw, 0.95rem);
+  line-height: 1.4;
+}
+
+html[lang="ta"] .envelope-names {
+  font-size: clamp(0.95rem, 3.8vw, 1.25rem);
+  line-height: 1.35;
+}
+
+html[lang="ta"] .envelope-prof-line {
+  font-size: clamp(0.75rem, 2.8vw, 0.85rem);
+}
+
+html[lang="ta"] .card-slide-mantra {
+  font-size: clamp(0.82rem, 3.2vw, 0.92rem);
+  line-height: 1.4;
 }
 
 html[lang="ta"] .quote-pill.script-text {
@@ -1529,7 +1675,7 @@ html[lang="ta"] .quote-pill.script-text {
 
 html[lang="ta"] .closing-heart {
   font-family: var(--font-tamil-serif);
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
   font-weight: 700;
 }
 

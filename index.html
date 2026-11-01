@@ -75,7 +75,8 @@
             </svg>
           </div>
 
-          <p class="envelope-blessing-calligraphy" id="envelopeBlessing">शुभ विवाह &bull; மங்கல நாண் பூட்டுதல்</p>
+          <p class="envelope-blessing-calligraphy" id="envelopeBlessing">சுப முகூர்த்தம் &bull; மங்கள நாண் பூட்டுதல்</p>
+          <p class="envelope-prof-line" id="envelopeProfLine">📐 Architecture &bull; Medicine 🩺</p>
           <p class="envelope-title-main" id="envelopeTitleMain">WEDDING INVITATION</p>
           <div class="envelope-gold-divider" aria-hidden="true"></div>
 
@@ -90,11 +91,21 @@
           <!-- Personalized Greeting Tag -->
           <p class="envelope-guest-tag" id="envelopeGuestTag">Dear Family &amp; Friends,</p>
 
-          <!-- Interactive Golden Wax Seal Button -->
+          <!-- Interactive Golden Wax Seal Button (Creative Architect & Doctor Crest) -->
           <button id="btnOpenInvitation" class="wax-seal-btn" aria-label="Open wedding invitation and play background song">
             <div class="wax-seal" id="waxSeal">
               <div class="wax-seal-inner">
-                <span class="seal-monogram">B ♥ B</span>
+                <div class="seal-duo-crest" aria-hidden="true">
+                  <!-- Architect Drafting Compass Icon -->
+                  <svg class="seal-icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                    <path d="M12 1a2 2 0 0 0-2 2c0 .7.4 1.3 1 1.7V6l-5.6 13a1 1 0 1 0 1.8.8L8.6 16h6.8l1.4 3.8a1 1 0 1 0 1.8-.8L13 6V4.7c.6-.4 1-1 1-1.7a2 2 0 0 0-2-2zm0 8 2.1 5H9.9L12 9z"/>
+                  </svg>
+                  <span class="seal-monogram">B ♥ B</span>
+                  <!-- Doctor Stethoscope Icon -->
+                  <svg class="seal-icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                    <path d="M8 2v5a4 4 0 0 0 8 0V2h2v5a6 6 0 0 1-5 5.9V16a3 3 0 0 0 3 3h1a2 2 0 1 1 0 4h-1a7 7 0 0 1-7-7v-3.1A6 6 0 0 1 4 7V2h2zm0 0H6V0h2v2zm10 0h-2V0h2v2z"/>
+                  </svg>
+                </div>
                 <span class="seal-glow" aria-hidden="true"></span>
               </div>
             </div>
@@ -102,16 +113,21 @@
               <span class="hand-tap-icon" aria-hidden="true">👉</span> 
               <span class="open-label-text">Tap to Open Invitation</span>
             </span>
-            <span class="music-hint-badge" aria-hidden="true">🎵 Celebratory music will play</span>
+            <span class="music-hint-badge" id="openInviteMusicHint" aria-hidden="true">🎵 Celebratory music will play</span>
           </button>
         </div>
 
-        <!-- The Royal Letter/Card that slides up out of the pocket -->
+        <!-- The Royal Letter/Card that slides up out of the pocket (Creative Doctor & Architect Motif) -->
         <div class="envelope-card-slide" id="envelopeCardSlide" aria-hidden="true">
           <div class="card-slide-inner">
-            <p class="card-slide-mantra">A New Beginning, A Lifetime Together ♥</p>
+            <div class="card-slide-crest" aria-hidden="true">
+              <span class="slide-crest-badge">🏛️ Architecture</span>
+              <span class="slide-crest-heart">♥</span>
+              <span class="slide-crest-badge">🩺 Medicine</span>
+            </div>
+            <p class="card-slide-mantra" id="cardSlideMantra">Where Architecture Meets Medicine &bull; A Lifetime of Love</p>
             <p class="card-slide-couple">Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai</p>
-            <p class="card-slide-welcome">Welcome to our wedding celebrations!</p>
+            <p class="card-slide-welcome" id="cardSlideWelcome">Welcome to our wedding celebrations!</p>
           </div>
         </div>
       </div>
@@ -246,15 +262,6 @@
 
       <!-- Architect & Doctor Skyline & Heartbeat Line (Dynamic Glowing Animation) -->
       <div class="lifeline-showcase" aria-hidden="true">
-        <div class="lifeline-header-row">
-          <span class="role-badge architect-badge">🏛️ The Architect &bull; Ar. Bose</span>
-          <span class="heart-pulse-indicator">
-            <span class="pulse-dot"></span>
-            <span class="pulse-text">Two Hearts &bull; One Rhythm</span>
-          </span>
-          <span class="role-badge doctor-badge">🩺 The Doctor &bull; Dr. Babi</span>
-        </div>
-
         <figure class="lifeline">
           <svg viewBox="0 0 620 120" preserveAspectRatio="xMidYMid meet" fill="none">
             <!-- Glow filter for laser/neon heartbeat effect -->
@@ -335,8 +342,9 @@
           </svg>
         </figure>
 
-        <figcaption class="lifeline-caption">
+        <figcaption class="lifeline-caption" id="lifelineCaption">
           <span>🏛️ He designs spaces</span>
+          <span class="caption-dot">&bull;</span>
           <span>🩺 She heals hearts</span>
         </figcaption>
       </div>
@@ -353,11 +361,11 @@
     <section class="card countdown-card reveal" aria-labelledby="countdownHeading">
       <div class="live-pulse-badge">
         <span class="live-pulse-dot" aria-hidden="true"></span>
-        <span class="live-pulse-text">AUSPICIOUS MUHURTHAM COUNTDOWN</span>
+        <span class="live-pulse-text" id="countdownBadgeText">AUSPICIOUS WEDDING MUHURTHAM</span>
       </div>
 
-      <h2 class="section-title" id="countdownHeading">Counting Down to the Celebrations</h2>
-      <p class="countdown-target-note" id="countdownNote">Reception: Saturday, 28 Nov 2026 &bull; 7:00 PM</p>
+      <h2 class="section-title" id="countdownHeading">Counting Down to the Wedding Muhurtham</h2>
+      <p class="countdown-target-note" id="countdownNote">Subha Muhurtham: Sunday, 29 Nov 2026 &bull; 8:00 AM – 9:00 AM</p>
 
       <div class="timer-grid" role="timer" aria-live="polite" id="countdownTimer">
         <div class="timer-box" id="boxDays">
