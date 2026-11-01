@@ -84,10 +84,12 @@ const EVENT_CONFIG = {
       timeTa: "மாலை 7:00 மணி முதல்",
       venueNameEn: "Thangam Maaligai",
       venueNameTa: "தங்கம் மாளிகை",
-      venueDetailsEn: "(Near Tollgate Metro, Chennai - 600081)",
-      venueDetailsTa: "(டோல்கேட் மெட்ரோ அருகில், சென்னை - 600081)",
-      transitEn: "Bus Stop: Tollgate Bus Stand (6A, 6D, 56, 28, 56A)",
-      transitTa: "பேருந்து நிறுத்தம்: டோல்கேட் பேருந்து நிலையம் (6A, 6D, 56, 28, 56A)",
+      venueDetailsEn: "Near Tollgate Metro Station, Chennai - 600081",
+      venueDetailsTa: "டோல்கேட் மெட்ரோ நிலையம் அருகில், சென்னை - 600081",
+      isMetro: true,
+      transitIcon: "🚇",
+      transitEn: "Metro: Tollgate Metro Station (Walking Distance)",
+      transitTa: "மெட்ரோ: டோல்கேட் மெட்ரோ நிலையம் (நடக்கும் தூரத்தில்)",
       mapsUrl: "https://www.google.com/maps/search/?api=1&query=Thangam+Maaligai+Tollgate+Chennai",
       icsEvent: {
         summary: "Reception: Ar. N. Bose Raj & Dr. H. Sree Babitha Sai",
@@ -117,10 +119,12 @@ const EVENT_CONFIG = {
       timeTa: "காலை 8:00 – 9:00 மணி",
       venueNameEn: "Thangam Maaligai",
       venueNameTa: "தங்கம் மாளிகை",
-      venueDetailsEn: "(Near Tollgate Metro, Chennai - 600081)",
-      venueDetailsTa: "(டோல்கேட் மெட்ரோ அருகில், சென்னை - 600081)",
-      transitEn: "Bus Stop: Tollgate Bus Stand (6A, 6D, 56, 28, 56A)",
-      transitTa: "பேருந்து நிறுத்தம்: டோல்கேட் பேருந்து நிலையம் (6A, 6D, 56, 28, 56A)",
+      venueDetailsEn: "Near Tollgate Metro Station, Chennai - 600081",
+      venueDetailsTa: "டோல்கேட் மெட்ரோ நிலையம் அருகில், சென்னை - 600081",
+      isMetro: true,
+      transitIcon: "🚇",
+      transitEn: "Metro: Tollgate Metro Station (Walking Distance)",
+      transitTa: "மெட்ரோ: டோல்கேட் மெட்ரோ நிலையம் (நடக்கும் தூரத்தில்)",
       mapsUrl: "https://www.google.com/maps/search/?api=1&query=Thangam+Maaligai+Tollgate+Chennai",
       icsEvent: {
         summary: "Wedding Muhurtham: Ar. N. Bose Raj & Dr. H. Sree Babitha Sai",
@@ -151,6 +155,7 @@ const EVENT_CONFIG = {
       venueNameTa: "விருதுநகர் நாடார் மாளிகை",
       venueDetailsEn: "27, Somu Chetty 5th St, Royapuram, Chennai - 600013",
       venueDetailsTa: "27, சோமு செட்டி 5வது தெரு, ராயபுரம், சென்னை - 600013",
+      transitIcon: "✨",
       transitEn: "Traditional South Indian Kari virunthu served with love",
       transitTa: "அன்புடன் பரிமாறப்படும் பாரம்பரிய தென்னிந்திய கறி விருந்து",
       mapsUrl: "https://www.google.com/maps/search/?api=1&query=Virudhunagar+Nadar+Maaligai+Royapuram+Chennai",
@@ -338,8 +343,8 @@ function renderCelebrationCards(isTa) {
           </div>
         </div>
 
-        <div class="event-meta-row transit-row">
-          <span class="meta-icon" aria-hidden="true">🚌</span>
+        <div class="event-meta-row transit-row ${ev.isMetro ? 'metro-highlight' : ''}">
+          <span class="meta-icon" aria-hidden="true">${ev.transitIcon || '📍'}</span>
           <div class="meta-content">
             <p class="transit-info">${isTa ? ev.transitTa : ev.transitEn}</p>
           </div>

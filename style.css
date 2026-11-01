@@ -650,9 +650,36 @@ body {
 
 .transit-row {
   background: var(--bg-card-alt);
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(194, 150, 48, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.transit-row.metro-highlight {
+  background: linear-gradient(135deg, rgba(19, 46, 82, 0.08) 0%, rgba(194, 150, 48, 0.14) 100%);
+  border: 1.5px solid rgba(19, 46, 82, 0.32);
+  box-shadow: 0 2px 8px rgba(19, 46, 82, 0.08);
+}
+
+.transit-row.metro-highlight .transit-info {
+  color: var(--color-navy);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.2px;
+}
+
+.event-feast .transit-row {
+  background: linear-gradient(135deg, rgba(140, 24, 43, 0.06) 0%, rgba(194, 150, 48, 0.14) 100%);
+  border: 1.5px dashed rgba(140, 24, 43, 0.35);
+}
+
+.event-feast .transit-info {
+  color: var(--color-crimson);
+  font-weight: 700;
+  font-size: 0.92rem;
 }
 
 .transit-info {
