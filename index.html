@@ -44,10 +44,11 @@
        ========================================================================= -->
   <aside id="envelopeOverlay" class="cinematic-intro-overlay" role="dialog" aria-modal="true" aria-label="Wedding Invitation Cinematic Presentation">
     
-    <!-- Ambient Backdrop & Lighting -->
+    <!-- Ambient Backdrop & Volumetric Lighting -->
     <div class="cinematic-backdrop" aria-hidden="true">
       <div class="cinematic-ambient-glow"></div>
       <div class="cinematic-drafting-grid"></div>
+      <div class="cinematic-vignette"></div>
     </div>
 
     <!-- Floating Champagne Particles & Jasmine Petals Canvas -->
@@ -63,123 +64,90 @@
     <!-- The Central Cinematic Stage (Responsive 9:16 Invitation Card) -->
     <div class="cinematic-card-stage" id="cinematicStage">
       
-      <!-- LAYER 1: Animated SVG Technical Line-Drawing Layer (Scenes 1-4) -->
-      <div class="cinematic-drawing-layer" id="drawingLayer" aria-hidden="true">
-        <svg viewBox="0 0 575 1024" class="cinematic-svg" preserveAspectRatio="xMidYMid meet">
+      <!-- LAYER 1: Textured Parchment Base & Royal Arch (Scenes 1-4) -->
+      <div class="stage-parchment-base" id="parchmentBase" aria-hidden="true">
+        <div class="card-paper-grain"></div>
+        <div class="card-drafting-grid"></div>
+
+        <!-- Royal Arch & Title Header -->
+        <svg viewBox="0 0 575 1024" class="parchment-arch-svg" preserveAspectRatio="xMidYMid meet">
           <defs>
-            <!-- Metallic Gold Gradients -->
-            <linearGradient id="goldStrokeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="goldArchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#C29630" />
               <stop offset="35%" stop-color="#F4DB87" />
               <stop offset="70%" stop-color="#C29630" />
               <stop offset="100%" stop-color="#9A7220" />
             </linearGradient>
-
-            <linearGradient id="goldShineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#B8860B" />
-              <stop offset="40%" stop-color="#FFD700" />
-              <stop offset="60%" stop-color="#FFF8DC" />
-              <stop offset="80%" stop-color="#DAA520" />
-              <stop offset="100%" stop-color="#B8860B" />
-            </linearGradient>
-
-            <!-- Radial Flare Glow Filter -->
-            <filter id="goldGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="3.5" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            
-            <filter id="bloomFlare" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="10" result="blur" />
+            <filter id="goldArchGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="2" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
           </defs>
-
-          <!-- SCENE 1: Temple Arch & Title Lines -->
-          <g class="svg-scene scene-1-elements">
-            <path class="draw-arch-outer" d="M 45 320 C 45 100, 140 42, 287 42 C 435 42, 530 100, 530 320" />
-            <path class="draw-arch-inner" d="M 58 330 C 58 115, 150 55, 287 55 C 425 55, 517 115, 517 330" />
-            <text x="287" y="145" text-anchor="middle" class="draw-title-text">W E D D I N G   I N V I T A T I O N</text>
-            <path class="draw-title-ornament" d="M 230 175 H 270 M 275 175 L 287 167 L 299 175 M 304 175 H 344" />
-          </g>
-
-          <!-- SCENE 2: The Architect's World (Modern Villa Elevation & Compass) -->
-          <g class="svg-scene scene-2-architect">
-            <!-- Drafting Guidelines / Extension Lines -->
-            <g class="drafting-guides" opacity="0.35">
-              <line x1="30" y1="520" x2="280" y2="520" stroke="#C29630" stroke-width="0.8" stroke-dasharray="3 3" />
-              <line x1="85" y1="415" x2="85" y2="530" stroke="#C29630" stroke-width="0.8" stroke-dasharray="2 3" />
-              <line x1="150" y1="405" x2="150" y2="530" stroke="#C29630" stroke-width="0.8" stroke-dasharray="2 3" />
-              <line x1="195" y1="440" x2="195" y2="530" stroke="#C29630" stroke-width="0.8" stroke-dasharray="2 3" />
-            </g>
-
-            <!-- Villa Building Elevation Lines -->
-            <path class="draw-building main-outline" d="M 45 520 H 222 V 485 H 175 V 450 H 75 V 485 H 45 Z" />
-            <path class="draw-building roof-slab" d="M 38 485 H 228" />
-            <path class="draw-building upper-cantilever" d="M 70 450 H 180 V 425 L 140 415 L 70 425 Z" />
-            <path class="draw-building details" d="M 85 432 H 125 V 450 M 135 432 H 165 V 450 M 55 492 H 105 V 520 M 115 492 H 145 V 520 M 178 490 V 520 M 184 490 V 520 M 190 490 V 520 M 196 490 V 520" />
-
-            <!-- Drafting Compass / Divider -->
-            <g class="draw-compass">
-              <circle cx="238" cy="475" r="4.5" class="compass-head" />
-              <line x1="238" y1="475" x2="222" y2="520" class="compass-leg-left" />
-              <line x1="238" y1="475" x2="254" y2="520" class="compass-leg-right" />
-              <line x1="228" y1="496" x2="248" y2="496" class="compass-spindle" />
-              <path class="compass-arc" d="M 222 520 A 32 32 0 0 1 254 520" stroke-dasharray="2 3" />
-            </g>
-          </g>
-
-          <!-- SCENE 3: The Doctor's World (Stethoscope & Realistic ECG Heartbeat) -->
-          <g class="svg-scene scene-3-doctor">
-            <!-- Stethoscope Outline on the right -->
-            <path class="draw-stethoscope binaural" d="M 475 440 C 480 465, 490 480, 495 488 C 500 480, 510 465, 515 440" />
-            <path class="draw-stethoscope earpieces" d="M 472 438 H 478 M 512 438 H 518" />
-            <path class="draw-stethoscope tubing" d="M 495 488 C 495 508, 515 515, 510 535 C 505 550, 475 550, 470 535 C 468 528, 475 522, 480 522" />
-            <circle cx="482" cy="522" r="8" class="draw-stethoscope chestpiece" />
-
-            <!-- ECG Cardiac Wave Trace -->
-            <path class="draw-ecg-line" d="M 500 520 H 455 L 448 514 L 442 520 H 434 L 430 528 L 424 468 L 417 542 L 412 520 H 404 L 398 508 L 392 520 H 375" />
-          </g>
-
-          <!-- SCENE 4: Convergence & Materialization of B♥B Monogram -->
-          <g class="svg-scene scene-4-convergence">
-            <!-- Connector connecting Architect & ECG into Central Heart -->
-            <path class="draw-connect-left" d="M 254 520 C 278 520, 305 520, 328 520" />
-            <path class="draw-connect-right" d="M 375 520 C 362 520, 355 520, 348 520" />
-            
-            <!-- Convergence Center Heart -->
-            <path class="draw-center-heart" d="M 348 520 C 330 500, 324 480, 338 472 C 347 466, 355 472, 355 480 C 355 472, 363 466, 372 472 C 386 480, 380 500, 362 520 Z" />
-
-            <!-- Center Light Flare / Convergence Bloom -->
-            <circle cx="355" cy="495" r="28" class="convergence-glow-pulse" filter="url(#bloomFlare)" />
-
-            <!-- The Metallic Calligraphic Monogram B ♥ B -->
-            <g transform="translate(287, 338)">
-              <g class="monogram-materialize">
-                <circle cx="0" cy="0" r="70" class="monogram-ring" />
-                <!-- Jasmine garland arc along ring -->
-                <path class="monogram-floral-twig" d="M 45 -48 C 65 -25, 74 10, 58 50 C 45 75, 15 85, -12 80" />
-                <!-- B ♥ B Initials -->
-                <text x="-24" y="16" class="monogram-letter-b left">B</text>
-                <path class="monogram-heart-symbol" d="M 0 -2 C -5 -9, -11 -4, -6 3 L 0 9 L 6 3 C 11 -4, 5 -9, 0 -2 Z" />
-                <text x="24" y="16" class="monogram-letter-b right">B</text>
-              </g>
-            </g>
+          <g class="arch-gold-group" filter="url(#goldArchGlow)">
+            <path class="arch-line-outer" d="M 42 340 C 42 110, 138 38, 287 38 C 436 38, 532 110, 532 340" />
+            <path class="arch-line-inner" d="M 55 350 C 55 125, 146 52, 287 52 C 428 52, 519 125, 519 350" />
+            <text x="287" y="145" text-anchor="middle" class="arch-title-text">W E D D I N G   I N V I T A T I O N</text>
+            <path class="arch-title-ornament" d="M 230 172 H 270 M 275 172 L 287 164 L 299 172 M 304 172 H 344" />
           </g>
         </svg>
+
+        <!-- Illustration Drawing Stage (Scenes 2-4) -->
+        <div class="stage-illustration-box" id="stageIllusBox">
+          
+          <!-- Scene 2: The Architect's World (Villa Elevation & Compass) -->
+          <div class="illus-strip-part illus-part-arch" id="illusArch">
+            <img src="assets/illus_architect.png" alt="" class="illus-strip-img">
+            <div class="laser-tracer laser-tracer-arch" id="tracerArch">
+              <div class="tracer-spark-core"></div>
+              <div class="tracer-glow-halo"></div>
+            </div>
+            <!-- Animated Drafting Guidelines -->
+            <div class="drafting-overlay-lines" aria-hidden="true"></div>
+          </div>
+
+          <!-- Scene 3: The Doctor's World (Stethoscope & ECG) -->
+          <div class="illus-strip-part illus-part-doc" id="illusDoc">
+            <img src="assets/illus_doctor.png" alt="" class="illus-strip-img">
+            <div class="laser-tracer laser-tracer-doc" id="tracerDoc">
+              <div class="tracer-spark-core"></div>
+              <div class="tracer-glow-halo"></div>
+            </div>
+            <div class="cardiac-pulse-ring" id="cardiacPulseRing"></div>
+          </div>
+
+          <!-- Scene 4: Convergence Center Heart -->
+          <div class="illus-strip-part illus-part-heart" id="illusHeart">
+            <img src="assets/illus_heart.png" alt="" class="illus-strip-img">
+            <div class="convergence-bloom-flare" id="convergenceFlare"></div>
+          </div>
+
+        </div>
+
+        <!-- Scene 4: Metallic Calligraphic B ♥ B Monogram Crest Materialization -->
+        <div class="stage-monogram-box" id="stageMonogram">
+          <img src="assets/monogram-crest.png" alt="B ♥ B Monogram" class="monogram-crest-img">
+          <div class="monogram-shimmer-gleam"></div>
+          <div class="monogram-burst-halo"></div>
+        </div>
+
+        <!-- Cinematic Subtitles Bar (Scenes 1-4) -->
+        <div class="cinematic-subtitles-bar" id="cinematicSubtitles">
+          <p class="subtitle-line" id="subLine0">Two paths &bull; One destined journey</p>
+          <p class="subtitle-line" id="subLine1">🏛️ Ar. N. Bose Raj &bull; Designing Spaces</p>
+          <p class="subtitle-line" id="subLine2">🩺 Dr. H. Sree Babitha Sai &bull; Healing Hearts</p>
+          <p class="subtitle-line" id="subLine3">✨ Two worlds become one forever</p>
+        </div>
+
       </div>
 
       <!-- LAYER 2: The Final Wedding Invitation Artwork (Scene 5 Reveal) -->
       <div class="cinematic-cover-wrapper" id="coverWrapper">
         <img src="assets/invitation-cover.jpg" alt="Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai - Wedding Invitation" class="cinematic-cover-img" id="coverImg" width="575" height="1024" loading="eager">
         
-        <!-- Luxury Gold Shimmer Sweep across the Monogram -->
+        <!-- Luxury Gold Shimmer Sweep across the Monogram and details -->
         <div class="cover-shimmer-sweep" aria-hidden="true"></div>
       </div>
 

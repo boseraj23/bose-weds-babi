@@ -1282,17 +1282,16 @@ body {
 .cinematic-ambient-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 48%, rgba(244, 219, 135, 0.25) 0%, rgba(194, 150, 48, 0.08) 55%, transparent 80%);
+  background: radial-gradient(circle at 50% 48%, rgba(244, 219, 135, 0.28) 0%, rgba(194, 150, 48, 0.1) 55%, transparent 80%);
   animation: ambientLightPulse 7s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
 @keyframes ambientLightPulse {
-  0% { transform: scale(0.9); opacity: 0.6; }
+  0% { transform: scale(0.92); opacity: 0.6; }
   100% { transform: scale(1.15); opacity: 0.95; }
 }
 
-/* Subtle Technical Drafting Grid (Faint & Sophisticated) */
 .cinematic-drafting-grid {
   position: absolute;
   inset: 0;
@@ -1301,7 +1300,14 @@ body {
     linear-gradient(to bottom, rgba(194, 150, 48, 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
   opacity: 0;
-  animation: gridFadeIn 2.5s ease 0.8s forwards;
+  animation: gridFadeIn 2.5s ease 0.6s forwards;
+  pointer-events: none;
+}
+
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 65%, rgba(90, 50, 15, 0.12) 100%);
   pointer-events: none;
 }
 
@@ -1328,8 +1334,8 @@ body {
 }
 
 .cinematic-skip-btn {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(194, 150, 48, 0.45);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(194, 150, 48, 0.5);
   color: #7A5814;
   font-family: var(--font-sans);
   font-size: 0.82rem;
@@ -1338,8 +1344,9 @@ body {
   padding: 6px 14px;
   border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(194, 150, 48, 0.12);
+  box-shadow: 0 4px 14px rgba(194, 150, 48, 0.15);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: all 0.25s ease;
 }
 
@@ -1348,7 +1355,7 @@ body {
   color: #4A3205;
   border-color: #C29630;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(194, 150, 48, 0.22);
+  box-shadow: 0 6px 18px rgba(194, 150, 48, 0.25);
 }
 
 /* The Central Cinematic Stage (Responsive 9:16 Invitation Card) */
@@ -1364,7 +1371,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 24px;
-  box-shadow: 0 25px 65px rgba(90, 60, 20, 0.18), 0 8px 24px rgba(194, 150, 48, 0.15);
+  box-shadow: 0 25px 70px rgba(90, 60, 20, 0.24), 0 0 35px rgba(194, 150, 48, 0.2);
   overflow: hidden;
   background: #FAF5EB;
   animation: cinematicPushIn 12s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
@@ -1377,194 +1384,327 @@ body {
 }
 
 /* ==========================================================================
-   LAYER 1: ANIMATED TECHNICAL SVG LINE DRAWING (Scenes 1 - 4)
+   LAYER 1: TEXTURED PARCHMENT BASE & ROYAL ARCH (Scenes 1 - 4)
    ========================================================================== */
-.cinematic-drawing-layer {
+.stage-parchment-base {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   z-index: 2;
-  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: radial-gradient(circle at 50% 35%, #FFFDF9 0%, #FAF3E5 60%, #EFE4CE 100%);
+  overflow: hidden;
+  transition: opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
-.cinematic-svg {
+.card-paper-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image: radial-gradient(rgba(180, 140, 80, 0.15) 1px, transparent 1px);
+  background-size: 5px 5px;
+  pointer-events: none;
+}
+
+.card-drafting-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(194, 150, 48, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(194, 150, 48, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0;
+  animation: gridFadeIn 2.0s ease 0.4s forwards;
+  pointer-events: none;
+}
+
+.parchment-arch-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  display: block;
+  pointer-events: none;
 }
 
-/* Common Gold Stroke for technical lines */
-.cinematic-svg path,
-.cinematic-svg line,
-.cinematic-svg circle {
-  stroke: url(#goldStrokeGrad);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* Scene 1: Temple Arch & Title */
-.draw-arch-outer,
-.draw-arch-inner {
+.arch-line-outer,
+.arch-line-inner {
   fill: none;
+  stroke: url(#goldArchGrad);
+  stroke-linecap: round;
   stroke-width: 1.6;
   stroke-dasharray: 1200;
   stroke-dashoffset: 1200;
   animation: drawLine 2.2s cubic-bezier(0.2, 0.8, 0.3, 1) 0.3s forwards;
 }
 
-.draw-title-text {
+.arch-title-text {
   font-family: var(--font-serif);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 4px;
   fill: #8C6718;
   opacity: 0;
-  animation: fadeInSlow 1.8s ease 1s forwards;
+  animation: fadeInSlow 1.8s ease 0.9s forwards;
 }
 
-.draw-title-ornament {
+.arch-title-ornament {
   fill: none;
+  stroke: url(#goldArchGrad);
+  stroke-linecap: round;
   stroke-width: 1.2;
   stroke-dasharray: 200;
   stroke-dashoffset: 200;
-  animation: drawLine 1.4s ease 1.2s forwards;
+  animation: drawLine 1.4s ease 1.1s forwards;
 }
 
-/* Scene 2: The Architect's World (2s - 4s) */
-.draw-building {
-  fill: none;
-  stroke-width: 1.5;
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-  animation: drawLine 2.2s cubic-bezier(0.25, 0.9, 0.3, 1) 2.0s forwards;
+/* ==========================================================================
+   SCENES 2 - 4: ILLUSTRATION DRAWING STAGE WITH LASER TRACERS
+   ========================================================================== */
+.stage-illustration-box {
+  position: absolute;
+  top: calc(410 / 1024 * 100%);
+  left: calc(25 / 575 * 100%);
+  width: calc(525 / 575 * 100%);
+  height: calc(155 / 1024 * 100%);
+  pointer-events: none;
 }
 
-.draw-building.details {
-  stroke-width: 1.2;
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: drawLine 2s cubic-bezier(0.25, 0.9, 0.3, 1) 2.4s forwards;
+.illus-strip-part {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
 }
 
-/* Drafting Compass */
-.compass-head,
-.compass-leg-left,
-.compass-leg-right,
-.compass-spindle {
-  fill: none;
-  stroke-width: 1.8;
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: drawLine 1.6s ease 2.8s forwards;
+.illus-strip-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
-.compass-arc {
-  fill: none;
-  stroke-width: 1.2;
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: drawLine 1.6s ease 3.2s forwards;
+/* Scene 2: The Architect's World (Villa Elevation & Compass Reveal) */
+.illus-part-arch {
+  clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%);
+  animation: revealArchWorld 2.0s cubic-bezier(0.25, 0.85, 0.35, 1) 1.8s forwards;
 }
 
-/* Scene 3: The Doctor's World (4s - 6s) */
-.draw-stethoscope {
-  fill: none;
-  stroke-width: 1.8;
-  stroke-dasharray: 700;
-  stroke-dashoffset: 700;
-  animation: drawLine 2.2s cubic-bezier(0.25, 0.9, 0.3, 1) 3.8s forwards;
+@keyframes revealArchWorld {
+  0% { clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%); }
+  100% { clip-path: polygon(0 0, 55% 0, 55% 100%, 0 100%); }
 }
 
-.draw-stethoscope.chestpiece {
-  stroke-width: 2;
-  fill: rgba(194, 150, 48, 0.12);
-  animation: popIn 0.6s ease 4.6s forwards;
+.laser-tracer {
+  position: absolute;
+  top: 68%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.laser-tracer-arch {
+  left: 0%;
   opacity: 0;
+  animation: moveTracerArch 2.0s cubic-bezier(0.25, 0.85, 0.35, 1) 1.8s forwards;
 }
 
-/* Realistic ECG Heartbeat Wave (P-Q-R-S-T) */
-.draw-ecg-line {
-  fill: none;
-  stroke-width: 2.2;
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: drawLine 2.2s cubic-bezier(0.2, 0.8, 0.3, 1) 4.2s forwards;
+@keyframes moveTracerArch {
+  0% { left: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  92% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  100% { left: 55%; opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
 }
 
-/* Scene 4: Convergence (6s - 8s) */
-.draw-connect-left,
-.draw-connect-right {
-  fill: none;
-  stroke-width: 2;
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: drawLine 1.4s ease 5.8s forwards;
+.tracer-spark-core {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #FFFDF8;
+  box-shadow: 0 0 8px #FFD700, 0 0 18px #FFB800, 0 0 28px #C29630;
 }
 
-.draw-center-heart {
-  fill: none;
-  stroke-width: 2.4;
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: drawLine 1.6s cubic-bezier(0.34, 1.56, 0.64, 1) 6.4s forwards;
+.tracer-glow-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, rgba(212, 175, 55, 0.25) 60%, transparent 100%);
+  animation: sparkPulse 0.35s ease-in-out infinite alternate;
 }
 
-.convergence-glow-pulse {
-  fill: #FFF4D0;
+@keyframes sparkPulse {
+  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.25); opacity: 1; }
+}
+
+/* Scene 3: The Doctor's World (Stethoscope & Realistic ECG Pulse) */
+.illus-part-doc {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  animation: revealDocWorld 2.0s cubic-bezier(0.25, 0.85, 0.35, 1) 3.8s forwards;
+}
+
+@keyframes revealDocWorld {
+  0% { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); }
+  100% { clip-path: polygon(61% 0, 100% 0, 100% 100%, 61% 100%); }
+}
+
+.laser-tracer-doc {
+  left: 100%;
   opacity: 0;
-  transform-origin: 355px 495px;
-  animation: bloomPulse 1.8s ease 6.8s forwards;
+  animation: moveTracerDoc 2.0s cubic-bezier(0.25, 0.85, 0.35, 1) 3.8s forwards;
 }
 
-@keyframes bloomPulse {
-  0% { transform: scale(0.2); opacity: 0; }
-  40% { transform: scale(1.6); opacity: 0.85; }
-  100% { transform: scale(2.2); opacity: 0; }
+@keyframes moveTracerDoc {
+  0% { left: 100%; opacity: 0; }
+  10% { opacity: 1; }
+  92% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  100% { left: 61%; opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
 }
 
-/* B ♥ B Monogram Materialization */
-.monogram-materialize {
+/* Cardiac Pulse Ring Wave */
+.cardiac-pulse-ring {
+  position: absolute;
+  top: 68%;
+  left: 74%;
+  transform: translate(-50%, -50%) scale(0.2);
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 2px solid rgba(244, 219, 135, 0.9);
   opacity: 0;
-  transform-origin: 0px 0px;
-  animation: monogramAppear 2s cubic-bezier(0.25, 1, 0.5, 1) 6.8s forwards;
+  pointer-events: none;
+  animation: cardiacPulseRingWave 1.4s ease-out 4.8s forwards;
 }
 
-@keyframes monogramAppear {
-  0% { opacity: 0; transform: scale(0.85); filter: drop-shadow(0 0 0 rgba(244, 219, 135, 0)); }
-  50% { opacity: 0.95; transform: scale(1.03); filter: drop-shadow(0 0 16px rgba(244, 219, 135, 0.9)); }
-  100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 4px 12px rgba(140, 95, 20, 0.35)); }
+@keyframes cardiacPulseRingWave {
+  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0.95; }
+  50% { opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(2.6); opacity: 0; border-color: rgba(212, 175, 55, 0); }
 }
 
-.monogram-ring {
-  fill: none;
-  stroke-width: 2;
-  stroke-dasharray: 500;
-  stroke-dashoffset: 500;
-  animation: drawLine 1.6s ease 6.8s forwards;
+/* Scene 4: Convergence Center Heart Pop */
+.illus-part-heart {
+  opacity: 0;
+  transform: scale(0.6);
+  animation: heartPopIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 5.8s forwards;
 }
 
-.monogram-floral-twig {
-  fill: none;
-  stroke-width: 1.8;
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: drawLine 1.8s ease 7.1s forwards;
+@keyframes heartPopIn {
+  0% { opacity: 0; transform: scale(0.6); }
+  35% { opacity: 1; transform: scale(1.22); }
+  65% { transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1.0); }
 }
 
-.monogram-letter-b {
+.convergence-bloom-flare {
+  position: absolute;
+  top: 68%;
+  left: 58%;
+  transform: translate(-50%, -50%) scale(0.2);
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFFDF8 15%, #FFD700 45%, rgba(212, 175, 55, 0.35) 75%, transparent 100%);
+  opacity: 0;
+  pointer-events: none;
+  animation: flareBurst 1.8s ease-out 5.8s forwards;
+}
+
+@keyframes flareBurst {
+  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0; }
+  25% { transform: translate(-50%, -50%) scale(1.9); opacity: 1; filter: drop-shadow(0 0 24px #FFD700); }
+  100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
+}
+
+/* Scene 4: Metallic Calligraphic B ♥ B Monogram Crest Materialization */
+.stage-monogram-box {
+  position: absolute;
+  top: calc(195 / 1024 * 100%);
+  left: calc(80 / 575 * 100%);
+  width: calc(415 / 575 * 100%);
+  height: calc(260 / 1024 * 100%);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transform: scale(0.88);
+  pointer-events: none;
+  animation: monogramReveal 2.0s cubic-bezier(0.25, 1, 0.5, 1) 6.2s forwards;
+}
+
+@keyframes monogramReveal {
+  0% { opacity: 0; transform: scale(0.88); filter: drop-shadow(0 0 0 rgba(244, 219, 135, 0)); }
+  45% { opacity: 1; transform: scale(1.04); filter: drop-shadow(0 0 25px rgba(244, 219, 135, 0.95)); }
+  100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 4px 14px rgba(140, 95, 20, 0.35)); }
+}
+
+.monogram-crest-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.monogram-shimmer-gleam {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.75) 50%, transparent 80%);
+  transform: skewX(-25deg);
+  opacity: 0;
+  animation: monogramGleamPass 1.8s ease 6.8s forwards;
+}
+
+@keyframes monogramGleamPass {
+  0% { left: -100%; opacity: 0; }
+  30% { opacity: 1; }
+  100% { left: 180%; opacity: 0; }
+}
+
+/* Cinematic Subtitles Bar */
+.cinematic-subtitles-bar {
+  position: absolute;
+  bottom: calc(45 / 1024 * 100%);
+  left: 16px;
+  right: 16px;
+  text-align: center;
+  height: 32px;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.subtitle-line {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-serif);
-  font-size: 42px;
+  font-size: clamp(0.78rem, 3.2vw, 0.92rem);
   font-weight: 700;
-  fill: url(#goldShineGrad);
-  stroke: none;
-  text-shadow: 0 2px 6px rgba(140, 95, 20, 0.3);
+  color: #8A6518;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(8px);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.85);
 }
 
-.monogram-heart-symbol {
-  fill: url(#goldShineGrad);
-  stroke: none;
+#subLine0 { animation: subFadeInOut 1.8s ease 0.2s forwards; }
+#subLine1 { animation: subFadeInOut 2.0s ease 1.9s forwards; }
+#subLine2 { animation: subFadeInOut 2.0s ease 3.9s forwards; }
+#subLine3 { animation: subFadeInOut 2.0s ease 5.9s forwards; }
+
+@keyframes subFadeInOut {
+  0% { opacity: 0; transform: translateY(8px); }
+  20%, 75% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-8px); }
 }
 
 /* Keyframes */
@@ -1576,10 +1716,6 @@ body {
   to { opacity: 1; }
 }
 
-@keyframes popIn {
-  to { opacity: 1; transform: scale(1); }
-}
-
 /* ==========================================================================
    LAYER 2: THE FINAL WEDDING INVITATION COVER ARTWORK (Scene 5 Reveal, 8s+)
    ========================================================================== */
@@ -1588,7 +1724,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 4;
   opacity: 0;
   pointer-events: none;
   transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1608,7 +1744,7 @@ body {
   left: -120%;
   width: 80%;
   height: 100%;
-  background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.55) 48%, rgba(244, 219, 135, 0.7) 52%, transparent 75%);
+  background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.6) 48%, rgba(244, 219, 135, 0.75) 52%, transparent 75%);
   transform: skewX(-22deg);
   pointer-events: none;
   opacity: 0;
@@ -1619,13 +1755,13 @@ body {
   opacity: 1;
 }
 
-.cinematic-intro-overlay.is-revealed .cinematic-drawing-layer {
+.cinematic-intro-overlay.is-revealed .stage-parchment-base {
   opacity: 0;
 }
 
 .cinematic-intro-overlay.is-revealed .cover-shimmer-sweep {
   opacity: 1;
-  animation: coverShimmerPass 2.4s ease 0.6s forwards;
+  animation: coverShimmerPass 2.4s ease 0.4s forwards;
 }
 
 @keyframes coverShimmerPass {
@@ -1634,7 +1770,7 @@ body {
 }
 
 /* ==========================================================================
-   LAYER 3: INTERACTIVE OPEN BUTTON (Scene 6, 11s+)
+   LAYER 3: INTERACTIVE OPEN BUTTON (Scene 6, 10s+)
    ========================================================================== */
 .cinematic-action-area {
   position: absolute;
@@ -1664,7 +1800,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: rgba(255, 253, 248, 0.88);
+  background: rgba(255, 253, 248, 0.92);
   border: 1.5px solid #C29630;
   color: #5C3E08;
   font-family: var(--font-serif);
@@ -1674,7 +1810,7 @@ body {
   padding: 13px 26px;
   border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(90, 60, 20, 0.22), 0 0 16px rgba(194, 150, 48, 0.25);
+  box-shadow: 0 10px 30px rgba(90, 60, 20, 0.28), 0 0 22px rgba(212, 175, 55, 0.35);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
@@ -1686,7 +1822,7 @@ body {
   transform: scale(1.04) translateY(-2px);
   background: #FFFDF8;
   border-color: #E0B648;
-  box-shadow: 0 12px 32px rgba(90, 60, 20, 0.3), 0 0 24px rgba(244, 219, 135, 0.5);
+  box-shadow: 0 12px 34px rgba(90, 60, 20, 0.32), 0 0 28px rgba(244, 219, 135, 0.55);
   color: #382502;
   outline: none;
 }
@@ -1707,7 +1843,7 @@ body {
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
   transform: skewX(-20deg);
   animation: btnShimmerSweep 3.5s ease-in-out infinite;
 }

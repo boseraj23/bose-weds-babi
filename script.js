@@ -247,6 +247,10 @@ function applyLanguage(lang) {
   setText('enterBtnText', isTa ? 'திருமண அழைப்பிதழைத் திறக்க' : 'OPEN OUR WEDDING INVITATION');
   setText('enterMusicHint', isTa ? '🎵 திருமண மங்கள இசை • சிரிக்காதே ஒலிக்கும்' : '🎵 Celebratory music • Sirikkadhey will play');
   setText('skipIntroLabel', isTa ? 'நேரடியாகப் பார்க்க ➔' : 'Skip Intro ➔');
+  setText('subLine0', isTa ? 'இரு பாதைகள் • ஒரு புனித பயணம்' : 'Two paths • One destined journey');
+  setText('subLine1', isTa ? '🏛️ Ar. N. போஸ் ராஜ் • வடிவமைப்பு கலைஞர்' : '🏛️ Ar. N. Bose Raj • Designing Spaces');
+  setText('subLine2', isTa ? '🩺 Dr. H. ஸ்ரீ பபிதா சாய் • இதயங்களைக் குணமாக்குபவர்' : '🩺 Dr. H. Sree Babitha Sai • Healing Hearts');
+  setText('subLine3', isTa ? '✨ இரு உலகங்கள் இணையும் மங்கள நன்னாள்' : '✨ Two worlds become one forever');
 
   // Hero Section
   setText('topMantra', isTa ? EVENT_CONFIG.topMantraTa : EVENT_CONFIG.topMantraEn);
@@ -512,15 +516,15 @@ function initEnvelopeIntro() {
     clearTimeout(timerReveal);
     clearTimeout(timerReady);
 
-    // Scene 5 at 8.0s: Cross-dissolve into final invitation artwork & gold shimmer
+    // Scene 5 at 7.8s: Cross-dissolve into final invitation artwork & gold shimmer
     timerReveal = setTimeout(() => {
       overlay.classList.add('is-revealed');
-    }, 8000);
+    }, 7800);
 
-    // Scene 6 at 10.6s: Display "OPEN OUR WEDDING INVITATION" button
+    // Scene 6 at 9.8s: Display "OPEN OUR WEDDING INVITATION" button
     timerReady = setTimeout(() => {
       overlay.classList.add('is-ready-to-open');
-    }, 10600);
+    }, 9800);
   }
 
   // ---------------------------------------------------------------------------
@@ -572,11 +576,11 @@ function initEnvelopeIntro() {
     // Reset overlay classes
     overlay.classList.remove('is-hidden', 'is-revealed', 'is-ready-to-open');
 
-    // Re-trigger SVG animations by forcing reflow
-    const svg = overlay.querySelector('.cinematic-svg');
-    if (svg) {
-      const clone = svg.cloneNode(true);
-      svg.parentNode.replaceChild(clone, svg);
+    // Re-trigger parchment and drawing animations by replacing stage parchment
+    const parchment = document.getElementById('parchmentBase');
+    if (parchment) {
+      const clone = parchment.cloneNode(true);
+      parchment.parentNode.replaceChild(clone, parchment);
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
