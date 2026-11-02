@@ -243,15 +243,10 @@ function applyLanguage(lang) {
     langToggleBtn.setAttribute('aria-label', isTa ? 'Switch Language to English' : 'Switch Language to Tamil');
   }
 
-  // Traditional South Indian Pathirikai Gatefold Card Localization
-  // EXACTLY ONE SINGLE TITLE - ZERO REPETITION!
-  setText('pathirikaiTitle', isTa ? 'சுப முகூர்த்த அழைப்பிதழ்' : 'WEDDING INVITATION');
-  setText('pathirikaiGroom', isTa ? 'Ar. N. போஸ் ராஜ்' : 'Ar. N. Bose Raj');
-  setText('pathirikaiBride', isTa ? 'Dr. H. ஸ்ரீ பபிதா சாய்' : 'Dr. H. Sree Babitha Sai');
-  setText('pathirikaiDate', isTa ? '28 & 29 நவம்பர் 2026 • சென்னை' : '28 & 29 November 2026 • Chennai');
-  setText('pathirikaiTapLabel', isTa ? 'அழைப்பிதழைத் திறக்க' : 'Tap to Open Invitation');
-  setText('pathirikaiMusicNote', isTa ? '🎵 திருமண மங்கள இசை • சிரிக்காதே ஒலிக்கும்' : '🎵 Celebratory music • Sirikkadhey will play');
-  setText('pathirikaiSkipLabel', isTa ? 'நேரடியாகப் பார்க்க ➔' : 'Skip to details ➔');
+  // Luxury Cinematic Title Sequence & Wedding Invitation Reveal Localization
+  setText('enterBtnText', isTa ? 'திருமண அழைப்பிதழைத் திறக்க' : 'OPEN OUR WEDDING INVITATION');
+  setText('enterMusicHint', isTa ? '🎵 திருமண மங்கள இசை • சிரிக்காதே ஒலிக்கும்' : '🎵 Celebratory music • Sirikkadhey will play');
+  setText('skipIntroLabel', isTa ? 'நேரடியாகப் பார்க்க ➔' : 'Skip Intro ➔');
 
   // Hero Section
   setText('topMantra', isTa ? EVENT_CONFIG.topMantraTa : EVENT_CONFIG.topMantraEn);
@@ -401,57 +396,204 @@ function renderCelebrationCards(isTa) {
 }
 
 // ==============================================================================
-// 3.5. TRADITIONAL PATHIRIKAI GATEFOLD CARD (REAL 3D DOOR OPENING)
+// 3.5. LUXURY CINEMATIC TITLE SEQUENCE & WEDDING INVITATION REVEAL
 // ==============================================================================
 function initEnvelopeIntro() {
   const overlay = document.getElementById('envelopeOverlay');
   const btnOpen = document.getElementById('btnOpenInvitation');
   const btnSkip = document.getElementById('btnSkipIntro');
   const btnReplay = document.getElementById('introReplayBtn');
+  const canvas = document.getElementById('cinematicCanvas');
 
   if (!overlay) return;
 
-  let openTimer = null;
+  let timerReveal = null;
+  let timerReady = null;
+  let particleAnimId = null;
 
-  function openPathirikai() {
-    if (overlay.classList.contains('is-opening')) return;
+  // ---------------------------------------------------------------------------
+  // Canvas Particles: Champagne Floating Motes (0-8s) & Jasmine Petals (8s+)
+  // ---------------------------------------------------------------------------
+  let particles = [];
+  let isCanvasActive = true;
+
+  function initCinematicCanvas() {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    particles = [];
+    // 30 subtle champagne gold particles
+    for (let i = 0; i < 30; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 2.2 + 0.8,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: -(Math.random() * 0.45 + 0.15), // Gentle upward drift
+        alpha: Math.random() * 0.55 + 0.25,
+        type: 'champagne'
+      });
+    }
+
+    function renderParticles() {
+      if (!isCanvasActive) return;
+      ctx.clearRect(0, 0, width, height);
+
+      const isRevealed = overlay.classList.contains('is-revealed');
+
+      // Add occasional soft white jasmine petal after reveal
+      if (isRevealed && particles.length < 42 && Math.random() < 0.04) {
+        particles.push({
+          x: Math.random() * width,
+          y: -15,
+          r: Math.random() * 4 + 3,
+          vx: Math.sin(Date.now() * 0.001) * 0.5 + (Math.random() - 0.5) * 0.3,
+          vy: Math.random() * 0.8 + 0.4,
+          rot: Math.random() * 360,
+          vrot: (Math.random() - 0.5) * 1.5,
+          alpha: Math.random() * 0.4 + 0.5,
+          type: 'jasmine'
+        });
+      }
+
+      particles.forEach((p, idx) => {
+        if (p.type === 'champagne') {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.y < -10) p.y = height + 10;
+          if (p.x < -10) p.x = width + 10;
+          if (p.x > width + 10) p.x = -10;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha})`;
+          ctx.shadowColor = 'rgba(244, 219, 135, 0.6)';
+          ctx.shadowBlur = 6;
+          ctx.fill();
+        } else if (p.type === 'jasmine') {
+          p.x += p.vx + Math.sin(p.y * 0.02) * 0.4;
+          p.y += p.vy;
+          p.rot += p.vrot;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.beginPath();
+          // Delicate jasmine petal shape
+          ctx.ellipse(0, 0, p.r, p.r * 1.8, 0, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 253, 245, ${p.alpha})`;
+          ctx.shadowColor = 'rgba(212, 175, 55, 0.3)';
+          ctx.shadowBlur = 4;
+          ctx.fill();
+          ctx.restore();
+
+          if (p.y > height + 20) particles.splice(idx, 1);
+        }
+      });
+
+      particleAnimId = requestAnimationFrame(renderParticles);
+    }
+
+    renderParticles();
+  }
+
+  // ---------------------------------------------------------------------------
+  // Cinematic Timeline Sequencer
+  // ---------------------------------------------------------------------------
+  function startCinematicSequence() {
+    clearTimeout(timerReveal);
+    clearTimeout(timerReady);
+
+    // Scene 5 at 8.0s: Cross-dissolve into final invitation artwork & gold shimmer
+    timerReveal = setTimeout(() => {
+      overlay.classList.add('is-revealed');
+    }, 8000);
+
+    // Scene 6 at 10.6s: Display "OPEN OUR WEDDING INVITATION" button
+    timerReady = setTimeout(() => {
+      overlay.classList.add('is-ready-to-open');
+    }, 10600);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Action Handlers
+  // ---------------------------------------------------------------------------
+  function enterWebsite() {
+    clearTimeout(timerReveal);
+    clearTimeout(timerReady);
     
-    // 1. Swing open the hinged 3D doors
-    overlay.classList.add('is-opening');
+    // 1. Gently fade out the cinematic overlay
+    overlay.classList.add('is-hidden');
+    sessionStorage.setItem('weddingIntroOpened', 'true');
 
-    // 2. Start celebratory music immediately on user click gesture
+    // 2. Start celebratory music on user gesture
     if (!isMusicPlaying) {
       toggleMusic();
     }
 
-    // 3. Flower petal burst at door opening
+    // 3. Trigger festive rose and gold petal shower
     setTimeout(() => {
       if (typeof window.triggerPetalBurst === 'function') {
         window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight * 0.45);
       }
-    }, 280);
+    }, 300);
 
-    // 4. Smoothly reveal the full invitation website
-    openTimer = setTimeout(() => {
-      overlay.classList.add('is-hidden');
-    }, 1150);
+    setTimeout(() => {
+      isCanvasActive = false;
+      if (particleAnimId) cancelAnimationFrame(particleAnimId);
+    }, 1200);
   }
 
   function skipIntro() {
-    if (openTimer) clearTimeout(openTimer);
-    overlay.classList.add('is-opening', 'is-hidden');
-    if (!isMusicPlaying) {
-      toggleMusic();
+    // If not yet revealed, skip immediately to the final revealed card with button
+    if (!overlay.classList.contains('is-revealed')) {
+      clearTimeout(timerReveal);
+      clearTimeout(timerReady);
+      overlay.classList.add('is-revealed', 'is-ready-to-open');
+    } else {
+      // If already revealed, enter the website directly
+      enterWebsite();
     }
   }
 
   function replayIntro() {
-    if (openTimer) clearTimeout(openTimer);
-    overlay.classList.remove('is-opening', 'is-hidden');
+    clearTimeout(timerReveal);
+    clearTimeout(timerReady);
+    isCanvasActive = true;
+
+    // Reset overlay classes
+    overlay.classList.remove('is-hidden', 'is-revealed', 'is-ready-to-open');
+
+    // Re-trigger SVG animations by forcing reflow
+    const svg = overlay.querySelector('.cinematic-svg');
+    if (svg) {
+      const clone = svg.cloneNode(true);
+      svg.parentNode.replaceChild(clone, svg);
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    initCinematicCanvas();
+    startCinematicSequence();
   }
 
-  if (btnOpen) btnOpen.addEventListener('click', openPathirikai);
+  // Check if session previously opened
+  if (sessionStorage.getItem('weddingIntroOpened') === 'true') {
+    // If already opened in this session, keep hidden unless replayed
+    overlay.classList.add('is-hidden');
+  } else {
+    initCinematicCanvas();
+    startCinematicSequence();
+  }
+
+  if (btnOpen) btnOpen.addEventListener('click', enterWebsite);
   if (btnSkip) btnSkip.addEventListener('click', skipIntro);
   if (btnReplay) btnReplay.addEventListener('click', replayIntro);
 }
