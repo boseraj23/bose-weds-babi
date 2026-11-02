@@ -1667,6 +1667,63 @@ body {
   100% { left: 180%; opacity: 0; }
 }
 
+/* Scene 4: Couple Names & Wedding Date Materialization */
+.stage-names-box {
+  position: absolute;
+  top: calc(555 / 1024 * 100%);
+  left: calc(60 / 575 * 100%);
+  width: calc(455 / 575 * 100%);
+  height: calc(185 / 1024 * 100%);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  animation: namesReveal 1.8s cubic-bezier(0.25, 1, 0.5, 1) 6.5s forwards;
+}
+
+@keyframes namesReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: drop-shadow(0 0 0 rgba(244, 219, 135, 0));
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: drop-shadow(0 0 16px rgba(244, 219, 135, 0.85));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: drop-shadow(0 2px 8px rgba(140, 95, 20, 0.25));
+  }
+}
+
+.names-date-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.names-shimmer-gleam {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.8) 50%, transparent 80%);
+  transform: skewX(-25deg);
+  opacity: 0;
+  animation: namesGleamPass 1.8s ease 7.0s forwards;
+}
+
+@keyframes namesGleamPass {
+  0% { left: -100%; opacity: 0; }
+  30% { opacity: 1; }
+  100% { left: 180%; opacity: 0; }
+}
+
 /* Keyframes */
 @keyframes drawLine {
   to { stroke-dashoffset: 0; }
@@ -1677,7 +1734,7 @@ body {
 }
 
 /* ==========================================================================
-   LAYER 2: THE FINAL WEDDING INVITATION COVER & 3D CARD OPENING
+   LAYER 2: THE FINAL WEDDING INVITATION COVER & INTERACTIVE REVEAL
    ========================================================================== */
 .cinematic-cover-wrapper {
   position: absolute;
@@ -1686,9 +1743,9 @@ body {
   height: 100%;
   z-index: 4;
   opacity: 0;
-  perspective: 1600px;
-  transform-style: preserve-3d;
   pointer-events: none;
+  border-radius: 24px;
+  overflow: hidden;
   transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1701,22 +1758,6 @@ body {
 
 .cinematic-intro-overlay.is-revealed .stage-parchment-base {
   opacity: 0;
-}
-
-/* 3D Invitation Folio Door */
-.card-folio-door {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  transform-origin: left center;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  will-change: transform, box-shadow, opacity;
-  transition: transform 1.25s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 1.25s ease, opacity 1.1s ease;
-  z-index: 2;
-  border-radius: 24px;
-  overflow: hidden;
 }
 
 .cinematic-cover-img {
@@ -1750,55 +1791,48 @@ body {
   100% { left: 160%; }
 }
 
-/* Radiant Golden Bloom that bursts from behind as card opens */
-.card-interior-glow {
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle at 45% 50%, #FFFDF8 0%, rgba(255, 215, 0, 0.8) 35%, rgba(194, 150, 48, 0.3) 65%, transparent 85%);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 1;
-  transform: scale(0.6);
-  transition: opacity 0.6s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.3, 1);
+/* Luxury Interactive Hover on Revealed Card */
+.cinematic-intro-overlay.is-revealed .cinematic-card-stage {
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.25, 1), box-shadow 0.4s ease;
+}
+
+.cinematic-intro-overlay.is-revealed:not(.is-opening) .cinematic-card-stage:hover {
+  transform: scale(1.025) translateY(-4px);
+  box-shadow: 0 32px 85px rgba(90, 60, 20, 0.35), 0 0 45px rgba(244, 219, 135, 0.45);
 }
 
 /* ==========================================================================
-   THE 3D INVITATION OPENING TRANSITION (.is-opening)
+   THE LUXURY CINEMATIC INVITATION OPENING TRANSITION (.is-opening)
    ========================================================================== */
+.cinematic-intro-overlay.is-opening {
+  pointer-events: none;
+}
+
 .cinematic-intro-overlay.is-opening .cinematic-backdrop {
   opacity: 0;
-  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cinematic-intro-overlay.is-opening .cinematic-card-stage {
-  overflow: visible;
-  background: transparent;
-  box-shadow: none;
-}
-
-.cinematic-intro-overlay.is-opening .card-folio-door {
-  transform: perspective(1600px) rotateY(-105deg);
-  box-shadow: -30px 0 70px rgba(60, 30, 10, 0.5);
+  transform: scale(1.08) translateY(-14px);
   opacity: 0;
-}
-
-.cinematic-intro-overlay.is-opening .card-interior-glow {
-  opacity: 1;
-  transform: scale(1.6);
-  animation: interiorGlowFlash 0.9s ease-out forwards;
-}
-
-@keyframes interiorGlowFlash {
-  0% { opacity: 0; transform: scale(0.6); }
-  35% { opacity: 1; transform: scale(1.3); }
-  100% { opacity: 0; transform: scale(1.8); }
+  filter: blur(8px) brightness(1.18);
+  box-shadow: 0 0 60px rgba(244, 219, 135, 0.85), 0 0 100px rgba(212, 175, 55, 0.5);
+  transition: transform 0.85s cubic-bezier(0.2, 0.8, 0.25, 1), opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), filter 0.85s ease, box-shadow 0.85s ease;
 }
 
 .cinematic-intro-overlay.is-opening .cinematic-action-area {
   opacity: 0 !important;
-  transform: scale(0.88) translateY(16px);
+  transform: scale(0.92) translateY(12px);
   pointer-events: none;
-  transition: all 0.4s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cinematic-intro-overlay.is-opening .cinematic-top-bar {
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 /* ==========================================================================
