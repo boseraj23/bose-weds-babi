@@ -245,12 +245,8 @@ function applyLanguage(lang) {
 
   // Luxury Cinematic Title Sequence & Wedding Invitation Reveal Localization
   setText('enterBtnText', isTa ? 'திருமண அழைப்பிதழைத் திறக்க' : 'OPEN OUR WEDDING INVITATION');
-  setText('enterMusicHint', isTa ? '🎵 திருமண மங்கள இசை • சிரிக்காதே ஒலிக்கும்' : '🎵 Celebratory music • Sirikkadhey will play');
+  setText('enterMusicHint', isTa ? '🎵 எங்கு வேண்டுமானாலும் தட்டவும் • சிரிக்காதே ஒலிக்கும்' : '🎵 Tap anywhere to open • Sirikkadhey will play');
   setText('skipIntroLabel', isTa ? 'நேரடியாகப் பார்க்க ➔' : 'Skip Intro ➔');
-  setText('subLine0', isTa ? 'இரு பாதைகள் • ஒரு புனித பயணம்' : 'Two paths • One destined journey');
-  setText('subLine1', isTa ? '🏛️ Ar. N. போஸ் ராஜ் • வடிவமைப்பு கலைஞர்' : '🏛️ Ar. N. Bose Raj • Designing Spaces');
-  setText('subLine2', isTa ? '🩺 Dr. H. ஸ்ரீ பபிதா சாய் • இதயங்களைக் குணமாக்குபவர்' : '🩺 Dr. H. Sree Babitha Sai • Healing Hearts');
-  setText('subLine3', isTa ? '✨ இரு உலகங்கள் இணையும் மங்கள நன்னாள்' : '✨ Two worlds become one forever');
 
   // Hero Section
   setText('topMantra', isTa ? EVENT_CONFIG.topMantraTa : EVENT_CONFIG.topMantraEn);
@@ -407,6 +403,7 @@ function initEnvelopeIntro() {
   const btnOpen = document.getElementById('btnOpenInvitation');
   const btnSkip = document.getElementById('btnSkipIntro');
   const btnReplay = document.getElementById('introReplayBtn');
+  const coverWrapper = document.getElementById('coverWrapper');
   const canvas = document.getElementById('cinematicCanvas');
 
   if (!overlay) return;
@@ -414,6 +411,7 @@ function initEnvelopeIntro() {
   let timerReveal = null;
   let timerReady = null;
   let particleAnimId = null;
+  let isOpeningInProgress = false;
 
   // ---------------------------------------------------------------------------
   // Canvas Particles: Champagne Floating Motes (0-8s) & Jasmine Petals (8s+)
@@ -528,42 +526,50 @@ function initEnvelopeIntro() {
   }
 
   // ---------------------------------------------------------------------------
-  // Action Handlers
+  // Action Handlers: 3D Gatefold Card Opening Animation
   // ---------------------------------------------------------------------------
   function enterWebsite() {
+    if (isOpeningInProgress) return;
+    isOpeningInProgress = true;
+
     clearTimeout(timerReveal);
     clearTimeout(timerReady);
-    
-    // 1. Gently fade out the cinematic overlay
-    overlay.classList.add('is-hidden');
+
+    // 1. Trigger the 3D Gatefold card opening animation (gates swing open in 3D)
+    overlay.classList.add('is-opening');
     sessionStorage.setItem('weddingIntroOpened', 'true');
 
-    // 2. Start celebratory music on user gesture
+    // 2. Play celebratory music immediately
     if (!isMusicPlaying) {
       toggleMusic();
     }
 
-    // 3. Trigger festive rose and gold petal shower
-    setTimeout(() => {
-      if (typeof window.triggerPetalBurst === 'function') {
-        window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight * 0.45);
-      }
-    }, 300);
+    // 3. Trigger celebratory rose and gold petal shower
+    if (typeof window.triggerPetalBurst === 'function') {
+      window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight * 0.4);
+    }
 
+    // 4. After 950ms, doors are fully swung open -> fade out backdrop overlay
+    setTimeout(() => {
+      overlay.classList.add('is-hidden');
+    }, 950);
+
+    // 5. Cleanup canvas
     setTimeout(() => {
       isCanvasActive = false;
       if (particleAnimId) cancelAnimationFrame(particleAnimId);
-    }, 1200);
+      isOpeningInProgress = false;
+    }, 1500);
   }
 
   function skipIntro() {
-    // If not yet revealed, skip immediately to the final revealed card with button
+    // If not yet revealed, skip immediately to the final revealed card
     if (!overlay.classList.contains('is-revealed')) {
       clearTimeout(timerReveal);
       clearTimeout(timerReady);
       overlay.classList.add('is-revealed', 'is-ready-to-open');
     } else {
-      // If already revealed, enter the website directly
+      // If already revealed, perform opening animation into website
       enterWebsite();
     }
   }
@@ -572,9 +578,10 @@ function initEnvelopeIntro() {
     clearTimeout(timerReveal);
     clearTimeout(timerReady);
     isCanvasActive = true;
+    isOpeningInProgress = false;
 
     // Reset overlay classes
-    overlay.classList.remove('is-hidden', 'is-revealed', 'is-ready-to-open');
+    overlay.classList.remove('is-hidden', 'is-opening', 'is-revealed', 'is-ready-to-open');
 
     // Re-trigger parchment and drawing animations by replacing stage parchment
     const parchment = document.getElementById('parchmentBase');
@@ -597,7 +604,28 @@ function initEnvelopeIntro() {
     startCinematicSequence();
   }
 
-  if (btnOpen) btnOpen.addEventListener('click', enterWebsite);
+  // Click on open button
+  if (btnOpen) btnOpen.addEventListener('click', (e) => {
+    e.stopPropagation();
+    enterWebsite();
+  });
+
+  // Click anywhere on revealed invitation card opens it!
+  if (coverWrapper) {
+    coverWrapper.addEventListener('click', () => {
+      if (overlay.classList.contains('is-revealed')) {
+        enterWebsite();
+      }
+    });
+    // Keyboard accessibility
+    coverWrapper.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && overlay.classList.contains('is-revealed')) {
+        e.preventDefault();
+        enterWebsite();
+      }
+    });
+  }
+
   if (btnSkip) btnSkip.addEventListener('click', skipIntro);
   if (btnReplay) btnReplay.addEventListener('click', replayIntro);
 }
