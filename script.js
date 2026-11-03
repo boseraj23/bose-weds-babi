@@ -526,7 +526,7 @@ function initEnvelopeIntro() {
     if (isOpeningInProgress) return;
     isOpeningInProgress = true;
 
-    // 1. Trigger the luxury upward lift & golden bloom dissolve
+    // 1. Trigger the gatefold card opening: hide single cover, show door panels
     overlay.classList.add('is-opening');
     sessionStorage.setItem('weddingIntroOpened', 'true');
 
@@ -540,25 +540,30 @@ function initEnvelopeIntro() {
       window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight * 0.4);
     }
 
-    // 4. After 900ms, card has dissolved with golden bloom -> hide overlay completely
+    // 4. After doors have swung open (1.4s animation), start fading the entire overlay
+    setTimeout(() => {
+      overlay.classList.add('is-card-opened');
+    }, 1200);
+
+    // 5. After the overlay fully fades, hide it completely
     setTimeout(() => {
       overlay.classList.add('is-hidden');
-    }, 900);
+    }, 2100);
 
-    // 5. Cleanup canvas
+    // 6. Cleanup canvas
     setTimeout(() => {
       isCanvasActive = false;
       if (particleAnimId) cancelAnimationFrame(particleAnimId);
       isOpeningInProgress = false;
-    }, 1400);
+    }, 2500);
   }
 
   function replayIntro() {
     isCanvasActive = true;
     isOpeningInProgress = false;
 
-    // Reset overlay classes
-    overlay.classList.remove('is-hidden', 'is-opening');
+    // Reset overlay classes (including new gatefold classes)
+    overlay.classList.remove('is-hidden', 'is-opening', 'is-card-opened');
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
     initCinematicCanvas();
