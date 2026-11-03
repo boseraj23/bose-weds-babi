@@ -1884,8 +1884,8 @@ body {
 
 /* ==========================================================================
    THE LUXURY CINEMATIC INVITATION OPENING TRANSITION (.is-opening)
-   Curtain Pull: Card image splits into vertical strips that peel away
-   from the center outward, like drawing open luxurious fabric curtains.
+   Smooth Golden Bloom & Dissolve: The entire invitation cover glides
+   open with soft warm golden light and seamless zoom into the website.
    ========================================================================== */
 .cinematic-intro-overlay.is-opening {
   pointer-events: none;
@@ -1893,32 +1893,48 @@ body {
 
 .cinematic-intro-overlay.is-opening .cinematic-backdrop {
   opacity: 0;
-  transition: opacity 1.0s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
+  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
 }
 
-/* Hide the single cover immediately when the curtain strips take over */
+/* Card stage gently lifts and blooms */
+.cinematic-intro-overlay.is-opening .cinematic-card-stage {
+  transform: scale(1.05) translateY(-12px);
+  box-shadow: 0 35px 95px rgba(90, 60, 20, 0.45), 0 0 70px rgba(244, 219, 135, 0.8);
+  transition: transform 1.1s cubic-bezier(0.2, 0.8, 0.25, 1), box-shadow 1.0s ease;
+}
+
+/* Cover wrapper dissolves with warm golden glow */
 .cinematic-intro-overlay.is-opening .cinematic-cover-wrapper {
   opacity: 0;
+  filter: blur(6px) brightness(1.2);
+  transition: opacity 0.95s cubic-bezier(0.4, 0, 0.2, 1) 0.15s, filter 0.95s ease 0.15s;
+}
+
+/* Radiant Golden Bloom on Opening */
+.card-opening-bloom {
+  position: absolute;
+  inset: -30px;
+  border-radius: 35px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 215, 0, 0.75) 30%, rgba(212, 175, 55, 0.25) 60%, transparent 80%);
+  opacity: 0;
   pointer-events: none;
-  transition: opacity 0.05s;
+  z-index: 15;
 }
 
-/* Show the curtain strips container */
-.cinematic-intro-overlay.is-opening .curtain-strips-container {
-  display: block;
+.cinematic-intro-overlay.is-opening .card-opening-bloom {
+  animation: openingBloomPulse 1.1s ease-out forwards;
 }
 
-/* Stop float and hover when opening */
-.cinematic-intro-overlay.is-opening .cinematic-card-stage {
-  animation: none;
-  transform: none;
-  overflow: visible;
+@keyframes openingBloomPulse {
+  0% { opacity: 0; transform: scale(0.4); }
+  35% { opacity: 1; transform: scale(1.3); }
+  100% { opacity: 0; transform: scale(1.7); }
 }
 
-/* After strips have peeled away, fade the whole overlay */
+/* Fade entire overlay when transition completes */
 .cinematic-intro-overlay.is-card-opened {
   opacity: 0 !important;
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .cinematic-intro-overlay.is-opening .cinematic-action-area {
@@ -1932,83 +1948,6 @@ body {
   opacity: 0 !important;
   pointer-events: none;
   transition: opacity 0.25s ease;
-}
-
-/* ==========================================================================
-   CURTAIN STRIPS — Hidden at rest, revealed on .is-opening
-   Each strip shows a slice of the cover image and peels away outward
-   ========================================================================== */
-.curtain-strips-container {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  display: none;
-  overflow: visible;
-  perspective: 1200px;
-}
-
-.curtain-strip {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  overflow: hidden;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* The inner div is full-card-width, positioned so the strip shows only its slice */
-.curtain-strip-inner {
-  position: absolute;
-  top: 0;
-  height: 100%;
-}
-
-.curtain-strip-inner img {
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-/* Left-side strips peel to the left */
-.curtain-strip.strip-left {
-  transform-origin: left center;
-}
-
-/* Right-side strips peel to the right */
-.curtain-strip.strip-right {
-  transform-origin: right center;
-}
-
-/* Golden glow line at center during opening */
-.curtain-center-glow {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 6px;
-  height: 100%;
-  transform: translateX(-50%);
-  background: linear-gradient(to bottom,
-    transparent 2%,
-    rgba(255, 253, 248, 0.9) 15%,
-    rgba(255, 215, 0, 0.95) 50%,
-    rgba(255, 253, 248, 0.9) 85%,
-    transparent 98%
-  );
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 45px rgba(255, 165, 0, 0.4);
-  z-index: 15;
-  opacity: 0;
-  pointer-events: none;
-  animation: curtainCenterGlow 1.4s ease-out forwards;
-}
-
-@keyframes curtainCenterGlow {
-  0%   { opacity: 0; transform: translateX(-50%) scaleY(0.1); }
-  15%  { opacity: 1; transform: translateX(-50%) scaleY(1.0); }
-  60%  { opacity: 0.9; }
-  100% { opacity: 0; transform: translateX(-50%) scaleY(1.05); }
 }
 
 /* ==========================================================================
