@@ -1257,10 +1257,10 @@ body {
 }
 
 .cinematic-intro-overlay.is-hidden {
-  opacity: 0;
-  transform: scale(1.04);
-  visibility: hidden;
-  pointer-events: none;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
 }
 
 /* When intro overlay is active, hide top controls to preserve cinematic immersion */
@@ -1371,16 +1371,41 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 24px;
-  box-shadow: 0 25px 70px rgba(90, 60, 20, 0.24), 0 0 35px rgba(194, 150, 48, 0.2);
+  box-shadow: 0 25px 70px rgba(90, 60, 20, 0.28), 0 0 35px rgba(194, 150, 48, 0.22);
   overflow: hidden;
   background: #FAF5EB;
-  animation: cinematicPushIn 12s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+  cursor: pointer;
+  animation: cardStartEntrance 1.4s cubic-bezier(0.2, 0.85, 0.35, 1) forwards, cardFloatIdle 5.5s ease-in-out 1.4s infinite alternate;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.25, 1), box-shadow 0.4s ease;
 }
 
-@keyframes cinematicPushIn {
-  0% { transform: scale(0.96); }
-  60% { transform: scale(1.0); }
-  100% { transform: scale(1.025); }
+@keyframes cardStartEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(24px);
+    filter: drop-shadow(0 0 0 rgba(244, 219, 135, 0));
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.01) translateY(-3px);
+    filter: drop-shadow(0 15px 40px rgba(244, 219, 135, 0.6));
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.0) translateY(0);
+    filter: drop-shadow(0 20px 50px rgba(90, 60, 20, 0.25));
+  }
+}
+
+@keyframes cardFloatIdle {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-7px); }
+}
+
+/* Hover Lift on Desktop */
+.cinematic-card-stage:hover {
+  transform: scale(1.025) translateY(-6px);
+  box-shadow: 0 35px 85px rgba(90, 60, 20, 0.38), 0 0 50px rgba(244, 219, 135, 0.5);
 }
 
 /* ==========================================================================
@@ -1734,7 +1759,7 @@ body {
 }
 
 /* ==========================================================================
-   LAYER 2: THE FINAL WEDDING INVITATION COVER & INTERACTIVE REVEAL
+   START SCREEN: THE FINAL WEDDING INVITATION COVER & AMBIENT ANIMATIONS
    ========================================================================== */
 .cinematic-cover-wrapper {
   position: absolute;
@@ -1742,22 +1767,11 @@ body {
   width: 100%;
   height: 100%;
   z-index: 4;
-  opacity: 0;
-  pointer-events: none;
-  border-radius: 24px;
-  overflow: hidden;
-  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* When revealed: entire card becomes clickable */
-.cinematic-intro-overlay.is-revealed .cinematic-cover-wrapper {
   opacity: 1;
   pointer-events: auto;
+  border-radius: 24px;
+  overflow: hidden;
   cursor: pointer;
-}
-
-.cinematic-intro-overlay.is-revealed .stage-parchment-base {
-  opacity: 0;
 }
 
 .cinematic-cover-img {
@@ -1767,39 +1781,105 @@ body {
   display: block;
 }
 
-/* Golden Shimmer Sweep across the cover before opening */
+/* Golden Foil Specular Shimmer Sweep across the cover */
 .cover-shimmer-sweep {
   position: absolute;
   top: 0;
   left: -120%;
   width: 80%;
   height: 100%;
-  background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.6) 48%, rgba(244, 219, 135, 0.75) 52%, transparent 75%);
+  background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.65) 48%, rgba(244, 219, 135, 0.8) 52%, transparent 75%);
   transform: skewX(-22deg);
   pointer-events: none;
-  opacity: 0;
-  z-index: 6;
-}
-
-.cinematic-intro-overlay.is-revealed .cover-shimmer-sweep {
   opacity: 1;
-  animation: coverShimmerPass 2.4s ease 0.4s forwards;
+  z-index: 6;
+  animation: coverShimmerPass 6.0s ease 0.4s infinite;
 }
 
 @keyframes coverShimmerPass {
-  0% { left: -120%; }
-  100% { left: 160%; }
+  0% { left: -120%; opacity: 0; }
+  15% { opacity: 1; }
+  45% { left: 160%; opacity: 1; }
+  46%, 100% { left: 160%; opacity: 0; }
 }
 
-/* Luxury Interactive Hover on Revealed Card */
-.cinematic-intro-overlay.is-revealed .cinematic-card-stage {
-  cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.25, 1), box-shadow 0.4s ease;
+/* B ♥ B Monogram Heart Golden Sparkle Glint */
+.monogram-heart-glint {
+  position: absolute;
+  left: calc(295 / 575 * 100%);
+  top: calc(342 / 1024 * 100%);
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(circle, #FFFDF8 15%, rgba(255, 215, 0, 0.85) 55%, transparent 75%);
+  filter: drop-shadow(0 0 12px #FFD700);
+  opacity: 0;
+  animation: glintPulse 4.5s ease 1.5s infinite;
 }
 
-.cinematic-intro-overlay.is-revealed:not(.is-opening) .cinematic-card-stage:hover {
-  transform: scale(1.025) translateY(-4px);
-  box-shadow: 0 32px 85px rgba(90, 60, 20, 0.35), 0 0 45px rgba(244, 219, 135, 0.45);
+@keyframes glintPulse {
+  0%, 80% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
+  86% { opacity: 1; transform: translate(-50%, -50%) scale(1.3) rotate(45deg); filter: drop-shadow(0 0 16px #FFFDF8); }
+  92%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.4) rotate(90deg); }
+}
+
+/* Diya Brass Oil Lamp Realistic Flickering Candle Flame */
+.diya-flame-glow {
+  position: absolute;
+  left: calc(105 / 575 * 100%);
+  top: calc(845 / 1024 * 100%);
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.diya-flame-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 13px;
+  transform: translate(-50%, -50%);
+  border-radius: 50% 50% 35% 35%;
+  background: radial-gradient(ellipse at 50% 65%, #FFFDF8 0%, #FFE072 45%, #FF9900 85%, transparent 100%);
+  filter: drop-shadow(0 -2px 6px #FFCC00);
+  animation: flameDance 0.35s ease-in-out infinite alternate;
+}
+
+.diya-flame-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.45) 0%, rgba(255, 140, 0, 0.15) 50%, transparent 80%);
+  animation: flameHaloBreathe 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes flameDance {
+  0% { transform: translate(-50%, -50%) scale(0.92) rotate(-3deg); }
+  100% { transform: translate(-50%, -50%) scale(1.08) rotate(3deg); }
+}
+
+@keyframes flameHaloBreathe {
+  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.18); opacity: 1; }
+}
+
+/* Ambient Card Radial Light Aura */
+.card-interior-aura {
+  position: absolute;
+  inset: -20px;
+  border-radius: 35px;
+  background: radial-gradient(circle at 50% 35%, rgba(244, 219, 135, 0.22) 0%, rgba(212, 175, 55, 0.08) 60%, transparent 80%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ==========================================================================
@@ -1815,49 +1895,47 @@ body {
 }
 
 .cinematic-intro-overlay.is-opening .cinematic-card-stage {
-  transform: scale(1.08) translateY(-14px);
+  transform: scale(1.08) translateY(-75px);
   opacity: 0;
-  filter: blur(8px) brightness(1.18);
-  box-shadow: 0 0 60px rgba(244, 219, 135, 0.85), 0 0 100px rgba(212, 175, 55, 0.5);
-  transition: transform 0.85s cubic-bezier(0.2, 0.8, 0.25, 1), opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), filter 0.85s ease, box-shadow 0.85s ease;
+  filter: blur(12px) brightness(1.22);
+  box-shadow: 0 0 75px rgba(244, 219, 135, 0.95), 0 0 140px rgba(212, 175, 55, 0.6);
+  transition: transform 0.95s cubic-bezier(0.2, 0.8, 0.25, 1), opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), filter 0.85s ease, box-shadow 0.85s ease;
 }
 
 .cinematic-intro-overlay.is-opening .cinematic-action-area {
   opacity: 0 !important;
-  transform: scale(0.92) translateY(12px);
+  transform: scale(0.92) translateY(14px);
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .cinematic-intro-overlay.is-opening .cinematic-top-bar {
   opacity: 0 !important;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
 /* ==========================================================================
-   LAYER 3: INTERACTIVE OPEN BUTTON (Scene 6, 10s+)
+   LAYER 3: INTERACTIVE OPEN BUTTON
    ========================================================================== */
 .cinematic-action-area {
   position: absolute;
   bottom: 24px;
   left: 0;
   right: 0;
-  z-index: 5;
+  z-index: 7;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 16px;
   opacity: 0;
-  transform: translateY(14px);
-  pointer-events: none;
-  transition: opacity 1.0s cubic-bezier(0.2, 0.8, 0.3, 1), transform 1.0s cubic-bezier(0.2, 0.8, 0.3, 1);
+  transform: translateY(12px);
+  animation: actionAreaEntrance 1.0s cubic-bezier(0.2, 0.85, 0.35, 1) 0.6s forwards;
+  pointer-events: auto;
 }
 
-.cinematic-intro-overlay.is-ready-to-open .cinematic-action-area {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+@keyframes actionAreaEntrance {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .btn-enter-invitation {

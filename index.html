@@ -54,100 +54,30 @@
     <!-- Floating Champagne Particles & Jasmine Petals Canvas -->
     <canvas id="cinematicCanvas" class="cinematic-canvas" aria-hidden="true"></canvas>
 
-    <!-- Top Floating Skip Action -->
-    <div class="cinematic-top-bar">
-      <button id="btnSkipIntro" class="cinematic-skip-btn" aria-label="Skip Introduction">
-        <span id="skipIntroLabel">Skip Intro &rarr;</span>
-      </button>
-    </div>
-
     <!-- The Central Cinematic Stage (Responsive 9:16 Invitation Card) -->
-    <div class="cinematic-card-stage" id="cinematicStage">
+    <div class="cinematic-card-stage" id="cinematicStage" role="button" tabindex="0" aria-label="Open wedding invitation">
       
-      <!-- LAYER 1: Textured Parchment Base & Royal Arch (Scenes 1-4) -->
-      <div class="stage-parchment-base" id="parchmentBase" aria-hidden="true">
-        <div class="card-paper-grain"></div>
-        <div class="card-drafting-grid"></div>
-
-        <!-- Royal Arch & Title Header -->
-        <svg viewBox="0 0 575 1024" class="parchment-arch-svg" preserveAspectRatio="xMidYMid meet">
-          <defs>
-            <linearGradient id="goldArchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#C29630" />
-              <stop offset="35%" stop-color="#F4DB87" />
-              <stop offset="70%" stop-color="#C29630" />
-              <stop offset="100%" stop-color="#9A7220" />
-            </linearGradient>
-            <filter id="goldArchGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="2" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          <g class="arch-gold-group" filter="url(#goldArchGlow)">
-            <path class="arch-line-outer" d="M 42 340 C 42 110, 138 38, 287 38 C 436 38, 532 110, 532 340" />
-            <path class="arch-line-inner" d="M 55 350 C 55 125, 146 52, 287 52 C 428 52, 519 125, 519 350" />
-            <text x="287" y="145" text-anchor="middle" class="arch-title-text">W E D D I N G   I N V I T A T I O N</text>
-            <path class="arch-title-ornament" d="M 230 172 H 270 M 275 172 L 287 164 L 299 172 M 304 172 H 344" />
-          </g>
-        </svg>
-
-        <!-- Illustration Drawing Stage (Scenes 2-4) -->
-        <div class="stage-illustration-box" id="stageIllusBox">
-          
-          <!-- Scene 2: The Architect's World (Villa Elevation & Compass) -->
-          <div class="illus-strip-part illus-part-arch" id="illusArch">
-            <img src="assets/illus_architect.png" alt="" class="illus-strip-img">
-            <div class="laser-tracer laser-tracer-arch" id="tracerArch">
-              <div class="tracer-spark-core"></div>
-              <div class="tracer-glow-halo"></div>
-            </div>
-            <!-- Animated Drafting Guidelines -->
-            <div class="drafting-overlay-lines" aria-hidden="true"></div>
-          </div>
-
-          <!-- Scene 3: The Doctor's World (Stethoscope & ECG) -->
-          <div class="illus-strip-part illus-part-doc" id="illusDoc">
-            <img src="assets/illus_doctor.png" alt="" class="illus-strip-img">
-            <div class="laser-tracer laser-tracer-doc" id="tracerDoc">
-              <div class="tracer-spark-core"></div>
-              <div class="tracer-glow-halo"></div>
-            </div>
-            <div class="cardiac-pulse-ring" id="cardiacPulseRing"></div>
-          </div>
-
-          <!-- Scene 4: Convergence Center Heart -->
-          <div class="illus-strip-part illus-part-heart" id="illusHeart">
-            <img src="assets/illus_heart.png" alt="" class="illus-strip-img">
-            <div class="convergence-bloom-flare" id="convergenceFlare"></div>
-          </div>
-
-        </div>
-
-        <!-- Scene 4: Metallic Calligraphic B ♥ B Monogram Crest Materialization -->
-        <div class="stage-monogram-box" id="stageMonogram">
-          <img src="assets/monogram-crest.png" alt="B ♥ B Monogram" class="monogram-crest-img">
-          <div class="monogram-shimmer-gleam"></div>
-          <div class="monogram-burst-halo"></div>
-        </div>
-
-        <!-- Scene 4: Couple Names & Wedding Date -->
-        <div class="stage-names-box" id="stageNames">
-          <img src="assets/illus_names.png" alt="Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai - 28 &amp; 29 November 2026 Chennai" class="names-date-img">
-          <div class="names-shimmer-gleam"></div>
-        </div>
-
-      </div>
-
-      <!-- LAYER 2: The Final Wedding Invitation Artwork (Scene 5 Reveal & Interactive Opening) -->
-      <div class="cinematic-cover-wrapper" id="coverWrapper" role="button" tabindex="0" aria-label="Open wedding invitation">
-        <img src="assets/invitation-cover.jpg" alt="Wedding Invitation" class="cinematic-cover-img" id="coverImg" width="575" height="1024" loading="eager">
+      <!-- The Final Wedding Invitation Artwork (Start Screen) -->
+      <div class="cinematic-cover-wrapper" id="coverWrapper">
+        <img src="assets/invitation-cover.jpg" alt="Wedding Invitation - Ar. N. Bose Raj &amp; Dr. H. Sree Babitha Sai" class="cinematic-cover-img" id="coverImg" width="575" height="1024" loading="eager">
+        
+        <!-- Golden Foil Shimmer Sweep across the Card -->
         <div class="cover-shimmer-sweep" aria-hidden="true"></div>
+
+        <!-- B ♥ B Monogram Golden Heart Glint -->
+        <div class="monogram-heart-glint" id="heartGlint" aria-hidden="true"></div>
+
+        <!-- Diya Brass Oil Lamp Realistic Flickering Candle Flame -->
+        <div class="diya-flame-glow" id="diyaGlow" aria-hidden="true">
+          <div class="diya-flame-core"></div>
+          <div class="diya-flame-halo"></div>
+        </div>
+
+        <!-- Ambient Card Radial Light Aura -->
+        <div class="card-interior-aura" aria-hidden="true"></div>
       </div>
 
-      <!-- LAYER 3: Interactive Open Button (Scene 6) -->
+      <!-- Interactive Open Button -->
       <div class="cinematic-action-area" id="actionArea">
         <button id="btnOpenInvitation" class="btn-enter-invitation" aria-label="Open Our Wedding Invitation and play background music">
           <span class="enter-btn-text" id="enterBtnText">OPEN OUR WEDDING INVITATION</span>

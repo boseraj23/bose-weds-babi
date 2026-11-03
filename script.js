@@ -398,8 +398,11 @@ function renderCelebrationCards(isTa) {
 // ==============================================================================
 // 3.5. LUXURY CINEMATIC TITLE SEQUENCE & WEDDING INVITATION REVEAL
 // ==============================================================================
+// 12. LUXURY CINEMATIC START SCREEN & OPENING ANIMATION
+// ==============================================================================
 function initEnvelopeIntro() {
   const overlay = document.getElementById('envelopeOverlay');
+  const stage = document.getElementById('cinematicStage');
   const btnOpen = document.getElementById('btnOpenInvitation');
   const btnSkip = document.getElementById('btnSkipIntro');
   const btnReplay = document.getElementById('introReplayBtn');
@@ -408,13 +411,11 @@ function initEnvelopeIntro() {
 
   if (!overlay) return;
 
-  let timerReveal = null;
-  let timerReady = null;
   let particleAnimId = null;
   let isOpeningInProgress = false;
 
   // ---------------------------------------------------------------------------
-  // Canvas Particles: Champagne Floating Motes (0-8s) & Jasmine Petals (8s+)
+  // Canvas Particles: Champagne Floating Motes & Delicate Jasmine Petals
   // ---------------------------------------------------------------------------
   let particles = [];
   let isCanvasActive = true;
@@ -432,16 +433,30 @@ function initEnvelopeIntro() {
     });
 
     particles = [];
-    // 30 subtle champagne gold particles
-    for (let i = 0; i < 30; i++) {
+    // 25 subtle champagne gold motes
+    for (let i = 0; i < 25; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        r: Math.random() * 2.2 + 0.8,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: -(Math.random() * 0.45 + 0.15), // Gentle upward drift
-        alpha: Math.random() * 0.55 + 0.25,
+        r: Math.random() * 2.0 + 0.8,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -(Math.random() * 0.4 + 0.15),
+        alpha: Math.random() * 0.5 + 0.25,
         type: 'champagne'
+      });
+    }
+    // 12 floating white jasmine petals
+    for (let i = 0; i < 12; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 3.5 + 3,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: Math.random() * 0.55 + 0.3,
+        rot: Math.random() * 360,
+        vrot: (Math.random() - 0.5) * 1.2,
+        alpha: Math.random() * 0.35 + 0.45,
+        type: 'jasmine'
       });
     }
 
@@ -449,19 +464,17 @@ function initEnvelopeIntro() {
       if (!isCanvasActive) return;
       ctx.clearRect(0, 0, width, height);
 
-      const isRevealed = overlay.classList.contains('is-revealed');
-
-      // Add occasional soft white jasmine petal after reveal
-      if (isRevealed && particles.length < 42 && Math.random() < 0.04) {
+      // Add occasional soft white jasmine petal
+      if (particles.length < 35 && Math.random() < 0.05) {
         particles.push({
           x: Math.random() * width,
           y: -15,
-          r: Math.random() * 4 + 3,
+          r: Math.random() * 3.5 + 3,
           vx: Math.sin(Date.now() * 0.001) * 0.5 + (Math.random() - 0.5) * 0.3,
-          vy: Math.random() * 0.8 + 0.4,
+          vy: Math.random() * 0.6 + 0.35,
           rot: Math.random() * 360,
-          vrot: (Math.random() - 0.5) * 1.5,
-          alpha: Math.random() * 0.4 + 0.5,
+          vrot: (Math.random() - 0.5) * 1.2,
+          alpha: Math.random() * 0.35 + 0.45,
           type: 'jasmine'
         });
       }
@@ -481,7 +494,7 @@ function initEnvelopeIntro() {
           ctx.shadowBlur = 6;
           ctx.fill();
         } else if (p.type === 'jasmine') {
-          p.x += p.vx + Math.sin(p.y * 0.02) * 0.4;
+          p.x += p.vx + Math.sin(p.y * 0.02) * 0.35;
           p.y += p.vy;
           p.rot += p.vrot;
 
@@ -489,10 +502,9 @@ function initEnvelopeIntro() {
           ctx.translate(p.x, p.y);
           ctx.rotate((p.rot * Math.PI) / 180);
           ctx.beginPath();
-          // Delicate jasmine petal shape
           ctx.ellipse(0, 0, p.r, p.r * 1.8, 0, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255, 253, 245, ${p.alpha})`;
-          ctx.shadowColor = 'rgba(212, 175, 55, 0.3)';
+          ctx.shadowColor = 'rgba(212, 175, 55, 0.25)';
           ctx.shadowBlur = 4;
           ctx.fill();
           ctx.restore();
@@ -508,34 +520,13 @@ function initEnvelopeIntro() {
   }
 
   // ---------------------------------------------------------------------------
-  // Cinematic Timeline Sequencer
-  // ---------------------------------------------------------------------------
-  function startCinematicSequence() {
-    clearTimeout(timerReveal);
-    clearTimeout(timerReady);
-
-    // Scene 5 at 7.8s: Cross-dissolve into final invitation artwork & gold shimmer
-    timerReveal = setTimeout(() => {
-      overlay.classList.add('is-revealed');
-    }, 7800);
-
-    // Scene 6 at 9.8s: Display "OPEN OUR WEDDING INVITATION" button
-    timerReady = setTimeout(() => {
-      overlay.classList.add('is-ready-to-open');
-    }, 9800);
-  }
-
-  // ---------------------------------------------------------------------------
-  // Action Handlers: 3D Gatefold Card Opening Animation
+  // Action Handlers: Luxury Opening Animation into Website
   // ---------------------------------------------------------------------------
   function enterWebsite() {
     if (isOpeningInProgress) return;
     isOpeningInProgress = true;
 
-    clearTimeout(timerReveal);
-    clearTimeout(timerReady);
-
-    // 1. Trigger the 3D Gatefold card opening animation (gates swing open in 3D)
+    // 1. Trigger the luxury upward lift & golden bloom dissolve
     overlay.classList.add('is-opening');
     sessionStorage.setItem('weddingIntroOpened', 'true');
 
@@ -549,59 +540,35 @@ function initEnvelopeIntro() {
       window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight * 0.4);
     }
 
-    // 4. After 950ms, doors are fully swung open -> fade out backdrop overlay
+    // 4. After 900ms, card has dissolved with golden bloom -> hide overlay completely
     setTimeout(() => {
       overlay.classList.add('is-hidden');
-    }, 950);
+    }, 900);
 
     // 5. Cleanup canvas
     setTimeout(() => {
       isCanvasActive = false;
       if (particleAnimId) cancelAnimationFrame(particleAnimId);
       isOpeningInProgress = false;
-    }, 1500);
-  }
-
-  function skipIntro() {
-    // If not yet revealed, skip immediately to the final revealed card
-    if (!overlay.classList.contains('is-revealed')) {
-      clearTimeout(timerReveal);
-      clearTimeout(timerReady);
-      overlay.classList.add('is-revealed', 'is-ready-to-open');
-    } else {
-      // If already revealed, perform opening animation into website
-      enterWebsite();
-    }
+    }, 1400);
   }
 
   function replayIntro() {
-    clearTimeout(timerReveal);
-    clearTimeout(timerReady);
     isCanvasActive = true;
     isOpeningInProgress = false;
 
     // Reset overlay classes
-    overlay.classList.remove('is-hidden', 'is-opening', 'is-revealed', 'is-ready-to-open');
-
-    // Re-trigger parchment and drawing animations by replacing stage parchment
-    const parchment = document.getElementById('parchmentBase');
-    if (parchment) {
-      const clone = parchment.cloneNode(true);
-      parchment.parentNode.replaceChild(clone, parchment);
-    }
+    overlay.classList.remove('is-hidden', 'is-opening');
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
     initCinematicCanvas();
-    startCinematicSequence();
   }
 
   // Check if session previously opened
   if (sessionStorage.getItem('weddingIntroOpened') === 'true') {
-    // If already opened in this session, keep hidden unless replayed
     overlay.classList.add('is-hidden');
   } else {
     initCinematicCanvas();
-    startCinematicSequence();
   }
 
   // Click on open button
@@ -610,23 +577,37 @@ function initEnvelopeIntro() {
     enterWebsite();
   });
 
-  // Click anywhere on revealed invitation card opens it!
-  if (coverWrapper) {
-    coverWrapper.addEventListener('click', () => {
-      if (overlay.classList.contains('is-revealed')) {
-        enterWebsite();
-      }
+  // Click anywhere on card stage opens it!
+  if (stage) {
+    stage.addEventListener('click', () => {
+      enterWebsite();
     });
     // Keyboard accessibility
-    coverWrapper.addEventListener('keydown', (e) => {
-      if ((e.key === 'Enter' || e.key === ' ') && overlay.classList.contains('is-revealed')) {
+    stage.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         enterWebsite();
       }
     });
+
+    // Desktop 3D Mouse Parallax
+    if (window.matchMedia('(hover: hover)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        if (overlay.classList.contains('is-hidden') || overlay.classList.contains('is-opening')) return;
+        const rect = stage.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = (e.clientX - centerX) / (window.innerWidth / 2);
+        const deltaY = (e.clientY - centerY) / (window.innerHeight / 2);
+        stage.style.transform = `perspective(1200px) rotateY(${deltaX * 5}deg) rotateX(${-deltaY * 5}deg)`;
+      });
+      stage.addEventListener('mouseleave', () => {
+        stage.style.transform = '';
+      });
+    }
   }
 
-  if (btnSkip) btnSkip.addEventListener('click', skipIntro);
+  if (btnSkip) btnSkip.addEventListener('click', enterWebsite);
   if (btnReplay) btnReplay.addEventListener('click', replayIntro);
 }
 
