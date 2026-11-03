@@ -1884,8 +1884,8 @@ body {
 
 /* ==========================================================================
    THE LUXURY CINEMATIC INVITATION OPENING TRANSITION (.is-opening)
-   Royal Gatefold: Card splits down center, two doors swing open like
-   a palace gate, revealing golden light burst and the wedding website.
+   Curtain Pull: Card image splits into vertical strips that peel away
+   from the center outward, like drawing open luxurious fabric curtains.
    ========================================================================== */
 .cinematic-intro-overlay.is-opening {
   pointer-events: none;
@@ -1893,18 +1893,18 @@ body {
 
 .cinematic-intro-overlay.is-opening .cinematic-backdrop {
   opacity: 0;
-  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+  transition: opacity 1.0s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
 }
 
-/* Hide the single cover immediately when the gatefold doors take over */
+/* Hide the single cover immediately when the curtain strips take over */
 .cinematic-intro-overlay.is-opening .cinematic-cover-wrapper {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.05s;
 }
 
-/* Show the gatefold doors container */
-.cinematic-intro-overlay.is-opening .gatefold-doors {
+/* Show the curtain strips container */
+.cinematic-intro-overlay.is-opening .curtain-strips-container {
   display: block;
 }
 
@@ -1915,10 +1915,10 @@ body {
   overflow: visible;
 }
 
-/* After doors fully open, fade the whole overlay */
+/* After strips have peeled away, fade the whole overlay */
 .cinematic-intro-overlay.is-card-opened {
   opacity: 0 !important;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .cinematic-intro-overlay.is-opening .cinematic-action-area {
@@ -1935,9 +1935,10 @@ body {
 }
 
 /* ==========================================================================
-   GATEFOLD DOOR PANELS — Hidden at rest, revealed on .is-opening
+   CURTAIN STRIPS — Hidden at rest, revealed on .is-opening
+   Each strip shows a slice of the cover image and peels away outward
    ========================================================================== */
-.gatefold-doors {
+.curtain-strips-container {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1945,146 +1946,69 @@ body {
   z-index: 10;
   display: none;
   overflow: visible;
+  perspective: 1200px;
 }
 
-/* Each gate panel takes exactly half width */
-.gate-panel {
+.curtain-strip {
   position: absolute;
   top: 0;
   height: 100%;
-  width: 50%;
   overflow: hidden;
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
-.gate-left {
-  left: 0;
-  border-top-left-radius: 24px;
-  border-bottom-left-radius: 24px;
-  transform-origin: left center;
-  animation: gateSwingLeft 1.4s cubic-bezier(0.45, 0.05, 0.2, 1) forwards;
-}
-
-.gate-right {
-  right: 0;
-  border-top-right-radius: 24px;
-  border-bottom-right-radius: 24px;
-  transform-origin: right center;
-  animation: gateSwingRight 1.4s cubic-bezier(0.45, 0.05, 0.2, 1) forwards;
-}
-
-/* Inner div positions the full-width image so each panel shows the correct half */
-.gate-panel-inner {
+/* The inner div is full-card-width, positioned so the strip shows only its slice */
+.curtain-strip-inner {
   position: absolute;
   top: 0;
-  width: 200%;
   height: 100%;
-}
-.gate-left .gate-panel-inner {
-  left: 0;
-}
-.gate-right .gate-panel-inner {
-  right: 0;
 }
 
-.gate-door-img {
-  width: 100%;
+.curtain-strip-inner img {
   height: 100%;
-  object-fit: cover;
   display: block;
+  object-fit: cover;
 }
 
-/* Left door swings open to the left */
-@keyframes gateSwingLeft {
-  0% {
-    transform: perspective(1600px) rotateY(0deg);
-    opacity: 1;
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.2);
-  }
-  30% {
-    opacity: 1;
-    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.35);
-  }
-  85% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: perspective(1600px) rotateY(-95deg);
-    opacity: 0;
-    box-shadow: 20px 0 60px rgba(0, 0, 0, 0.5);
-  }
+/* Left-side strips peel to the left */
+.curtain-strip.strip-left {
+  transform-origin: left center;
 }
 
-/* Right door swings open to the right */
-@keyframes gateSwingRight {
-  0% {
-    transform: perspective(1600px) rotateY(0deg);
-    opacity: 1;
-    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
-  }
-  30% {
-    opacity: 1;
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.35);
-  }
-  85% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: perspective(1600px) rotateY(95deg);
-    opacity: 0;
-    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
-  }
+/* Right-side strips peel to the right */
+.curtain-strip.strip-right {
+  transform-origin: right center;
 }
 
-/* Golden center seam flash as the doors part */
-.gate-center-seam {
+/* Golden glow line at center during opening */
+.curtain-center-glow {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 4px;
+  width: 6px;
   height: 100%;
   transform: translateX(-50%);
-  background: linear-gradient(to bottom, transparent, #FFFDF8 20%, #FFD700 50%, #FFFDF8 80%, transparent);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.9), 0 0 60px rgba(255, 165, 0, 0.5);
+  background: linear-gradient(to bottom,
+    transparent 2%,
+    rgba(255, 253, 248, 0.9) 15%,
+    rgba(255, 215, 0, 0.95) 50%,
+    rgba(255, 253, 248, 0.9) 85%,
+    transparent 98%
+  );
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 45px rgba(255, 165, 0, 0.4);
   z-index: 15;
   opacity: 0;
   pointer-events: none;
-  animation: seamGoldenFlash 1.0s ease-out forwards;
+  animation: curtainCenterGlow 1.4s ease-out forwards;
 }
 
-@keyframes seamGoldenFlash {
-  0% { opacity: 0; transform: translateX(-50%) scaleY(0.15); }
-  20% { opacity: 1; transform: translateX(-50%) scaleY(1.0); }
-  60% { opacity: 0.8; transform: translateX(-50%) scaleY(1.0); }
-  100% { opacity: 0; transform: translateX(-50%) scaleY(1.1); }
-}
-
-/* Radiant warm golden light burst from inside the card */
-.gate-light-burst {
-  position: absolute;
-  inset: -40px;
-  background: radial-gradient(
-    ellipse at 50% 45%,
-    rgba(255, 253, 248, 0.95) 0%,
-    rgba(255, 215, 0, 0.7) 15%,
-    rgba(244, 219, 135, 0.4) 35%,
-    rgba(194, 150, 48, 0.15) 55%,
-    transparent 80%
-  );
-  z-index: 1;
-  opacity: 0;
-  transform: scale(0.3);
-  pointer-events: none;
-  animation: goldenBurstReveal 1.2s cubic-bezier(0.2, 0.8, 0.3, 1) 0.15s forwards;
-}
-
-@keyframes goldenBurstReveal {
-  0% { opacity: 0; transform: scale(0.3); }
-  40% { opacity: 1; transform: scale(1.3); }
-  70% { opacity: 0.7; transform: scale(1.5); }
-  100% { opacity: 0; transform: scale(1.8); }
+@keyframes curtainCenterGlow {
+  0%   { opacity: 0; transform: translateX(-50%) scaleY(0.1); }
+  15%  { opacity: 1; transform: translateX(-50%) scaleY(1.0); }
+  60%  { opacity: 0.9; }
+  100% { opacity: 0; transform: translateX(-50%) scaleY(1.05); }
 }
 
 /* ==========================================================================

@@ -522,11 +522,83 @@ function initEnvelopeIntro() {
   // ---------------------------------------------------------------------------
   // Action Handlers: Luxury Opening Animation into Website
   // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Action Handlers: Luxury Opening Animation into Website (Curtain Pull)
+  // ---------------------------------------------------------------------------
+  const curtainContainer = document.getElementById('curtainStrips');
+  const coverImg = document.getElementById('coverImg');
+  const NUM_STRIPS = 10; // 5 per side
+
+  function buildCurtainStrips() {
+    if (!curtainContainer || !stage) return;
+    const stageWidth = stage.offsetWidth || 380;
+    const stripWidth = stageWidth / NUM_STRIPS;
+    const imgSrc = (coverImg && coverImg.currentSrc) ? coverImg.currentSrc : 'assets/invitation-cover.jpg';
+
+    curtainContainer.innerHTML = '<div class="curtain-center-glow" aria-hidden="true"></div>';
+
+    for (let i = 0; i < NUM_STRIPS; i++) {
+      const isLeft = i < NUM_STRIPS / 2;
+      const distFromCenter = isLeft ? (NUM_STRIPS / 2 - 1 - i) : (i - NUM_STRIPS / 2);
+      const delay = distFromCenter * 0.06; // Center strips peel first
+
+      const strip = document.createElement('div');
+      strip.className = 'curtain-strip ' + (isLeft ? 'strip-left' : 'strip-right');
+      strip.style.left = (i * stripWidth) + 'px';
+      strip.style.width = (stripWidth + 0.5) + 'px'; // +0.5 to prevent subpixel seam
+
+      if (i === 0) {
+        strip.style.borderTopLeftRadius = '24px';
+        strip.style.borderBottomLeftRadius = '24px';
+      }
+      if (i === NUM_STRIPS - 1) {
+        strip.style.borderTopRightRadius = '24px';
+        strip.style.borderBottomRightRadius = '24px';
+      }
+
+      const inner = document.createElement('div');
+      inner.className = 'curtain-strip-inner';
+      inner.style.left = (-i * stripWidth) + 'px';
+      inner.style.width = stageWidth + 'px';
+
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = '';
+      img.style.width = stageWidth + 'px';
+      inner.appendChild(img);
+      strip.appendChild(inner);
+
+      strip.style.transition = `transform 0.95s cubic-bezier(0.25, 1, 0.35, 1) ${delay}s, opacity 0.85s ease ${delay + 0.12}s`;
+      curtainContainer.appendChild(strip);
+    }
+  }
+
+  function triggerCurtainPull() {
+    if (!curtainContainer || !stage) return;
+    buildCurtainStrips();
+
+    // Trigger frame for layout flush
+    requestAnimationFrame(() => {
+      const strips = curtainContainer.querySelectorAll('.curtain-strip');
+      const stageWidth = stage.offsetWidth || 380;
+
+      strips.forEach((strip, i) => {
+        const isLeft = i < NUM_STRIPS / 2;
+        const direction = isLeft ? -1 : 1;
+        const distFromCenter = isLeft ? (NUM_STRIPS / 2 - 1 - i) : (i - NUM_STRIPS / 2);
+        
+        strip.style.transform = `perspective(1000px) rotateY(${direction * 65}deg) translateX(${direction * (stageWidth * 0.55 + distFromCenter * 20)}px) scale(0.92)`;
+        strip.style.opacity = '0';
+      });
+    });
+  }
+
   function enterWebsite() {
     if (isOpeningInProgress) return;
     isOpeningInProgress = true;
 
-    // 1. Trigger the gatefold card opening: hide single cover, show door panels
+    // 1. Build and peel the curtain strips
+    triggerCurtainPull();
     overlay.classList.add('is-opening');
     sessionStorage.setItem('weddingIntroOpened', 'true');
 
@@ -540,30 +612,31 @@ function initEnvelopeIntro() {
       window.triggerPetalBurst(window.innerWidth / 2, window.innerHeight * 0.4);
     }
 
-    // 4. After doors have swung open (1.4s animation), start fading the entire overlay
+    // 4. After strips have peeled away, fade the entire overlay
     setTimeout(() => {
       overlay.classList.add('is-card-opened');
-    }, 1200);
+    }, 1100);
 
-    // 5. After the overlay fully fades, hide it completely
+    // 5. After overlay fully fades, hide it completely
     setTimeout(() => {
       overlay.classList.add('is-hidden');
-    }, 2100);
+    }, 1900);
 
     // 6. Cleanup canvas
     setTimeout(() => {
       isCanvasActive = false;
       if (particleAnimId) cancelAnimationFrame(particleAnimId);
       isOpeningInProgress = false;
-    }, 2500);
+    }, 2300);
   }
 
   function replayIntro() {
     isCanvasActive = true;
     isOpeningInProgress = false;
 
-    // Reset overlay classes (including new gatefold classes)
+    // Reset overlay classes
     overlay.classList.remove('is-hidden', 'is-opening', 'is-card-opened');
+    if (curtainContainer) curtainContainer.innerHTML = '';
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
     initCinematicCanvas();
